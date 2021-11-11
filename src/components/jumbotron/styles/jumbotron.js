@@ -10,5 +10,13 @@ export const Item = styled.div`
   `;
 
 export const Container = styled.div`
-    align-items: center;
+
 `;
+
+export const Pane = styled.div`
+
+`;
+
+export const Image = styled.div`
+
+`
