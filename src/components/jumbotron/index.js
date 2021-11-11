@@ -1,4 +1,4 @@
-
+import {Container, Pane, Title, SubTitle, Image,}
 
 export default function Jumbotron ({children, direction="row", ...restProps}){
   return (
@@ -8,14 +8,22 @@ export default function Jumbotron ({children, direction="row", ...restProps}){
   )
 }
 
-Jumbotron.Container({children, ...restProps}){
+Jumbotron.Container = JumbotronContainer({children, ...restProps}){
   return <Container {...restProps}>{children}</Container>;
 }
 
-Jumbotron.Title({children, ...restProps}){
+Jumbotron.Pane = JumbotronPane({children, ...restProps}){
+  return <Pane {...restProps}>{children}</Pane>
+}
+
+Jumbotron.Title= JumbotronTitle({children, ...restProps}){
   return <Title {...restProps}>{children}</Title>
 }
 
-Jumbotron.Subtitle({children, ...restProps}){
+Jumbotron.Subtitle = JumbotronSubtitle({children, ...restProps}){
   return <SubTitle {...restProps}>{children}</SubTitle>
+}
+
+Jumbotron.Image = JumbotronImage({chilren, ...restProps}){
+  return <Image />
 }
