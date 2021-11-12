@@ -25,5 +25,5 @@ Jumbotron.SubTitle = function JumbotronSubtitle({children, ...restProps}){
 }
 
 Jumbotron.Image = function JumbotronImage({chilren, ...restProps}){
-  return <Image />
+  return <Image {...restProps}/>
 }
