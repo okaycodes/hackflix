@@ -1,10 +1,12 @@
 import JumbotronContainer from "./../containers/jumbotron"
 import FooterContainer from "./../containers/footer"
+import AccordionContainer from "./../containers/accordion"
 
 export default function Home (){
   return (
     <>
-      <JumbotronContainer/>
+      <JumbotronContainer />
+      <AccordionContainer />
       <FooterContainer />
     </>
   )
