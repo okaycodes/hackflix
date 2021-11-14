@@ -6,14 +6,13 @@ export const Container = styled.div`
   flex-direction: column;
   color: #757575;
   max-width: 1100px;
-  padding: 2em 3em;
+  padding: 5em 3em;
   margin: 0 auto;
 `;
 
 export const Row = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  justify-self: center;
   justify-items: space-between;
 `;
 
