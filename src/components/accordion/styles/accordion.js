@@ -49,7 +49,7 @@ export const Header = styled.div`
 `;
 
 export const Toggle = styled.div`
-  --length: 23px;
+  --length: 24px;
   --breadth: 3px;
   height: var(--breadth);
   width: var(--length);
