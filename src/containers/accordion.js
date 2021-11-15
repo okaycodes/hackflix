@@ -1,4 +1,5 @@
 import Accordion from "./../components/accordion/index"
+import {OptInForm} from "./../components"
 import faqsData from "./../fixtures/faqs.json"
 
 
@@ -20,7 +21,9 @@ export default function AccordionContainer(){
               </Accordion.Item>)
             })}
         </Accordion.Items>
-        
+        <OptInForm>
+          <OptInForm.Input/>
+        </OptInForm>
     </Accordion>
   )
 }
