@@ -18,12 +18,10 @@ export const Placeholder = styled.label`
 `;
 
 export const Input = styled.input`
-  --width: 400px;
   font-size: 16px;
   margin: 0;
-  width: var(--width);
+  width: 400px;
   height: 50px;
-  position: relative;
 
   &:focus::placeholder{
     font-size: 0;
@@ -35,7 +33,6 @@ export const Input = styled.input`
     font-size: 12px;
     color: grey;
     transform: translate(-395px, -16px);
-    margin: 0;
     user-select: none;
   }
 `;
