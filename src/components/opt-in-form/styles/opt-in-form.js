@@ -18,11 +18,10 @@ export const Placeholder = styled.label`
 `;
 
 export const Input = styled.input`
+  --width: 400px;
   font-size: 16px;
-  box-sizing: border-box;
-  padding-left: 3px;
   margin: 0;
-  width: 400px;
+  width: var(--width);
   height: 50px;
   position: relative;
 
