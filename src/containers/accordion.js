@@ -22,7 +22,13 @@ export default function AccordionContainer(){
             })}
         </Accordion.Items>
         <OptInForm>
-          <OptInForm.Input/>
+          <OptInForm.Wrapper>
+            <OptInForm.Input/>
+            <OptInForm.Button>
+              Get Started
+              <OptInForm.Image />
+            </OptInForm.Button>
+          </OptInForm.Wrapper>
         </OptInForm>
     </Accordion>
   )
