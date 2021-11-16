@@ -16,7 +16,7 @@ OptInForm.Input = function OptInFormInput({children, ...restProps}){
   return(
     <InputWrapper>
       <Label>
-        <Input placeholder=""/>
+        <Input />
         <Placeholder>Email address</Placeholder>
       </Label>
     </InputWrapper>
@@ -27,5 +27,5 @@ OptInForm.Button = function OptInFormButton({children, ...restProps}){
 }
 
 OptInForm.Image = function OptInFormImage(){
-  return <Image />
+  return <Image src="./../../images/icons/chevron-right.png" />
 }
