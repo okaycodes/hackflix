@@ -3,6 +3,9 @@ import styled from "styled-components"
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 550px;
+  margin: 0 auto;
+  color: white;
 `;
 
 export const Message = styled.p`
@@ -11,7 +14,7 @@ export const Message = styled.p`
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 `;
 
 
@@ -21,7 +24,6 @@ export const InputWrapper = styled.div`
 `;
 
 export const Label = styled.label`
-
 `;
 
 export const Placeholder = styled.span`
@@ -31,18 +33,22 @@ export const Placeholder = styled.span`
 `;
 
 export const Input = styled.input`
-  position: absolute;
+  display: block;
   font-size: var(--size);
   padding: 1em;
   padding-left: .7em;
   margin: 0;
   width: 400px;
   outline: none;
+  border: solid grey 1px;
+  /* removed position absolute on the input element so that display
+    flex can work. the label is therefore technically attached to
+    the container.
+   */
 
-  &:focus{
-    border: none;
-    border-bottom: solid 2px orange;
-  }
+   &:focus{
+     border-bottom: solid 1px orange;
+   }
 
   & ~ ${Placeholder}{
     position: absolute;
@@ -50,7 +56,7 @@ export const Input = styled.input`
     left: 10px;
   }
 
-  &:focus + ${Placeholder},
+  &:focus +  ${Placeholder},
   &:not(:placeholder-shown) + ${Placeholder}{
     font-size: 12px;
     font-weight: bold;
@@ -58,13 +64,32 @@ export const Input = styled.input`
     color: grey;
     user-select: none;
   }
+  /*
+  it is important to note that the :not(:placeholder-shown) is not fully supported
+  and so a javascript solution might be better for that particular functionality.
+   */
 `;
 
 
 export const Button = styled.button`
+  color: white;
+  font-size: 16px;
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  border: solid red 1px;
+  background-color: red;
+  cursor: pointer;
 
+  &:hover{
+    background-color: darkred;
+  }
 `;
 
 export const Image = styled.img`
-  
+  width: 16px;
+  height: auto;
+  max-width: 100%;
+  filter: brightness(0) invert(1)
 `;
