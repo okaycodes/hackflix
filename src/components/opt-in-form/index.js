@@ -1,4 +1,4 @@
-import {Container, Message, Wrapper, Label, InputWrapper, Input, Placeholder, Button, Image} from "./styles/opt-in-form"
+import {Container, Message, Wrapper, Label, InputWrapper, Input, Placeholder, Button} from "./styles/opt-in-form"
 
 export default function OptInForm({children, ...restProps}){
   return <Container {...restProps}>{children}</Container>
@@ -16,16 +16,16 @@ OptInForm.Input = function OptInFormInput({children, ...restProps}){
   return(
     <InputWrapper>
       <Label>
-        <Input />
+        <Input placeholder=""/>
         <Placeholder>Email address</Placeholder>
       </Label>
     </InputWrapper>
   )}
 
 OptInForm.Button = function OptInFormButton({children, ...restProps}){
-  return <Button {...restProps}>{children}</Button>
-}
-
-OptInForm.Image = function OptInFormImage(){
-  return <Image src="./../../images/icons/chevron-right.png" />
+  return (
+      <Button {...restProps}>
+          {children} <img src="./../../images/icons/chevron-right.png" alt="chevron right" />
+      </Button>
+        )
 }
