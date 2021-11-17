@@ -23,7 +23,7 @@ export const Title = styled.h1`
   align-self: center;
   max-width: 90%;
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
       font-size: 35px;
   }
 `;
@@ -31,26 +31,30 @@ export const Title = styled.h1`
 export const Items = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 700px;
+  max-width: 815px;
   width: 90%;
   margin: 0 auto;
 `;
 
 
 export const Item = styled.div`
-  margin: .2em;
+  margin: .3em;
 `;
 
 export const Header = styled.div`
   background-color: #303030;
-  padding: 1em;
+  padding: 1.5em;
   display: flex;
   justify-content: space-between;
+
+  @media (mad-width:750px){
+    padding: 1em;
+  }
 `;
 
 export const Toggle = styled.div`
   --length: 24px;
-  --breadth: 3px;
+  --breadth: 2px;
   height: var(--breadth);
   width: var(--length);
   background: white;
@@ -76,7 +80,7 @@ export const Toggle = styled.div`
     achieved everything above using rotate() */
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 750px) {
     --length: 17px;
     --breadth: 2px;
   }
@@ -85,17 +89,22 @@ export const Toggle = styled.div`
 
 export const SubTitle = styled.h2`
   margin: 0;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 400;
 
-  @media (max-width: 600px){
-    font-size: 16px;
+  @media (max-width: 750px){
+    font-size: 18px;
   }
 `;
 
 export const Content = styled.p`
+  font-size: 25px;
   padding: 1em;
   background-color: #303030;
   margin-top: .1em;
   margin-bottom: 0;
+
+  @media (max-width: 750px){
+    font-size: 20px;
+  }
 `;
