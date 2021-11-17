@@ -22,12 +22,13 @@ export default function AccordionContainer(){
             })}
         </Accordion.Items>
         <OptInForm>
+          <OptInForm.Message>
+           Ready to watch? Enter your email to create or restart your
+           membership.
+          </OptInForm.Message>
           <OptInForm.Wrapper>
-            <OptInForm.Input/>
-            <OptInForm.Button>
-              Get Started
-              <OptInForm.Image />
-            </OptInForm.Button>
+            <OptInForm.Input />
+            <OptInForm.Button>Get Started</OptInForm.Button>
           </OptInForm.Wrapper>
         </OptInForm>
     </Accordion>
