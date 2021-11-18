@@ -8,12 +8,12 @@ OptInForm.Message = function OptInFormMessage({children, ...restProps}){
   return <Message {...restProps}>{children}</Message>
 }
 
-OptInForm.Input = function OptInFormInput({children, ...restProps}){
+OptInForm.Input = function OptInFormInput({children, animated=true, placeholder, ...restProps}){
   return(
-    <InputWrapper>
+    <InputWrapper {...restProps}>
       <Label>
-        <Input placeholder=""/>
-        <Placeholder>Email address</Placeholder>
+        <Input placeholder={!animated && placeholder}/>
+        <Placeholder>{animated && placeholder}</Placeholder>
       </Label>
     </InputWrapper>
   )}

@@ -21,10 +21,10 @@ export default function AccordionContainer(){
               </Accordion.Item>)
             })}
         </Accordion.Items>
-        <OptInForm>
+        <OptInForm >
           <OptInForm.Message>Ready to watch? Enter your email to create or restart
           your membership.</OptInForm.Message>
-          <OptInForm.Input />
+          <OptInForm.Input placeholder="Email address"/>
           <OptInForm.Button>Get Started</OptInForm.Button>
         </OptInForm>
     </Accordion>
