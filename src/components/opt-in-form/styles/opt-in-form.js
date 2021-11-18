@@ -3,41 +3,34 @@ import styled from "styled-components"
 export const Container = styled.div`
   width: 90%;
   max-width: 700px;
+  height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 1em auto;
   color: white;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Message = styled.p`
   text-align: center;
   font-size: 20px;
 
-  @media (max-width: 700px) {
-    width: 70%;
-    margin: 0 auto;
+  @media (max-width: 1000px) {
+      max-width: 400px;
+    font-size: 18px;
   }
 `;
-
-export const Wrapper = styled.div`
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-  @media (max-width: 700px) {
-    flex-direction: column;
-  }
-`;
-
 
 export const InputWrapper = styled.div`
-  width: 70%;
+  width: 100%;
+  max-width: 450px;
   position: relative;
   --size: 20px;
-
-  @media (max-width: 700px) {
-    align-self: center;
-    width: 80%
-  }
 `;
 
 export const Label = styled.label`
@@ -77,7 +70,7 @@ export const Input = styled.input`
 
   &:focus +  ${Placeholder},
   &:not(:placeholder-shown) + ${Placeholder}{
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
     top: 4px;
     color: grey;
@@ -88,8 +81,11 @@ export const Input = styled.input`
   and so a javascript solution might be better for that particular functionality.
    */
 
-   @media (max-width: 700px) {
+   @media (max-width: 1000px) {
      border-radius: 3px;
+     & ~ ${Placeholder}{
+       top: 17px;
+     }
    }
 `;
 
@@ -116,15 +112,15 @@ export const Button = styled.button`
     filter: brightness(0) invert(1)
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 1000px) {
     align-self: center;
     margin: 1em;
-    font-size: 17px;
+    font-size: 16px;
     border-radius: 3px;
     width: 140px;
 
     & > img{
-      width: 17px;
+      width: 16px;
     }
   }
 `;

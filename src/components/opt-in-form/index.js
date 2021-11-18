@@ -1,4 +1,4 @@
-import {Container, Message, Wrapper, Label, InputWrapper, Input, Placeholder, Button} from "./styles/opt-in-form"
+import {Container, Message, Label, InputWrapper, Input, Placeholder, Button} from "./styles/opt-in-form"
 
 export default function OptInForm({children, ...restProps}){
   return <Container {...restProps}>{children}</Container>
@@ -6,10 +6,6 @@ export default function OptInForm({children, ...restProps}){
 
 OptInForm.Message = function OptInFormMessage({children, ...restProps}){
   return <Message {...restProps}>{children}</Message>
-}
-
-OptInForm.Wrapper = function OptInFormWrapper({children, ...restProps}){
-  return <Wrapper {...restProps}>{children}</Wrapper>
 }
 
 OptInForm.Input = function OptInFormInput({children, ...restProps}){
