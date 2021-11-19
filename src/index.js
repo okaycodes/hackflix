@@ -3,13 +3,28 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import {BrowserRouter as Router} from 'react-router-dom'
 import { GlobalStyles } from './global-styles';
+import {firebaseContext} from "./contexts/firebaseContext"
+
+const config = {
+    apiKey: 'AIzaSyDAU60M2FDHNsYt9uGMpRezw3FGVIX6Jrs',
+    authDomain: 'netflix-c8ae9.firebaseapp.com',
+    databaseURL: 'https://netflix-c8ae9.firebaseio.com',
+    projectId: 'netflix-c8ae9',
+    storageBucket: 'netflix-c8ae9.appspot.com',
+    messagingSenderId: '590575805931',
+    appId: '1:590575805931:web:f809092b6cd55306fa25ae',
+};
+
+// const firebase = window.firebase.initializeApp(config);
 
 ReactDOM.render(
   <React.StrictMode>
-      <Router>
+    <Router>
+      <firebaseContext.Provider>
         <GlobalStyles />
         <App />
-      </Router>
+      </firebaseContext.Provider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
