@@ -22,6 +22,11 @@ export const Message = styled.p`
 
   @media (max-width: 1000px) {
       max-width: 400px;
+    font-size: 23px;
+  }
+
+  @media (max-width: 700px) {
+      max-width: 400px;
     font-size: 18px;
   }
 `;
@@ -69,7 +74,7 @@ export const Input = styled.input`
   }
 
   &:focus +  ${Placeholder},
-  &:not(:placeholder-shown) + ${Placeholder}{
+  &:not([value]) + ${Placeholder}{
     font-size: 11px;
     font-weight: bold;
     top: 4px;
