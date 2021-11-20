@@ -42,7 +42,12 @@ export const Label = styled.label`
 `;
 
 export const Placeholder = styled.span`
-  font-size: 16px;
+  font-size: ${props => props.isEmpty ? "16px" : "11px"};
+  font-weight: ${props => !props.isEmpty && "500"};
+  position: absolute;
+  top: var(--size);
+  left: var(--size);
+  ${props => !props.isEmpty && "top: 4px"};
   color: grey;
   transition: all .15s ease-in-out;
 `;
@@ -54,7 +59,7 @@ export const Input = styled.input`
   padding-left: 20px;
   margin: 0;
   width: 100%;
-  height: 100%;
+  height: 60px;
   outline: none;
   border: solid grey 1px;
   border-radius: 3px 0 0 3px;
@@ -64,52 +69,55 @@ export const Input = styled.input`
    */
 
    &:focus{
-     border-bottom: solid 1px orange;
+     border-bottom: solid 2px orange;
    }
 
-  & ~ ${Placeholder}{
-    position: absolute;
-    top: var(--size);
-    left: var(--size);
-  }
-
-  &:focus +  ${Placeholder},
-  &:not([value]) + ${Placeholder}{
+  &:focus +  ${Placeholder}{
     font-size: 11px;
-    font-weight: bold;
+    font-weight: 500;
     top: 4px;
     color: grey;
     user-select: none;
   }
   /*
+  css is used to move the placeholder to the top on focus.
   it is important to note that the :not(:placeholder-shown) is not fully supported
-  and so a javascript solution might be better for that particular functionality.
+  and so the javascript solution is better for this particular functionality.
    */
 
    @media (max-width: 1000px) {
      border-radius: 3px;
+     height: auto;
      & ~ ${Placeholder}{
        top: 17px;
      }
    }
 `;
 
+export const ErrorMessage = styled.div`
+  text-align: left;
+  margin-left: .4em;
+  color: orange;
+`;
+
+
 
 export const Button = styled.button`
   color: white;
   font-size: 23px;
   width: 30%;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   padding: .7em;
   align-items: center;
   border: solid red 1px;
-  background-color: red;
+  background-color: #e50914;
   cursor: pointer;
   border-radius: 0 3px 3px 0;
 
   &:hover{
-    background-color: darkred;
+    background-color: #f40612;
   }
 
   & > img{
@@ -123,6 +131,7 @@ export const Button = styled.button`
     font-size: 16px;
     border-radius: 3px;
     width: 140px;
+    height: auto;
 
     & > img{
       width: 16px;
