@@ -24,12 +24,22 @@ import {
   }
 
   OptInForm.Input = function OptInFormInput({children, animated=true, placeholder, ...restProps}){
+    const {email, handleChange, activatedInput, emailIsValid, isEmpty} = useContext(optInContext)
     return(
       <InputWrapper {...restProps}>
         <Label>
-          <Input placeholder={!animated && placeholder}/>
-          <Placeholder>{animated && placeholder}</Placeholder>
+          <Input
+            placeholder={!animated && placeholder}
+            name = "email"
+            value ={email}
+            onChange={handleChange}
+          />
+          <Placeholder isEmpty = {isEmpty}>{animated && placeholder}</Placeholder>
         </Label>
+        <ErrorMessage>
+          {(activatedInput && email.length < 4) ? "Email is required" :
+           activatedInput && !emailIsValid && "Please enter a valid email address"}
+        </ErrorMessage>
       </InputWrapper>
     )}
 
