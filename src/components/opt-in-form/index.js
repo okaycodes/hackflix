@@ -1,4 +1,6 @@
 import {useContext} from "react"
+import {Link} from "react-router-dom"
+import * as ROUTES from './../../constants/routes';
 import {OptInContextProvider, optInContext} from "./../../contexts/optInContext"
 
 import {
@@ -47,7 +49,9 @@ import {
   OptInForm.Button = function OptInFormButton({children, ...restProps}){
   return (
       <Button {...restProps}>
+        <Link to={ROUTES.SIGN_UP}>
           {children} <img src="./../../images/icons/chevron-right.png" alt="chevron right" />
+        </Link>
       </Button>
         )
 }

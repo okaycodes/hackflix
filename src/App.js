@@ -13,6 +13,9 @@ function App() {
       <Routes>
         <Route exact path={ROUTES.SIGN_IN} element={<SignIn />}/>
       </Routes>
+      <Routes>
+        <Route exact path={ROUTES.SIGN_UP} element={<SignIn />}/>
+      </Routes>
     </div>
   );
 }
