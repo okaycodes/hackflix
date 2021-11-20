@@ -50,6 +50,10 @@ export const Placeholder = styled.span`
   ${props => !props.isEmpty && "top: 4px"};
   color: grey;
   transition: all .15s ease-in-out;
+  /* props is used to move the placeholder top when the field is not empty
+  top is also declared twice to allow for use of the --size variable for
+  easier edits in the future 
+  */
 `;
 
 export const Input = styled.input`
