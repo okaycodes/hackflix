@@ -1,24 +1,40 @@
-import {Container, Message, Label, InputWrapper, Input, Placeholder, Button} from "./styles/opt-in-form"
+import {useContext} from "react"
+import {OptInContextProvider, optInContext} from "./../../contexts/optInContext"
 
-export default function OptInForm({children, ...restProps}){
-  return <Container {...restProps}>{children}</Container>
-}
+import {
+        Container,
+        Message,
+        Label,
+        InputWrapper,
+        Input,
+        Placeholder,
+        ErrorMessage,
+        Button} from "./styles/opt-in-form"
 
-OptInForm.Message = function OptInFormMessage({children, ...restProps}){
-  return <Message {...restProps}>{children}</Message>
-}
+  export default function OptInForm({children, ...restProps}){
+    return (
+      <OptInContextProvider>
+        <Container>{children}</Container>
+      </OptInContextProvider>
+    )
+  }
 
-OptInForm.Input = function OptInFormInput({children, animated=true, placeholder, ...restProps}){
-  return(
-    <InputWrapper {...restProps}>
-      <Label>
-        <Input placeholder={!animated && placeholder}/>
-        <Placeholder>{animated && placeholder}</Placeholder>
-      </Label>
-    </InputWrapper>
-  )}
+  OptInForm.Message = function OptInFormMessage({children, ...restProps}){
+    return <Message {...restProps}>{children}</Message>
+  }
 
-OptInForm.Button = function OptInFormButton({children, ...restProps}){
+  OptInForm.Input = function OptInFormInput({children, animated=true, placeholder, ...restProps}){
+    return(
+      <InputWrapper {...restProps}>
+        <Label>
+          <Input placeholder={!animated && placeholder}/>
+          <Placeholder>{animated && placeholder}</Placeholder>
+        </Label>
+      </InputWrapper>
+    )}
+
+
+  OptInForm.Button = function OptInFormButton({children, ...restProps}){
   return (
       <Button {...restProps}>
           {children} <img src="./../../images/icons/chevron-right.png" alt="chevron right" />
