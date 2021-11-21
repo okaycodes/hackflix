@@ -2,6 +2,7 @@ import {Routes, Route} from 'react-router-dom'
 import * as ROUTES from './constants/routes';
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
+import SignUp from './pages/signup/index'
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
         <Route exact path={ROUTES.SIGN_IN} element={<SignIn />}/>
       </Routes>
       <Routes>
-        <Route exact path={ROUTES.SIGN_UP} element={<SignIn />}/>
+        <Route exact path={ROUTES.SIGN_UP} element={<SignUp />}/>
       </Routes>
     </div>
   );
