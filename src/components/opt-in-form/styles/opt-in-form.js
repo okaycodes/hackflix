@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import {Link as ReactRouterLink} from "react-router-dom"
 
 export const Container = styled.div`
   width: 90%;
@@ -52,7 +53,7 @@ export const Placeholder = styled.span`
   transition: all .15s ease-in-out;
   /* props is used to move the placeholder top when the field is not empty
   top is also declared twice to allow for use of the --size variable for
-  easier edits in the future 
+  easier edits in the future
   */
 `;
 
@@ -107,6 +108,10 @@ export const ErrorMessage = styled.div`
 
 
 export const Button = styled.button`
+
+`;
+
+export const ButtonLink = styled(ReactRouterLink)`
   color: white;
   font-size: 23px;
   width: 30%;
@@ -118,6 +123,7 @@ export const Button = styled.button`
   border: solid red 1px;
   background-color: #e50914;
   cursor: pointer;
+  text-decoration: none;
   border-radius: 0 3px 3px 0;
 
   &:hover{
@@ -141,4 +147,5 @@ export const Button = styled.button`
       width: 16px;
     }
   }
+
 `;
