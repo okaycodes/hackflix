@@ -1,5 +1,4 @@
 import {useContext} from "react"
-import {Link} from "react-router-dom"
 import * as ROUTES from './../../constants/routes';
 import {OptInContextProvider, optInContext} from "./../../contexts/optInContext"
 
@@ -11,7 +10,7 @@ import {
         Input,
         Placeholder,
         ErrorMessage,
-        Button} from "./styles/opt-in-form"
+        ButtonLink} from "./styles/opt-in-form"
 
   export default function OptInForm({children, ...restProps}){
     return (
@@ -48,10 +47,8 @@ import {
 
   OptInForm.Button = function OptInFormButton({children, ...restProps}){
   return (
-      <Button {...restProps}>
-        <Link to={ROUTES.SIGN_UP}>
+        <ButtonLink to={ROUTES.SIGN_UP} {...restProps}>
           {children} <img src="./../../images/icons/chevron-right.png" alt="chevron right" />
-        </Link>
-      </Button>
+        </ButtonLink>
         )
 }
