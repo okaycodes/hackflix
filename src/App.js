@@ -2,7 +2,7 @@ import {Routes, Route} from 'react-router-dom'
 import * as ROUTES from './constants/routes';
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
-import SignUp from './pages/signup/index'
+import SignUp from './pages/SignUp'
 
 
 function App() {
