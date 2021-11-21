@@ -5,46 +5,49 @@ export const Background = styled.div`
   display: flex;
   flex-direction: column;
   background: url(${({src}) => src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg'});
-
   @media (min-width: 1100px) {
     ${({dontShowOnSmallViewPort})=> dontShowOnSmallViewPort && "background: none"}
   }
 `;
 
 export const Container = styled.div`
-  box-sizing: content-box;
+  box-sizing: border-box;
   display: flex;
-  margin: 0 56px;
+  margin: 0 auto;
   height: 64px;
-  padding: 18px 0;
+  padding: 50px 56px;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  background-color: ${props => props.backgroundColor};
+  padding: ${props =>  props.padding};
 
   a{
       display: flex;
   }
 
-  @media (max-width: 1000px) {
-      margin: 0 30px;
+  @media (max-width: 950px) {
+      padding: 50px 40px;
   }
 `;
 
 export const Logo = styled.img`
-  height: 32px;
-  width: 108px;
+  height: ${props=> props.height ? props.height : "32px"};
+  width: ${props=> props.width ? props.width : "108px"};
   margin-right: 40px;
 
-  @media (min-width: 1449px) {
-     height: 45px;
-     width: 167px;
+  @media (min-width: 950px) {
+     height: ${props=> props.height ? props.height : "44px"};
+     width: ${props=> props.width ? props.width : "134px"};
   }
+
 `;
 
 export const Link = styled.p`
 `;
 
 export const ButtonLink = styled(ReachRouterLink)`
-display: block;
+  display: block;
   background-color: #e50914;
   width: 84px;
   height: fit-content;

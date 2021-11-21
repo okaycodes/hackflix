@@ -7,13 +7,13 @@ export default function Header({bg=true, children, ...restProps}){
 }
 
 Header.Frame = function HeaderFrame({children, ...restProps}){
-  return <Container>{children}</Container>
+  return <Container {...restProps}>{children}</Container>
 }
 
-Header.Logo = function HeaderLogo({children, ...restProps}){
-  return <ReactRouterLink to={ROUTES.HOME}><Logo {...restProps}/></ReactRouterLink>
+Header.Logo = function HeaderLogo({...restProps}){
+  return <ReactRouterLink to={ROUTES.HOME} {...restProps}><Logo {...restProps} /></ReactRouterLink>
 }
 
 Header.ButtonLink = function HeaderButtonLink({children, ...restProps}){
-  return <ButtonLink to={ROUTES.SIGN_IN}>Sign In</ButtonLink>
+  return <ButtonLink to={ROUTES.SIGN_IN} {...restProps}>Sign In</ButtonLink>
 }
