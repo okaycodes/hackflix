@@ -11,7 +11,7 @@ export const Container = styled.div`
   margin: 1em auto;
   color: white;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 950px) {
     flex-direction: column;
     align-items: center;
   }
@@ -21,7 +21,7 @@ export const Message = styled.p`
   text-align: center;
   font-size: 20px;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 950px) {
       max-width: 400px;
     font-size: 23px;
   }
@@ -90,7 +90,7 @@ export const Input = styled.input`
   and so the javascript solution is better for this particular functionality.
    */
 
-   @media (max-width: 1000px) {
+   @media (max-width: 950px) {
      border-radius: 3px;
      height: auto;
      & ~ ${Placeholder}{
@@ -135,7 +135,7 @@ export const ButtonLink = styled(ReactRouterLink)`
     filter: brightness(0) invert(1)
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 950px) {
     align-self: center;
     margin: 1em;
     font-size: 16px;
