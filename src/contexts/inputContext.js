@@ -1,8 +1,8 @@
 import React, {useState} from "react"
 
-const optInContext = React.createContext()
+const inputContext = React.createContext()
 
-function OptInContextProvider({children}){
+function InputContextProvider({children}){
   const [email, setEmail] = useState('')
   const isEmpty = email.length < 1
   const emailIsValid = /[^@]+@[^@]+\.[^@]+/.test(email)
@@ -16,10 +16,10 @@ function OptInContextProvider({children}){
   }
 
   return (
-    <optInContext.Provider value={{email, emailIsValid, activatedInput, handleChange, isEmpty}}>
+    <inputContext.Provider value={{email, emailIsValid, activatedInput, handleChange, isEmpty}}>
       {children}
-    </optInContext.Provider>
+    </inputContext.Provider>
   )
 }
 
-export {OptInContextProvider, optInContext}
+export {InputContextProvider, inputContext}

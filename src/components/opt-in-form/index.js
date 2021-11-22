@@ -1,6 +1,6 @@
 import {useContext} from "react"
 import * as ROUTES from './../../constants/routes';
-import {OptInContextProvider, optInContext} from "./../../contexts/optInContext"
+import {InputContextProvider, inputContext} from "./../../contexts/inputContext"
 
 import {
         Container,
@@ -14,9 +14,9 @@ import {
 
   export default function OptInForm({children, ...restProps}){
     return (
-      <OptInContextProvider>
+      <InputContextProvider>
         <Container>{children}</Container>
-      </OptInContextProvider>
+      </InputContextProvider>
     )
   }
 
@@ -25,7 +25,7 @@ import {
   }
 
   OptInForm.Input = function OptInFormInput({children, animated=true, placeholder, ...restProps}){
-    const {email, handleChange, activatedInput, emailIsValid, isEmpty} = useContext(optInContext)
+    const {email, handleChange, activatedInput, emailIsValid, isEmpty} = useContext(inputContext)
     return(
       <InputWrapper {...restProps}>
         <Label>
@@ -47,7 +47,7 @@ import {
 
   OptInForm.Button = function OptInFormButton({children, ...restProps}){
   return (
-        <ButtonLink to={ROUTES.SIGN_UP} {...restProps}>
+        <ButtonLink to={ROUTES.REGISTRATION} {...restProps}>
           {children} <img src="./../../images/icons/chevron-right.png" alt="chevron right" />
         </ButtonLink>
         )
