@@ -23,7 +23,7 @@ export default function FooterContainer(){
           <Footer.Item>
             <Footer.Link href="#">Account</Footer.Link>
             <Footer.Link href="#">Redeem Gift Cards</Footer.Link>
-            <Footer.Link href="#">Piracy</Footer.Link>
+            <Footer.Link href="#">Privacy</Footer.Link>
             <Footer.Link href="#">Speed Test</Footer.Link>
           </Footer.Item>
 

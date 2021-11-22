@@ -1,8 +1,7 @@
-import {Container} from './styles/footer'
-import {Row, Title, Item, Link, Location} from './styles/footer'
+import {Container, Inner, Row, Title, Item, Link, Location} from './styles/footer'
 
 export default function Footer({children, ...restProps}){
-  return <Container {...restProps}>{children}</Container>
+  return <Container {...restProps}><Inner {...restProps}>{children}</Inner></Container>
 }
 
 Footer.Row = function FooterRow({children, ...restProps}){
