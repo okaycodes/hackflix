@@ -11,6 +11,11 @@ export const GlobalStyles = createGlobalStyle`
         margin: 0;
     }
 
+    #root{
+      postion: relative;
+      min-width: 100
+    }
+
     *{
       box-sizing: border-box;
     }
