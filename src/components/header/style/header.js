@@ -48,19 +48,21 @@ export const Link = styled.p`
 
 export const ButtonLink = styled(ReachRouterLink)`
   display: block;
-  background-color: #e50914;
-  width: 84px;
+  min-width: 84px;
   height: fit-content;
-  color: white;
   border: 0;
-  font-size: 15px;
   border-radius: 3px;
   padding: 8px 17px;
   cursor: pointer;
   text-decoration: none;
   box-sizing: border-box;
+  font-weight:${props=> props.buttonSecondary && "500"};
+  color: ${props=> props.buttonSecondary ? "black" : "white"};
+  font-size: ${props=> props.buttonSecondary ? "20px" : "15px"};
+  background-color: ${props=> props.buttonSecondary ? "none" : "#e50914"};
 
   &:hover {
-      background: #f40612;
+      background-color: ${props=> props.buttonSecondary ? "none" : "#f40612"};
+      text-decoration: ${props=> props.buttonSecondary && "underline"};
   }
 `;
