@@ -68,14 +68,19 @@ export const Input = styled.input`
   outline: none;
   border: solid grey 1px;
   border-radius: 3px 0 0 3px;
+  border-bottom: ${props=>props.isActivated && !props.isValid && "solid 2px orange"};
   /* removed position absolute on the input element so that display
     flex can work. the label is therefore technically attached to
     the container.
    */
 
    &:focus{
-     border-bottom: solid 2px orange;
-   }
+    border:  ${props=>{
+       return !props.isActivated ?
+       "solid #2983f0 1.5px" : props.isActivated && props.isValid ?
+       "solid 1px green" :"" }};
+    border-bottom: ${props=>props.isActivated && !props.isValid && "solid 2px orange"};
+  }
 
   &:focus +  ${Placeholder}{
     font-size: 11px;
