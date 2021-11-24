@@ -14,9 +14,7 @@ import {
 
   export default function OptInForm({children, ...restProps}){
     return (
-      <InputContextProvider>
         <Container>{children}</Container>
-      </InputContextProvider>
     )
   }
 
@@ -25,23 +23,33 @@ import {
   }
 
   OptInForm.Input = function OptInFormInput({children, animated=true, placeholder, ...restProps}){
-    const {email, handleChange, activatedInput, emailIsValid, isEmpty} = useContext(inputContext)
-    return(
-      <InputWrapper {...restProps}>
-        <Label>
-          <Input
-            placeholder={!animated && placeholder}
-            name = "email"
-            value ={email}
-            onChange={handleChange}
-          />
-          <Placeholder isEmpty = {isEmpty}>{animated && placeholder}</Placeholder>
-        </Label>
-        <ErrorMessage>
-          {(activatedInput && email.length < 4) ? "Email is required" :
-           activatedInput && !emailIsValid && "Please enter a valid email address"}
-        </ErrorMessage>
-      </InputWrapper>
+    const {email, setEmail, emailIsValid, setEmailIsValid, emailIsActivated, setEmailIsActivated,
+          emailErrorMessage} = useContext(inputContext)
+    const isValid = emailIsValid
+
+      return (
+        <InputWrapper {...restProps}>
+          <Label>
+            <Input
+              name="email"
+              value={email}
+              isValid ={isValid}
+              isEmpty = {email.length < 1}
+              isActivated={emailIsActivated}
+              errorMessage={emailErrorMessage}
+              onChange={(event)=>{
+                setEmail(event.target.value)
+              }}
+              onBlur={(event)=>{
+                setEmailIsActivated(email.length>=1 && true)
+              }}
+            />
+            <Placeholder isEmpty = {email.length < 1}>{animated && placeholder}</Placeholder>
+          </Label>
+          <ErrorMessage errorColor="orange">
+            {(!isValid &&  email.length < 4) ? "Email is required":!isValid && emailErrorMessage}
+          </ErrorMessage>
+        </InputWrapper>
     )}
 
 
