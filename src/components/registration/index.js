@@ -1,5 +1,3 @@
-import {useContext} from "react"
-import {InputContextProvider, inputContext} from "./../../contexts/inputContext"
 import {Container,
         Inner,
         Icon,
@@ -21,11 +19,9 @@ import {Container,
 
 export default function Registration({children, ...restProps}){
   return(
-    <InputContextProvider>
       <Container {...restProps}>
         <Inner {...restProps}>{children}</Inner>
       </Container>
-    </InputContextProvider>
 )}
 
 
@@ -53,22 +49,18 @@ Registration.Link = function RegistrationLink({children, ...restProps}){
   return <Link {...restProps}>{children}</Link>
 }
 
-Registration.Input = function OptInFormInput({children, animated=true, placeholder, ...restProps}){
-  const {email, handleChange, activatedInput, emailIsValid, isEmpty} = useContext(inputContext)
+Registration.Input = function OptInFormInput({children,  errorColor="#a82b28", animated=true, ...restProps}){
+  const Email = "thisl olwol"
+  const {value, name, isEmpty, isValid, placeholder, errorMessage} = {...restProps}
+  const nameCap = name[0].toUpperCase() + name.slice(1)
   return(
     <InputWrapper {...restProps}>
       <Label>
-        <Input
-          placeholder={!animated && placeholder}
-          name = "email"
-          value ={email}
-          onChange={handleChange}
-        />
-        <Placeholder isEmpty = {isEmpty}>{animated && placeholder}</Placeholder>
+        <Input value={Email} {...restProps} placeholder={!animated && placeholder} errorColor={errorColor}/>
+        <Placeholder isEmpty={isEmpty}>{animated && placeholder}</Placeholder>
       </Label>
-      <ErrorMessage>
-        {(activatedInput && email.length < 4) ? "Email is required" :
-         activatedInput && !emailIsValid && "Please enter a valid email address"}
+      <ErrorMessage errorColor={errorColor}>
+        {(!isValid &&  value.length < 4) ? `${nameCap} is required`:!isValid && errorMessage}
       </ErrorMessage>
     </InputWrapper>
   )}
