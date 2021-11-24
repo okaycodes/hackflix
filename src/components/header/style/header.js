@@ -56,13 +56,13 @@ export const ButtonLink = styled(ReachRouterLink)`
   cursor: pointer;
   text-decoration: none;
   box-sizing: border-box;
-  font-weight:${props=> props.buttonSecondary && "500"};
-  color: ${props=> props.buttonSecondary ? "black" : "white"};
-  font-size: ${props=> props.buttonSecondary ? "20px" : "15px"};
-  background-color: ${props=> props.buttonSecondary ? "none" : "#e50914"};
+  font-weight:${props=> props.btn_secondary==="true" && "500"};
+  color: ${props=> props.btn_secondary==="true" ? "black" : "white"};
+  font-size: ${props=> props.btn_secondary==="true" ? "20px" : "15px"};
+  background-color: ${props=> props.btn_secondary==="true" ? "none" : "#e50914"};
 
   &:hover {
-      background-color: ${props=> props.buttonSecondary ? "none" : "#f40612"};
-      text-decoration: ${props=> props.buttonSecondary && "underline"};
+      background-color: ${props=> props.btn_secondary==="true" ? "none" : "#f40612"};
+      text-decoration: ${props=> props.btn_secondary==="true" && "underline"};
   }
 `;
