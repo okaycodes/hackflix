@@ -12,7 +12,7 @@ export default function SignUp({children}){
         <Header.Frame backgroundColor="white" padding="50px 30px" margin="0 auto" >
           <Header.Logo height="45px" width="167px"
             src="./../../images/misc/logo.svg" alt="Netflix"/>
-          <Header.ButtonLink buttonSecondary={true}/>
+          <Header.ButtonLink btn_secondary="true"/>
         </Header.Frame>
       </Header>
 
