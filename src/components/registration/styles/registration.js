@@ -91,11 +91,15 @@ export const Input = styled.input`
   margin: 0;
   width: 100%;
   height: 60px;
-  border: solid grey 1px;
+  border: ${props=>{
+    return !props.isActivated ?
+    "solid grey 1px" : props.isActivated && !props.isValid ?
+    `solid 1px ${props.errorColor}`: "solid 1px green"}};
   border-radius: 2px;
 
    &:focus{
-     outline: solid blue .5px;
+     outline: none;
+     border: ${props=>props.isActivated && props.isValid ? "solid 1px green":"solid #2983f0 1px"};
    }
 
   &:focus +  ${Placeholder}{
@@ -110,8 +114,7 @@ export const Input = styled.input`
 export const ErrorMessage = styled.div`
   font-size: 14px;
   text-align: left;
-  margin-left: .4em;
-  color: red;
+  color: ${props=>props.errorColor};
 `;
 
 export const CheckboxWrapper = styled.label`
