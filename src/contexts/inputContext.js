@@ -2,6 +2,10 @@ import React, {useState, useEffect} from "react"
 
 const inputContext = React.createContext()
 
+/*===========================
+COME BACK TO THIS handleclick
+=============================*/
+
 function InputContextProvider({children}){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -21,6 +25,24 @@ function InputContextProvider({children}){
     passwordIsActivated && setPasswordIsValid(password.length>=6)
   }, [password, passwordIsActivated])
 
+  const handleChange=(event)=>{
+    const {name, value} = event.target
+    name === "email" ? setEmail(value) : name==="password" && setPassword(value)
+  }
+
+  const handleBlur=(event)=>{
+    const {name} = event.target
+    name === "email" ? setEmailIsActivated(email.length>=1 && true) :
+    name==="password" && setPasswordIsActivated(password.length>=1 && true)
+  }
+
+/*====================
+COME BACK TO THIS
+=====================*/
+  const handleClick=(event)=>{
+    console.log("clicked")
+    !emailIsValid && setEmailIsActivated(true)
+  }
   // const [Email, setEmail] = useState('')
   // const [password, setPassword] = useState('')
   // const isEmpty = Email.length < 1
@@ -35,7 +57,8 @@ function InputContextProvider({children}){
           passwordIsValid, setPasswordIsValid,
           emailIsActivated, setEmailIsActivated,
           passwordIsActivated, setPasswordIsActivated,
-          emailErrorMessage, passwordErrorMessage}}
+          emailErrorMessage, passwordErrorMessage,
+          handleChange, handleBlur, handleClick}}
     >
       {children}
     </inputContext.Provider>
