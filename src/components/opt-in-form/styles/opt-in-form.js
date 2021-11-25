@@ -83,8 +83,8 @@ export const Input = styled.input`
   }
 
   &:focus +  ${Placeholder}{
-    font-size: 11px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 600;
     top: 4px;
     color: grey;
     user-select: none;
@@ -110,11 +110,6 @@ export const ErrorMessage = styled.div`
   color: orange;
 `;
 
-
-
-export const Button = styled.button`
-
-`;
 
 export const ButtonLink = styled(ReactRouterLink)`
   color: white;

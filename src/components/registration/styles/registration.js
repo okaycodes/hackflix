@@ -69,8 +69,8 @@ export const Label = styled.label`
 `;
 
 export const Placeholder = styled.span`
-  font-size: ${props => props.isEmpty ? "16px" : "11px"};
-  font-weight: ${props => !props.isEmpty && "500"};
+  font-size: ${props => props.isEmpty ? "16px" : "12px"};
+  font-weight: ${props => !props.isEmpty && "600"};
   position: absolute;
   top: var(--size);
   left: var(--size);
@@ -192,4 +192,5 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
   display: flex;
+  margin-top: .5em;
 `;

@@ -21,7 +21,7 @@ export default function RegCompleteContainer(){
           </Registration.ListItem>
         )
       })}
-      <Registration.Link to={ROUTES.SIGN_UP_HOME}>Next</Registration.Link>
       </Registration.List>
+      <Registration.Link to={`./../${ROUTES.PLAN_FORM}`}>Next</Registration.Link>
     </Registration>
   )}
