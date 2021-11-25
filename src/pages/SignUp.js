@@ -3,7 +3,16 @@ import {Routes, Route} from 'react-router-dom'
 import RegistrationContainer from "./../containers/registration"
 import RegFormContainer from "./../containers/regform"
 import RegCompleteContainer from "./../containers/regcomplete"
-import * as ROUTES from "./../constants/routes"
+import PlanFormContainer from "./../containers/planform"
+
+
+
+/*====================
+COME BACK TO THIS
+=====================*/
+// import * as ROUTES from "./../constants/routes"
+
+
 
 export default function SignUp({children}){
   return (
@@ -20,6 +29,7 @@ export default function SignUp({children}){
       <Route exact path="/" element={<RegCompleteContainer />} />
       <Route exact path="/registration" element={<RegistrationContainer />}/>
       <Route exact path="/regform" element={<RegFormContainer />} />
+      <Route exact path="/planform" element={<PlanFormContainer />} />
     </Routes>
 
     <Footer backgroundColor="#ededed" padding="2em 3em">
