@@ -1,42 +1,22 @@
 [
   {
     "id": 1,
-    "title": "",
-    "price": "Monthly price",
-    "quality": "Video quality",
-    "resolution": "Resolution",
-    "devices": "Devices you can use to watch"
+    "title": ""
   },
   {
     "id": 2,
-    "title": "Mobile",
-    "price": "₦1,200",
-    "quality": "Good",
-    "resolution": "480p",
-    "devices": "/images/icons/plans-icon1.png"
+    "title":  "Mobile"
   },
   {
     "id": 3,
-    "title": "Basic",
-    "price": "₦2,900",
-    "quality": "Good",
-    "resolution": "480p",
-    "devices": "/images/icons/plans-icon2.png"
+    "title": "Basic"
   },
   {
     "id": 4,
-    "title": "Standard",
-    "price": "₦3,600",
-    "quality": "Better",
-    "resolution": "1080p",
-    "devices": "/images/icons/plans-icon2.png"
+    "title": "Standard"
   },
   {
     "id": 5,
-    "title": "Premium",
-    "price": "₦4,400",
-    "quality": "Best",
-    "resolution": "4K+HDR",
-    "devices": "/images/icons/plans-icon2.png"
+    "title":"Premium"
   }
 ]
