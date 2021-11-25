@@ -1,14 +1,16 @@
 import {Registration} from "./../components"
 import * as ROUTES from "./../constants/routes"
-import {useState, useEffect} from "react"
 import {inputContext} from  "./../contexts/inputContext"
 import {useContext} from "react"
+
+/*================================================
+COME BACK TO THIS valid fields and activate button
+==================================================*/
 
 export default function RegFormContainer(){
   const {email, setEmail,
         password, setPassword,
-        emailIsValid, setEmailIsValid,
-        passwordIsValid, setPasswordIsValid,
+        emailIsValid, passwordIsValid,
         emailIsActivated, setEmailIsActivated,
         passwordIsActivated, setPasswordIsActivated,
         emailErrorMessage, passwordErrorMessage} = useContext(inputContext)
@@ -53,6 +55,7 @@ export default function RegFormContainer(){
         }}
       />
       <Registration.Checkbox />
+
       <Registration.Link to={ROUTES.SIGN_UP_HOME}>Next</Registration.Link>
     </Registration>
 )}
