@@ -1,4 +1,4 @@
-import {Container, Inner, Item, Title, Row} from "./styles/planform"
+import {Container, Inner, Item, Title, Row, Header, Icon} from "./styles/planform"
 
 export default function PlanForm({children, ...restProps}){
   return(
@@ -17,4 +17,12 @@ PlanForm.Title = function PlanFormTitle({children, ...restProps}){
 
 PlanForm.Row = function PlanFormRow({children, ...restProps}){
   return <Row {...restProps}>{children}</Row>
+}
+
+PlanForm.Header = function PlanFormHeader({children, ...restProps}){
+  return <Header {...restProps}>{children}</Header>
+}
+
+PlanForm.Icon = function PlanFormHeader({...restProps}){
+  return <Icon {...restProps} />
 }
