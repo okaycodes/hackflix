@@ -20,7 +20,7 @@ const config = {
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <firebaseContext.Provider>
+      <firebaseContext.Provider value={config}>
         <GlobalStyles />
         <App />
       </firebaseContext.Provider>
