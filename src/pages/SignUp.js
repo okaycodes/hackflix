@@ -2,7 +2,7 @@ import {Header, Footer} from "./../components"
 import {Routes, Route} from 'react-router-dom'
 import RegistrationContainer from "./../containers/registration"
 import RegFormContainer from "./../containers/regform"
-import RegCompleteContainer from "./../containers/regcomplete"
+import RegStepContainer from "./../containers/regstep"
 import PlanFormContainer from "./../containers/planform"
 
 
@@ -26,7 +26,7 @@ export default function SignUp({children}){
       </Header>
 
     <Routes>
-      <Route exact path="/" element={<RegCompleteContainer />} />
+      <Route exact path="/" element={<RegStepContainer />} />
       <Route exact path="/registration" element={<RegistrationContainer />}/>
       <Route exact path="/regform" element={<RegFormContainer />} />
       <Route exact path="/planform" element={<PlanFormContainer />} />
