@@ -25,15 +25,15 @@ export const Image = styled.img`
   margin-bottom: 1em;
   display: block;
   width: 100%;
-  order: ${props=>props.order};
+  order: -2;
 `;
 
 export const Icon = styled.img`
   display: inline-block;
   filter: invert(11%) sepia(74%) saturate(6242%) hue-rotate(352deg) brightness(104%) contrast(104%);
-  order: ${props=>props.order};
-  height: ${props=>props.height};
-  width: ${props=>props.width};
+  margin-right: .6em;
+  order: -2;
+  width: 25px;
 `;
 
 export const Title = styled.h1`
@@ -46,15 +46,16 @@ export const SubTitle = styled.p`
   width: 100%;
   font-size: 13px;
   text-transform: uppercase;
-  order: ${props=>props.order};
-  text-align: ${props=> props.alignLeft ? "left" : "center"};
+  order: -1;
 `;
 
 export const Text = styled.p`
   font-size: 17px;
   font-weight: 400;
-  text-align: ${props=> props.alignLeft ? "left" : "center"};
-  margin: ${props=>props.margin};
+  text-align: left;
+  align-self: start;
+  margin: 0;
+  margin-top: 1em;
 `;
 
 export const InputWrapper = styled.div`
@@ -180,7 +181,7 @@ export const Link = styled(ReactRouterLink)`
   margin-top: 20px;
 
 
-  &:hover{
+  &:hover, &:focus{
     background: #f40612;
   }
 `;
@@ -192,5 +193,5 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
   display: flex;
-  margin-top: .5em;
+  margin-top: 1.5em;
 `;
