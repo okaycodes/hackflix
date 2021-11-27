@@ -8,7 +8,11 @@ import {Container,
         Icon,
         Text,
         IconsContainer,
-        IconUnit} from "./styles/planform"
+        IconUnit,
+        StepContainer,
+        Terms,
+        Link,
+        ButtonLink} from "./styles/planform"
 
 export default function PlanForm({children, ...restProps}){
   return(
@@ -51,4 +55,20 @@ PlanForm.IconsContainer = function PlanFormIconsContainer({children, ...restProp
 
 PlanForm.IconUnit = function PlanFormIconUnit({children, ...restProps}){
   return <IconUnit {...restProps}>{children}</IconUnit>
+}
+
+PlanForm.StepContainer = function PlanFormStepContainer({children, ...restProps}){
+  return <StepContainer {...restProps}>{children}</StepContainer>
+}
+
+PlanForm.Terms = function PlanFormTerms({children, ...restProps}){
+  return <Terms {...restProps}>{children}</Terms>
+}
+
+PlanForm.Link = function PlanFormLink({children, ...restProps}){
+  return <Link {...restProps}>{children}</Link>
+}
+
+PlanForm.ButtonLink = function PlanFormButtonLink({children, ...restProps}){
+  return <ButtonLink {...restProps}>{children}</ButtonLink>
 }
