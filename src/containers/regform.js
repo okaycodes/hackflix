@@ -18,10 +18,10 @@ export default function RegFormContainer(){
   return(
     <Registration>
       <Registration.Title>Create a password to start your membership</Registration.Title>
-      <Registration.SubTitle order="-1" alignLeft={true}>
+      <Registration.SubTitle style={{order:-1}}>
         step <span style={{fontWeight: "bold"}}>1</span> of <span style={{fontWeight: "bold"}}>3</span>
       </Registration.SubTitle>
-      <Registration.Text alignLeft={true}>Just a few more steps and you're done!
+      <Registration.Text>Just a few more steps and you're done!
       We hate paperwork, too.</Registration.Text>
       <Registration.Input
         placeholder="Email address"
