@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import {Link as ReactRouterLink} from "react-router-dom"
 
 export const Container = styled.section`
   display: flex;
@@ -6,26 +7,29 @@ export const Container = styled.section`
   width: 100vw;
   background: white;
   color: black;
+  border-bottom: solid 1px lightgrey;
+  border-top: solid 1px lightgrey;
+`;
+
+export const StepContainer = styled.section`
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1em;
 `;
 
 export const Inner = styled.div`
   position: relative;
-  display: grid;
   margin: 0 auto;
   width: 90%;
   max-width: 946px;
-  background: none;
 `;
 
 export const Plans = styled.div`
   position: relative;
   display: grid;
   margin: 0 auto;
-  width: 90%;
-  max-width: 946px;
-  background: none;
-  margin: 400px auto;
-  border: solid orange;
+  width: 100%;
 `;
 
 export const Header = styled.div`
@@ -95,7 +99,7 @@ export const Title = styled.h1`
 export const Row = styled.div`
   display: grid;
   grid-template-columns:  300px repeat(4, 1fr);
-  border-bottom: solid 1.5px grey;
+  border-bottom: solid 1px lightgrey;
   &:nth-child(5){
     border-bottom: none;
   }
@@ -143,4 +147,40 @@ export const Text = styled.p`
   margin: 0;
   color: ${props=>props.isActive ? "#e50914" : "#707070"};
   font-weight: 550;
+`;
+
+export const Terms = styled.p`
+  font-size: 13px;
+  max-width: 770px;
+  font-weight: 400;
+  margin: 0;
+  color: #707070;
+  margin-top: 1em;
+`;
+
+export const Link = styled(ReactRouterLink)`
+  text-decoration: none;
+  color: #2983f0;
+
+  &:hover, &:focus{
+    text-decoration: underline;
+  }
+`;
+
+export const ButtonLink = styled(ReactRouterLink)`
+  display: block;
+  width: 100%;
+  max-width: 470px;
+  margin: 20px auto 150px;
+  color: white;
+  background-color: #e50914;
+  font-size: 16px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 3px;
+  padding: 1em;
+
+  &:hover, &:focus{
+    background: #f40612;
+  }
 `;
