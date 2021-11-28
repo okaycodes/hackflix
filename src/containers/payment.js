@@ -21,6 +21,7 @@ export default function PaymentStepContainer(){
           <Registration.IconSecondary src="./../../images/icons/visa-card.png" style={{padding: "6px 2.5px"}}/>
           <Registration.IconSecondary src="./../../images/icons/mastercard_icon.png"/>
           <Registration.IconSecondary src="./../../images/icons/icon_verve.png"/>
+          <Registration.IconSecondary src="./../../images/icons/chevron-right-sharp.png"/>
       </Registration.LinkSecondary>
     </Registration>
   )}
