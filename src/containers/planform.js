@@ -88,6 +88,6 @@ export default function Planform(){
       <PlanForm.Terms>Only people who live with you may use your account. Watch on
        4 different devices at the same time with Premium, 2 with Standard, and 1
        with Basic and Mobile.</PlanForm.Terms>
-      <PlanForm.ButtonLink to="#">Next</PlanForm.ButtonLink>
+      <PlanForm.ButtonLink to={`./../../${ROUTES.PAYMENT_STEP}`}>Next</PlanForm.ButtonLink>
     </PlanForm>
   )}
