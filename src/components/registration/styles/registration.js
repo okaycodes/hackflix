@@ -36,6 +36,15 @@ export const Icon = styled.img`
   width: 25px;
 `;
 
+export const IconSecondary = styled.img`
+  display: inline-block;
+  margin-right: .6em;
+  width: 40px;
+  height: 25px;
+  border: solid .2px lightgrey;
+  border-radius: 3px;
+`;
+
 export const Title = styled.h1`
   font-size: 23px;
   font-weight: 600;
@@ -52,8 +61,6 @@ export const SubTitle = styled.p`
 export const Text = styled.p`
   font-size: 17px;
   font-weight: 400;
-  text-align: left;
-  align-self: start;
   margin: 0;
   margin-top: 1em;
 `;
@@ -179,10 +186,28 @@ export const Link = styled(ReactRouterLink)`
   text-align: center;
   border-radius: 3px;
   margin-top: 20px;
+  cursor: pointer;
 
 
   &:hover, &:focus{
     background: #f40612;
+  }
+`;
+
+export const LinkSecondary = styled(ReactRouterLink)`
+  width: 100%;
+  color: black;
+  padding: 1.1em;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 6px;
+  border: solid 2px lightgrey;
+  margin-top: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+
+  &:hover, &:focus{
   }
 `;
 
