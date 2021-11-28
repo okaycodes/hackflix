@@ -14,7 +14,9 @@ import {Container,
         CheckboxWrapper,
         Checkbox,
         List,
-        ListItem} from "./styles/registration"
+        ListItem,
+        IconSecondary,
+        LinkSecondary} from "./styles/registration"
 
 
 export default function Registration({children, ...restProps}){
@@ -33,6 +35,10 @@ Registration.Icon = function RegistrationIcon({children, ...restProps}){
   return <Icon {...restProps} />
 }
 
+Registration.IconSecondary = function RegistrationIconSecondary({children, ...restProps}){
+  return <IconSecondary {...restProps} />
+}
+
 Registration.Title = function RegistrationTitle({children, ...restProps}){
   return <Title {...restProps}>{children}</Title>
 }
@@ -47,6 +53,10 @@ Registration.Text = function RegistrationText({children, ...restProps}){
 
 Registration.Link = function RegistrationLink({children, ...restProps}){
   return <Link {...restProps}>{children}</Link>
+}
+
+Registration.LinkSecondary = function RegistrationLinkSecondary({children, ...restProps}){
+  return <LinkSecondary {...restProps}>{children}</LinkSecondary>
 }
 
 Registration.Input = function OptInFormInput({children,  errorColor="#a82b28", animated=true, ...restProps}){
