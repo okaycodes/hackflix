@@ -3,9 +3,9 @@ import styled from "styled-components"
 
 export const Container = styled.div`
   background-color: ${props=>props.backgroundColor && props.backgroundColor};
-  position: absolute;
+  /* position: absolute;
   width: 100%;
-  bottom: 0;
+  bottom: 0; */
 `;
 
 export const Inner = styled.div`
