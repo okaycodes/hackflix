@@ -38,7 +38,7 @@ export const Icon = styled.img`
 
 export const IconSecondary = styled.img`
   display: inline-block;
-  margin-right: .6em;
+  margin: 0;
   width: 40px;
   height: 25px;
   border: solid .2px lightgrey;
@@ -206,6 +206,7 @@ export const LinkSecondary = styled(ReactRouterLink)`
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   &:hover, &:focus{
   }
