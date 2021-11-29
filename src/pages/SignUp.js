@@ -5,6 +5,8 @@ import RegFormContainer from "./../containers/regform"
 import RegStepContainer from "./../containers/regstep"
 import PlanFormContainer from "./../containers/planform"
 import PaymentStepContainer from "./../containers/payment"
+import PaymentFormContainer from "./../containers/paymentform"
+
 
 
 
@@ -33,6 +35,7 @@ export default function SignUp({children}){
       <Route exact path="/regform" element={<RegFormContainer />} />
       <Route exact path="/planform" element={<PlanFormContainer />} />
       <Route exact path="/payment" element={<PaymentStepContainer />} />
+      <Route exact path="/payment-form" element={<PaymentFormContainer />} />
 
     </Routes>
 
