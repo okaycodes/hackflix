@@ -16,7 +16,7 @@ export default function PaymentStepContainer(){
       <Registration.Text style={{fontWeight: "bold"}}>
         No commitments.<br />Cancel online anytime.
       </Registration.Text>
-      <Registration.LinkSecondary to="#">
+      <Registration.LinkSecondary to={`./../../${ROUTES.PAYMENT_FORM}`}>
           Credit or Debit Card
           <div style={{width: "132px",
                        display: "flex",
