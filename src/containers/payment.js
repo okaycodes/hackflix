@@ -18,12 +18,17 @@ export default function PaymentStepContainer(){
       </Registration.Text>
       <Registration.LinkSecondary to="#">
           Credit or Debit Card
-          <Registration.IconSecondary src="./../../images/icons/visa-card.png" style={{padding: "6px 2.5px"}}/>
-          <Registration.IconSecondary src="./../../images/icons/mastercard_icon.png"/>
-          <Registration.IconSecondary src="./../../images/icons/icon_verve.png"/>
+          <div style={{width: "132px",
+                       display: "flex",
+                       justifyContent: "space-between"}}>
+            <Registration.IconSecondary src="./../../images/icons/visa-card.png" style={{padding: "6px 2.5px"}}/>
+            <Registration.IconSecondary src="./../../images/icons/mastercard_icon.png"/>
+            <Registration.IconSecondary src="./../../images/icons/icon_verve.png"/>
+          </div>
           <Registration.IconSecondary
-            src="./../../images/icons/chevron-right-sharp.png"
-            style={{border: "none", height: "auto", width: "20px"}}
+            src="./../../images/icons/chevron-right.svg"
+            style={{height: "30px", border: "none",
+                    filter: "invert(85%) sepia(21%) saturate(17%) hue-rotate(119deg) brightness(93%) contrast(95%)"}}
             />
       </Registration.LinkSecondary>
     </Registration>
