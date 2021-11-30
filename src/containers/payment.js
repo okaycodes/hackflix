@@ -1,6 +1,10 @@
 import {Registration} from "./../components"
 import * as ROUTES from "./../constants/routes"
 
+/*====================
+COME BACK TO THIS
+=====================*/
+// refactor out long inline styles declarations
 
 export default function PaymentStepContainer(){
   return(
@@ -16,15 +20,17 @@ export default function PaymentStepContainer(){
       <Registration.Text style={{fontWeight: "bold"}}>
         No commitments.<br />Cancel online anytime.
       </Registration.Text>
+      <>
+        <Registration.Text>Secure Server</Registration.Text>
+        <Registration.IconSecondary src="./../../images/icons/secure.svg"/>
+      </>
       <Registration.LinkSecondary to={`./../../${ROUTES.PAYMENT_FORM}`}>
           Credit or Debit Card
-          <div style={{width: "132px",
-                       display: "flex",
-                       justifyContent: "space-between"}}>
+          <Registration.IconWrapper>
             <Registration.IconSecondary src="./../../images/icons/visa-card.png" style={{padding: "6px 2.5px"}}/>
             <Registration.IconSecondary src="./../../images/icons/mastercard_icon.png"/>
             <Registration.IconSecondary src="./../../images/icons/icon_verve.png"/>
-          </div>
+          </Registration.IconWrapper>
           <Registration.IconSecondary
             src="./../../images/icons/chevron-right.svg"
             style={{height: "30px", border: "none",
