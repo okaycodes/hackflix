@@ -45,6 +45,12 @@ export const IconSecondary = styled.img`
   border-radius: 3px;
 `;
 
+export const IconWrapper = styled.div`
+  width: 132px;
+  display: flex;
+  justifyContent: space-between;
+`;
+
 export const Title = styled.h1`
   font-size: 23px;
   font-weight: 600;
