@@ -16,7 +16,8 @@ import {Container,
         List,
         ListItem,
         IconSecondary,
-        LinkSecondary} from "./styles/registration"
+        LinkSecondary,
+        IconWrapper} from "./styles/registration"
 
 
 export default function Registration({children, ...restProps}){
@@ -37,6 +38,10 @@ Registration.Icon = function RegistrationIcon({children, ...restProps}){
 
 Registration.IconSecondary = function RegistrationIconSecondary({children, ...restProps}){
   return <IconSecondary {...restProps} />
+}
+
+Registration.IconWrapper = function RegistrationIconWrapper({children, ...restProps}){
+  return  <IconWrapper {...restProps}>{children}</IconWrapper>
 }
 
 Registration.Title = function RegistrationTitle({children, ...restProps}){
