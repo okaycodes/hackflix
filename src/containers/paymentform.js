@@ -1,3 +1,5 @@
+import {Registration} from "./../components"
+import * as ROUTES from "./../constants/routes"
 
 
 export default function PaymentFormContainer(){
