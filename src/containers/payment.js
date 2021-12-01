@@ -7,6 +7,8 @@ COME BACK TO THIS
 // refactor out long inline styles declarations
 
 export default function PaymentStepContainer(){
+  const filterGrey = "invert(85%) sepia(21%) saturate(17%) hue-rotate(119deg) brightness(93%) contrast(95%)"
+  const filterYellow = "invert(77%) sepia(61%) saturate(423%) hue-rotate(352deg) brightness(92%) contrast(95%)"
   return(
     <Registration style={{textAlign: "center", justifyContent: "center"}}>
       <Registration.Title>Set your payment</Registration.Title>
@@ -20,10 +22,17 @@ export default function PaymentStepContainer(){
       <Registration.Text style={{fontWeight: "bold"}}>
         No commitments.<br />Cancel online anytime.
       </Registration.Text>
-      <>
-        <Registration.Text>Secure Server</Registration.Text>
-        <Registration.IconSecondary src="./../../images/icons/secure.svg"/>
-      </>
+      <Registration.IconWrapper
+        style={{width: "100%",
+                justifyContent: "right",
+                alignItems: "end",
+                marginTop: "20px",
+                padding: "0"}}>
+        <Registration.Text style={{fontSize: "13px", marginRight: "5px"}}>Secure Server</Registration.Text>
+        <Registration.IconSecondary
+          src="./../../images/icons/lock.svg"
+          style={{margin: "2.5px", width: "12px", height: "auto", border: "none", filter: filterYellow}}/>
+      </Registration.IconWrapper>
       <Registration.LinkSecondary to={`./../../${ROUTES.PAYMENT_FORM}`}>
           Credit or Debit Card
           <Registration.IconWrapper>
@@ -33,9 +42,7 @@ export default function PaymentStepContainer(){
           </Registration.IconWrapper>
           <Registration.IconSecondary
             src="./../../images/icons/chevron-right.svg"
-            style={{height: "30px", border: "none",
-                    filter: "invert(85%) sepia(21%) saturate(17%) hue-rotate(119deg) brightness(93%) contrast(95%)"}}
-            />
+            style={{height: "30px", border: "none", filter: filterGrey}}/>
       </Registration.LinkSecondary>
     </Registration>
   )}
