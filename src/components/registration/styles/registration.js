@@ -208,7 +208,6 @@ export const LinkSecondary = styled(ReactRouterLink)`
   text-decoration: none;
   border-radius: 6px;
   border: solid 2px lightgrey;
-  margin-top: 20px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
