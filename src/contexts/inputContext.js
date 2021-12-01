@@ -15,6 +15,13 @@ function InputContextProvider({children}){
   const [passwordIsActivated, setPasswordIsActivated] = useState(false)
   const emailErrorMessage = "Please enter a valid email address"
   const passwordErrorMessage = "Password should be between 6 and 60 characters"
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setlastName] = useState('')
+  const [cardNumber, setCardNumber] = useState('')
+  const [expirationDate, setExpirationDate] = useState('')
+  const [securityCode, setSecurityCode] = useState('')
+
+
 
   useEffect(()=>{
     const emailRegex = /[^@]+@[^@]+\.[^@]+/
