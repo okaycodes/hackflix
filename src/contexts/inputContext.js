@@ -16,7 +16,7 @@ function InputContextProvider({children}){
   const emailErrorMessage = "Please enter a valid email address"
   const passwordErrorMessage = "Password should be between 6 and 60 characters"
   const [firstName, setFirstName] = useState('')
-  const [lastName, setlastName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [cardNumber, setCardNumber] = useState('')
   const [expirationDate, setExpirationDate] = useState('')
   const [securityCode, setSecurityCode] = useState('')
@@ -64,6 +64,11 @@ COME BACK TO THIS
           passwordIsValid, setPasswordIsValid,
           emailIsActivated, setEmailIsActivated,
           passwordIsActivated, setPasswordIsActivated,
+          firstName, setFirstName,
+          lastName, setLastName,
+          cardNumber, setCardNumber,
+          expirationDate, setExpirationDate,
+          securityCode, setSecurityCode,
           emailErrorMessage, passwordErrorMessage,
           handleChange, handleBlur, handleClick}}
     >
