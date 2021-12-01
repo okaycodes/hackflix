@@ -47,7 +47,6 @@ function InputContextProvider({children}){
 COME BACK TO THIS
 =====================*/
   const handleClick=(event)=>{
-    console.log("clicked")
     !emailIsValid && setEmailIsActivated(true)
   }
   // const [Email, setEmail] = useState('')
