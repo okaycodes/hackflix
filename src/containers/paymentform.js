@@ -10,8 +10,17 @@ export default function PaymentFormContainer(){
         firstNameIsValid, setFirstNameIsValid,
         firstNameIsActivated, setFirstNameIsActivated,
         firstNameErrorMessage,
+
         lastName, setLastName,
+        lastNameIsValid, setLastNameIsValid,
+        lastNameIsActivated, setLastNameIsActivated,
+        lastNameErrorMessage,
+
         cardNumber, setCardNumber,
+        cardNumberIsValid, setCardNumberIsValid,
+        cardNumberIsActivated, setCardNumberIsActivated,
+        cardNumberErrorMessage,
+
         expirationDate, setExpirationDate,
         securityCode, setSecurityCode,
         emailIsValid, passwordIsValid,
