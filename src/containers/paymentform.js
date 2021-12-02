@@ -60,11 +60,11 @@ export default function PaymentFormContainer(){
         onBlur={handleBlur}
       />
       <Registration.Input
-        placeholder="Email address"
-        name="email"
-        value={email}
-        isValid ={emailIsValid}
-        isEmpty = {email.length < 1}
+        placeholder="Card Number"
+        name="cardNumber"
+        value={cardNumber}
+        isValid ={cardNumber>1}
+        isEmpty = {cardNumber.length < 1}
         isActivated={emailIsActivated}
         errorMessage={emailErrorMessage}
         onChange={handleChange}
