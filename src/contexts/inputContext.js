@@ -62,6 +62,9 @@ function InputContextProvider({children}){
       case "lastName":{
         setLastName(value)
       }
+      case "cardNumber":{
+        setCardNumber(value)
+      }
     }
   }
 
