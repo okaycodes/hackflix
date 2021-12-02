@@ -49,7 +49,20 @@ function InputContextProvider({children}){
 
   const handleChange=(event)=>{
     const {name, value} = event.target
-    name === "email" ? setEmail(value) : name==="password" && setPassword(value)
+    switch(name){
+      case "email":{
+        setEmail(value)
+      }
+      case "password": {
+        setPassword(value)
+      }
+      case "firstName":{
+        setFirstName(value)
+      }
+      case "lastName":{
+        setLastName(value)
+      }
+    }
   }
 
   const handleBlur=(event)=>{
