@@ -6,10 +6,7 @@ import {useContext} from "react"
 
 export default function PaymentFormContainer(){
   const {email, setEmail,
-        firstName, setFirstName,
-        firstNameIsValid, setFirstNameIsValid,
-        firstNameIsActivated, setFirstNameIsActivated,
-        firstNameErrorMessage,
+        firstName,firstNameIsActivated,firstNameErrorMessage,
         handleBlur, handleChange,
 
         lastName, setLastName,
@@ -42,14 +39,14 @@ export default function PaymentFormContainer(){
       </Registration.IconWrapper>
       <Registration.Input
         placeholder="First Name"
-        name="FirstName"
+        name="firstName"
         value={firstName}
         isValid ={firstName.length>1}
         isEmpty = {firstName.length < 1}
         isActivated={firstNameIsActivated}
         errorMessage={firstNameErrorMessage}
-        onChange={handleChange}
-        onBlur={handleBlur}
+        onChange={()=>handleChange}
+        onBlur={()=>handleBlur}
       />
       <Registration.Input
         placeholder="Last Name"
@@ -59,12 +56,8 @@ export default function PaymentFormContainer(){
         isEmpty = {email.length < 1}
         isActivated={emailIsActivated}
         errorMessage={emailErrorMessage}
-        onChange={(event)=>{
-          setLastName(event.target.value)
-        }}
-        onBlur={(event)=>{
-          setEmailIsActivated(email.length>=1 && true)
-        }}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
       <Registration.Input
         placeholder="Email address"
@@ -74,12 +67,8 @@ export default function PaymentFormContainer(){
         isEmpty = {email.length < 1}
         isActivated={emailIsActivated}
         errorMessage={emailErrorMessage}
-        onChange={(event)=>{
-          setEmail(event.target.value)
-        }}
-        onBlur={(event)=>{
-          setEmailIsActivated(email.length>=1 && true)
-        }}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
       <Registration.Input
         placeholder="Email address"
@@ -89,12 +78,8 @@ export default function PaymentFormContainer(){
         isEmpty = {email.length < 1}
         isActivated={emailIsActivated}
         errorMessage={emailErrorMessage}
-        onChange={(event)=>{
-          setEmail(event.target.value)
-        }}
-        onBlur={(event)=>{
-          setEmailIsActivated(email.length>=1 && true)
-        }}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
       <Registration.Input
         placeholder="Email address"
@@ -104,12 +89,8 @@ export default function PaymentFormContainer(){
         isEmpty = {email.length < 1}
         isActivated={emailIsActivated}
         errorMessage={emailErrorMessage}
-        onChange={(event)=>{
-          setEmail(event.target.value)
-        }}
-        onBlur={(event)=>{
-          setEmailIsActivated(email.length>=1 && true)
-        }}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
     </Registration>
   )}
