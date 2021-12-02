@@ -10,6 +10,7 @@ export default function PaymentFormContainer(){
         firstNameIsValid, setFirstNameIsValid,
         firstNameIsActivated, setFirstNameIsActivated,
         firstNameErrorMessage,
+        handleBlur, handleChange,
 
         lastName, setLastName,
         lastNameIsValid, setLastNameIsValid,
@@ -47,12 +48,8 @@ export default function PaymentFormContainer(){
         isEmpty = {firstName.length < 1}
         isActivated={firstNameIsActivated}
         errorMessage={firstNameErrorMessage}
-        onChange={(event)=>{
-          setFirstName(event.target.value)
-        }}
-        onBlur={(event)=>{
-          setFirstNameIsActivated(email.length>=1 && true)
-        }}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
       <Registration.Input
         placeholder="Last Name"
