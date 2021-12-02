@@ -7,6 +7,9 @@ import {useContext} from "react"
 export default function PaymentFormContainer(){
   const {email, setEmail,
         firstName, setFirstName,
+        firstNameIsValid, setFirstNameIsValid,
+        firstNameIsActivated, setFirstNameIsActivated,
+        firstNameErrorMessage,
         lastName, setLastName,
         cardNumber, setCardNumber,
         expirationDate, setExpirationDate,
@@ -31,15 +34,15 @@ export default function PaymentFormContainer(){
         placeholder="First Name"
         name="FirstName"
         value={firstName}
-        isValid ={emailIsValid}
-        isEmpty = {email.length < 1}
-        isActivated={emailIsActivated}
-        errorMessage={emailErrorMessage}
+        isValid ={firstName.length>1}
+        isEmpty = {firstName.length < 1}
+        isActivated={firstNameIsActivated}
+        errorMessage={firstNameErrorMessage}
         onChange={(event)=>{
           setFirstName(event.target.value)
         }}
         onBlur={(event)=>{
-          setEmailIsActivated(email.length>=1 && true)
+          setFirstNameIsActivated(email.length>=1 && true)
         }}
       />
       <Registration.Input
