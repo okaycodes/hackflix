@@ -38,7 +38,7 @@ export default function PaymentFormContainer(){
         <Registration.IconSecondary src="./../../images/icons/icon_verve.png"/>
       </Registration.IconWrapper>
       <Registration.Input
-        placeholder="First Name"
+        placeholder="First name"
         name="firstName"
         value={firstName}
         isValid ={firstName.length>1}
@@ -49,7 +49,7 @@ export default function PaymentFormContainer(){
         onBlur={()=>handleBlur}
       />
       <Registration.Input
-        placeholder="Last Name"
+        placeholder="Last name"
         name="lastName"
         value={lastName}
         isValid ={emailIsValid}
@@ -60,7 +60,7 @@ export default function PaymentFormContainer(){
         onBlur={handleBlur}
       />
       <Registration.Input
-        placeholder="Card Number"
+        placeholder="Card number"
         name="cardNumber"
         value={cardNumber}
         isValid ={cardNumber>1}
@@ -71,10 +71,10 @@ export default function PaymentFormContainer(){
         onBlur={handleBlur}
       />
       <Registration.Input
-        placeholder="Email address"
-        name="email"
-        value={email}
-        isValid ={emailIsValid}
+        placeholder="Expiration date (MM/YY)"
+        name="expirationDate"
+        value={expirationDate}
+        isValid ={expirationDate > 1}
         isEmpty = {email.length < 1}
         isActivated={emailIsActivated}
         errorMessage={emailErrorMessage}
