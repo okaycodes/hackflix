@@ -60,6 +60,8 @@ function InputContextProvider({children}){
       break
       case "cardNumber": setCardNumber(value)
       break
+      case "securityCode": setSecurityCode(value)
+      break
       default: return
     }
   }
