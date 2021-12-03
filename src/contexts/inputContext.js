@@ -78,6 +78,12 @@ COME BACK TO THIS
   const handleClick=(event)=>{
     !emailIsValid && setEmailIsActivated(true)
   }
+  // const [Email, setEmail] = useState('')
+  // const [password, setPassword] = useState('')
+  // const isEmpty = Email.length < 1
+  // const emailIsValid = /[^@]+@[^@]+\.[^@]+/.test(Email)
+  // const [activatedInput, setActivatedInput] = useState(false)
+
 
   return (
     <inputContext.Provider value={{
