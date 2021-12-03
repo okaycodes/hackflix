@@ -50,21 +50,17 @@ function InputContextProvider({children}){
   const handleChange=(event)=>{
     const {name, value} = event.target
     switch(name){
-      case "email":{
-        setEmail(value)
-      }
-      case "password": {
-        setPassword(value)
-      }
-      case "firstName":{
-        setFirstName(value)
-      }
-      case "lastName":{
-        setLastName(value)
-      }
-      case "cardNumber":{
-        setCardNumber(value)
-      }
+      case "email": setEmail(value)
+      break
+      case "password": setPassword(value)
+      break
+      case "firstName": setFirstName(value)
+      break
+      case "lastName":setLastName(value)
+      break
+      case "cardNumber": setCardNumber(value)
+      break
+      default: return
     }
   }
 
