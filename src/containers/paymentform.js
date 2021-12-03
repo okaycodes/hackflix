@@ -21,7 +21,7 @@ export default function PaymentFormContainer(){
 
         expirationDate, setExpirationDate,
         securityCode, setSecurityCode,
-        emailIsValid, passwordIsValid,
+        emailIsValid,
         emailIsActivated, setEmailIsActivated,
         emailErrorMessage} = useContext(inputContext)
 
@@ -81,11 +81,11 @@ export default function PaymentFormContainer(){
         onBlur={handleBlur}
       />
       <Registration.Input
-        placeholder="Email address"
-        name="email"
-        value={email}
-        isValid ={emailIsValid}
-        isEmpty = {email.length < 1}
+        placeholder="Security Code (CVV)"
+        name="securityCode"
+        value={securityCode}
+        isValid ={securityCode.length===2 && typeof securityCode==="number"}
+        isEmpty = {securityCode.length < 1}
         isActivated={emailIsActivated}
         errorMessage={emailErrorMessage}
         onChange={handleChange}
