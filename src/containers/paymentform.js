@@ -23,8 +23,7 @@ export default function PaymentFormContainer(){
         securityCode, setSecurityCode,
         emailIsValid, passwordIsValid,
         emailIsActivated, setEmailIsActivated,
-        passwordIsActivated, setPasswordIsActivated,
-        emailErrorMessage, passwordErrorMessage} = useContext(inputContext)
+        emailErrorMessage} = useContext(inputContext)
 
   return(
     <Registration style={{alignItems: "start"}}>
