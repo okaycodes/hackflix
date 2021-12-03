@@ -14,13 +14,13 @@ export default function PaymentFormContainer(){
         lastNameIsActivated, setLastNameIsActivated,
         lastNameErrorMessage,
 
-        cardNumber, setCardNumber,
+        cardNumber,
         cardNumberIsValid, setCardNumberIsValid,
         cardNumberIsActivated, setCardNumberIsActivated,
         cardNumberErrorMessage,
 
-        expirationDate, setExpirationDate,
-        securityCode, setSecurityCode,
+        expirationDate,
+        securityCode,
         emailIsValid,
         emailIsActivated, setEmailIsActivated,
         emailErrorMessage} = useContext(inputContext)
