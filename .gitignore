@@ -23,3 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 src/junk/contextjunk.js
+src/junk/registrationjunk.js
