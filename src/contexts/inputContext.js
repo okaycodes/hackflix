@@ -10,42 +10,21 @@ function InputContextProvider({children}){
   const [email, setEmail] = useState('')
   const [emailIsValid, setEmailIsValid] = useState(true)
   const [emailIsActivated, setEmailIsActivated] = useState(false)
-  const emailErrorMessage = "Please enter a valid email address"
+  // const emailErrorMessage = "Please enter a valid email address"
 
   const [password, setPassword] = useState('')
-  const [passwordIsValid, setPasswordIsValid] = useState(true)
+  // const [passwordIsValid, setPasswordIsValid] = useState(true)
   const [passwordIsActivated, setPasswordIsActivated] = useState(false)
-  const passwordErrorMessage = "Password should be between 6 and 60 characters"
-
-  const [firstName, setFirstName] = useState('')
-  const [firstNameIsValid, setFirstNameIsValid] = useState(true)
-  const [firstNameIsActivated, setFirstNameIsActivated] = useState(false)
-  const firstNameErrorMessage = "Please enter a valid first name"
-
-  const [lastName, setLastName] = useState('')
-  const [lastNameIsValid, setLastNameIsValid] = useState(true)
-  const [lastNameIsActivated, setLastNameIsActivated] = useState(false)
-  const lastNameErrorMessage = "Please enter a valid last name"
-
-  const [cardNumber, setCardNumber] = useState('')
-
-
-  const [expirationDate, setExpirationDate] = useState('')
-
-
-  const [securityCode, setSecurityCode] = useState('')
-
-
-
+  // const passwordErrorMessage = "Password should be between 6 and 60 characters"
 
   useEffect(()=>{
     const emailRegex = /[^@]+@[^@]+\.[^@]+/
     emailIsActivated && setEmailIsValid(emailRegex.test(email))
   }, [email, emailIsActivated])
-
-  useEffect(()=>{
-    passwordIsActivated && setPasswordIsValid(password.length>=6)
-  }, [password, passwordIsActivated])
+  //
+  // useEffect(()=>{
+  //   passwordIsActivated && setPasswordIsValid(password.length>=6)
+  // }, [password, passwordIsActivated])
 
   const handleChange=(event)=>{
     const {name, value} = event.target
@@ -54,23 +33,20 @@ function InputContextProvider({children}){
       break
       case "password": setPassword(value)
       break
-      case "firstName": setFirstName(value)
-      break
-      case "lastName":setLastName(value)
-      break
-      case "cardNumber": setCardNumber(value)
-      break
-      case "securityCode": setSecurityCode(value)
-      break
       default: return
     }
   }
 
   const handleBlur=(event)=>{
     const {name} = event.target
-    name === "email" ? setEmailIsActivated(email.length>=1 && true) :
-    name==="password" && setPasswordIsActivated(password.length>=1 && true)
+    switch(name){
+      case "email": setEmailIsActivated(email.length>=1 && true)
+      break
+      case "password": setPasswordIsActivated(password.length>=1 && true)
+      break
+      default: return
   }
+}
 
 /*====================
 COME BACK TO THIS
@@ -87,21 +63,10 @@ COME BACK TO THIS
 
   return (
     <inputContext.Provider value={{
-          email, setEmail,
-          emailIsValid, setEmailIsValid,
+          email, setEmail, emailIsValid,
           emailIsActivated, setEmailIsActivated,
           password, setPassword,
-          passwordIsValid, setPasswordIsValid,
           passwordIsActivated, setPasswordIsActivated,
-          firstName, setFirstName,
-          firstNameIsValid, setFirstNameIsValid,
-          firstNameIsActivated, setFirstNameIsActivated,
-          firstNameErrorMessage,
-          lastName, setLastName,
-          cardNumber, setCardNumber,
-          expirationDate, setExpirationDate,
-          securityCode, setSecurityCode,
-          emailErrorMessage, passwordErrorMessage,
           handleChange, handleBlur, handleClick}}
     >
       {children}
