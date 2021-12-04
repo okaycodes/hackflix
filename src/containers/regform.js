@@ -8,12 +8,11 @@ COME BACK TO THIS valid fields and activate button
 ==================================================*/
 
 export default function RegFormContainer(){
-  const {email, setEmail,
-        password, setPassword,
+  const {email, password,
         emailIsValid, passwordIsValid,
-        emailIsActivated, setEmailIsActivated,
-        passwordIsActivated, setPasswordIsActivated,
-        emailErrorMessage, passwordErrorMessage} = useContext(inputContext)
+        emailIsActivated,
+        passwordIsActivated,
+        handleChange, handleBlur, handleClick} = useContext(inputContext)
 
   return(
     <Registration>
@@ -30,13 +29,9 @@ export default function RegFormContainer(){
         isValid ={emailIsValid}
         isEmpty = {email.length < 1}
         isActivated={emailIsActivated}
-        errorMessage={emailErrorMessage}
-        onChange={(event)=>{
-          setEmail(event.target.value)
-        }}
-        onBlur={(event)=>{
-          setEmailIsActivated(email.length>=1 && true)
-        }}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        errorMessage="Please enter a valid email address"
       />
 
       <Registration.Input
@@ -46,13 +41,9 @@ export default function RegFormContainer(){
         isValid ={passwordIsValid}
         isEmpty={password.length < 1}
         isActivated={passwordIsActivated}
-        errorMessage={passwordErrorMessage}
-        onChange={(event)=>{
-          setPassword(event.target.value)
-        }}
-        onBlur={(event)=>{
-          setPasswordIsActivated(password.length>=1 && true)
-        }}
+        onChange={handleClick}
+        onBlur={handleBlur}
+        errorMessage= "Password should be between 6 and 60 characters"
       />
       <Registration.Checkbox />
 
