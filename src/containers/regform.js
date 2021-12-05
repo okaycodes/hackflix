@@ -34,6 +34,17 @@ export default function RegFormContainer(){
         errorMessage="Please enter a valid email address"
       />
 
+      <Registration.Input
+        placeholder="Add a password"
+        name="password"
+        value={password}
+        isValid ={passwordIsValid}
+        isEmpty={password.length < 1}
+        isActivated={passwordIsActivated}
+        onChange={handleClick}
+        onBlur={handleBlur}
+        errorMessage= "Password should be between 6 and 60 characters"
+      />
       <Registration.Checkbox />
 
       <Registration.Link to={ROUTES.SIGN_UP_HOME}>Next</Registration.Link>
