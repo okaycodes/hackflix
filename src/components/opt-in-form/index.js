@@ -24,8 +24,8 @@ import {
 
   OptInForm.Input = function OptInFormInput({children, animated=true, placeholder, ...restProps}){
     const {state, dispatch} = useContext(inputContext)
-    const {email, emailIsValid, emailIsActive, emailErrorMessage} = state
-    const isValid = emailIsValid
+    const {email, emailIsActive, emailErrorMessage} = state
+    const emailIsValid = /[^@]+@[^@]+\.[^@]+/.test(email)
     const isEmpty = false
 
       return (
@@ -33,17 +33,17 @@ import {
           <Label>
             <Input name="email"
               value={email}
-              isValid ={isValid}
+              isValid ={emailIsValid}
               isEmpty = {isEmpty}
               isActivated={emailIsActive}
               errorMessage={emailErrorMessage}
               onChange={(event) =>{dispatch({ type: "fill", payload: event.target.value })}}
-              onBlur={()=>dispatch({type:"focusOut"})}
+              onBlur={()=>!isEmpty && dispatch({type:"focusOut"})}
             />
             <Placeholder isEmpty = {isEmpty}>{animated && placeholder}</Placeholder>
           </Label>
           <ErrorMessage errorColor="orange">
-            {(!isValid &&  email.length < 4) ? "Email is required":!isValid && emailErrorMessage}
+            {((!emailIsValid && emailIsActive) &&  email.length < 4) ? "Email is required":(!emailIsValid && emailIsActive) && emailErrorMessage}
           </ErrorMessage>
         </InputWrapper>
     )}
