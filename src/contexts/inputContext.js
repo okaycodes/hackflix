@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useReducer} from "react"
 
 const inputContext = React.createContext()
 
@@ -7,62 +7,35 @@ COME BACK TO THIS handleclick
 =============================*/
 
 function InputContextProvider({children}){
+  let initialState = {
+    email: "",
+    emailIsValid: "",
+    emailIsActive: false,
+    emailErrorMessage: "this error",
+    password: "",
+    passwordIsValid: "",
+    passwordIsActive: ""
+  }
+  let [state, dispatch] = useReducer((state, action)=>{
+    switch(action.type){
+      case "fill":
+        return {
+          ...state,
+          emailIsActive: false,
+          email: action.payload
+        }
+      default:{
+        return state
+      }
+    }
+  }, initialState)
+
   const [email, setEmail] = useState('')
   const [emailIsValid, setEmailIsValid] = useState(true)
   const [emailIsActivated, setEmailIsActivated] = useState(false)
 
-  const [password, setPassword] = useState('')
-  const [passwordIsActivated, setPasswordIsActivated] = useState(false)
-
-  useEffect(()=>{
-    const emailRegex = /[^@]+@[^@]+\.[^@]+/
-    emailIsActivated && setEmailIsValid(emailRegex.test(email))
-  }, [email, emailIsActivated])
-
-
-  const handleChange=(event)=>{
-    const {name, value} = event.target
-    switch(name){
-      case "email": setEmail(value)
-      break
-      case "password": setPassword(value)
-      break
-      default: return
-    }
-  }
-
-  const handleBlur=(event)=>{
-    const {name} = event.target
-    switch(name){
-      case "email": setEmailIsActivated(email.length>=1 && true)
-      break
-      case "password": setPasswordIsActivated(password.length>=1 && true)
-      break
-      default: return
-  }
-}
-
-/*====================
-COME BACK TO THIS
-=====================*/
-  const handleClick=(event)=>{
-    !emailIsValid && setEmailIsActivated(true)
-  }
-  // const [Email, setEmail] = useState('')
-  // const [password, setPassword] = useState('')
-  // const isEmpty = Email.length < 1
-  // const emailIsValid = /[^@]+@[^@]+\.[^@]+/.test(Email)
-  // const [activatedInput, setActivatedInput] = useState(false)
-
-
   return (
-    <inputContext.Provider value={{
-          email, setEmail, emailIsValid,
-          emailIsActivated, setEmailIsActivated,
-          password, setPassword,
-          passwordIsActivated, setPasswordIsActivated,
-          handleChange, handleBlur, handleClick}}
-    >
+    <inputContext.Provider value={{state, dispatch}}>
       {children}
     </inputContext.Provider>
   )
