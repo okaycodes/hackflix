@@ -9,7 +9,6 @@ COME BACK TO THIS handleclick
 function InputContextProvider({children}){
   let initialState = {
     email: "",
-    emailIsValid: "",
     emailIsActive: false,
     emailErrorMessage: "this error",
     password: "",
@@ -21,9 +20,15 @@ function InputContextProvider({children}){
       case "fill":
         return {
           ...state,
-          emailIsActive: false,
           email: action.payload
         }
+      case "focusOut":{
+        return {
+          ...state,
+          emailIsActive: true,
+          emailErrorMessage: "Enter a valid email address"
+        }
+      }
       default:{
         return state
       }
