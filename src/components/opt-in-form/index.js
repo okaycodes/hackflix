@@ -23,9 +23,10 @@ import {
   }
 
   OptInForm.Input = function OptInFormInput({children, animated=true, placeholder, ...restProps}){
-    const {email, emailIsValid, emailIsActivated, emailErrorMessage, handleChange, handleBlur} = useContext(inputContext)
+    const {state, dispatch} = useContext(inputContext)
+    const {email, emailIsValid, emailIsActive, emailErrorMessage} = state
     const isValid = emailIsValid
-    const isEmpty = email.length < 1;
+    const isEmpty = false
 
       return (
         <InputWrapper {...restProps}>
@@ -34,10 +35,10 @@ import {
               value={email}
               isValid ={isValid}
               isEmpty = {isEmpty}
-              isActivated={emailIsActivated}
+              isActivated={emailIsActive}
               errorMessage={emailErrorMessage}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              onChange={(event) =>{dispatch({ type: "fill", payload: event.target.value })}}
+              onBlur={()=>dispatch({type:"focusOut"})}
             />
             <Placeholder isEmpty = {isEmpty}>{animated && placeholder}</Placeholder>
           </Label>
@@ -49,7 +50,8 @@ import {
 
 
   OptInForm.Button = function OptInFormButton({children, ...restProps}){
-    const {email, emailIsValid, handleClick} = useContext(inputContext)
+    const {state, dispatch} = useContext(inputContext)
+    const {email, emailIsValid} = state
     const isEmpty = email.length<1;
 
 
@@ -60,9 +62,8 @@ import {
   return (
         <ButtonLink
           {...restProps}
-          to={emailIsValid && !isEmpty && ROUTES.REGISTRATION}
-          onClick={handleClick}
-          >
+          to={"#"}
+          onClick={()=>dispatch("signup")}>
           {children} <img src="./../../images/icons/chevron-right.png" alt="chevron right" />
         </ButtonLink>
         )
