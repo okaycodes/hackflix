@@ -55,9 +55,6 @@ import {
     const isEmpty = email.length<1;
 
 
-    /*==========================
-    COME BACK TO THIS handleClick
-    ============================*/
 
   return (
         <ButtonLink
