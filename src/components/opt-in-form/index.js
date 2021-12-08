@@ -1,5 +1,7 @@
 import {useContext} from "react"
 import * as ROUTES from './../../constants/routes';
+import * as REGEX from './../../constants/regex';
+
 import {inputContext} from "./../../contexts/inputContext"
 
 import {
@@ -25,8 +27,8 @@ import {
   OptInForm.Input = function OptInFormInput({children, animated=true, placeholder, ...restProps}){
     const {state, dispatch} = useContext(inputContext)
     const {email, emailIsActive, emailErrorMessage} = state
-    const emailIsValid = /[^@]+@[^@]+\.[^@]+/.test(email)
-    const isEmpty = false
+    const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
+    const isEmpty = email.length < 1
 
       return (
         <InputWrapper {...restProps}>
@@ -51,16 +53,15 @@ import {
 
   OptInForm.Button = function OptInFormButton({children, ...restProps}){
     const {state, dispatch} = useContext(inputContext)
-    const {email, emailIsValid} = state
+    const {email} = state
+    const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
     const isEmpty = email.length<1;
-
-
 
   return (
         <ButtonLink
           {...restProps}
-          to={"#"}
-          onClick={()=>dispatch("signup")}>
+          to={!isEmpty && emailIsValid && `./${ROUTES.REGISTRATION}`}
+          onClick={()=> !emailIsValid && dispatch("focusOut")}>
           {children} <img src="./../../images/icons/chevron-right.png" alt="chevron right" />
         </ButtonLink>
         )
