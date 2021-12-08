@@ -39,13 +39,18 @@ import {
               isEmpty = {isEmpty}
               isActivated={emailIsActive}
               errorMessage={emailErrorMessage}
-              onChange={(event) =>{dispatch({ type: "fill", payload: event.target.value })}}
+              onChange={(event) =>{dispatch(
+                {type: "input", payload: {[event.target.name]:event.target.value} }
+              )}}
               onBlur={()=>!isEmpty && dispatch({type:"focusOut"})}
             />
             <Placeholder isEmpty = {isEmpty}>{animated && placeholder}</Placeholder>
           </Label>
           <ErrorMessage errorColor="orange">
-            {((!emailIsValid && emailIsActive) &&  email.length < 4) ? "Email is required":(!emailIsValid && emailIsActive) && emailErrorMessage}
+            {emailIsActive &&  email.length < 4 ?
+              "Email is required":
+              emailIsActive && !emailIsValid ?
+              "Enter a valid email address": ""}
           </ErrorMessage>
         </InputWrapper>
     )}
