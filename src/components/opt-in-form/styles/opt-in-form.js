@@ -36,26 +36,21 @@ export const InputWrapper = styled.div`
   width: 100%;
   max-width: 450px;
   position: relative;
-  --size: 20px;
 `;
 
 export const Label = styled.label`
 `;
 
 export const Placeholder = styled.span`
-  font-size: ${props => props.isEmpty ? "16px" : "11px"};
-  font-weight: ${props => !props.isEmpty && "500"};
+  font-size: ${props => props.isEmpty ? "16px" : "12px"};
+  font-weight: ${props => !props.isEmpty && "600"};
   position: absolute;
-  top: var(--size);
-  left: var(--size);
-  ${props => !props.isEmpty && "top: 4px"};
+  left: 20px;
+  top: ${props=> props.isEmpty ? "20px":"4px"};
   color: grey;
   transition: all .15s ease-in-out;
-  /* props is used to move the placeholder top when the field is not empty
-  top is also declared twice to allow for use of the --size variable for
-  easier edits in the future
-  */
 `;
+/* props is used to move the placeholder top when the field is not empty */
 
 export const Input = styled.input`
   display: block;
@@ -99,7 +94,7 @@ export const Input = styled.input`
      border-radius: 3px;
      height: auto;
      & ~ ${Placeholder}{
-       top: 17px;
+       top: ${props=> props.isEmpty ? "17px":"4px"};
      }
    }
 `;
