@@ -26,7 +26,7 @@ import {
 
   OptInForm.Input = function OptInFormInput({children, animated=true, placeholder, ...restProps}){
     const {state, dispatch} = useContext(inputContext)
-    const {email, emailIsActive, emailErrorMessage} = state
+    const {email, emailIsActive} = state
     const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
     const isEmpty = email.length < 1
 
