@@ -1,5 +1,6 @@
 import {Registration} from "./../components"
 import * as ROUTES from "./../constants/routes"
+import * as REGEX from './../constants/regex';
 import {inputContext} from  "./../contexts/inputContext"
 import {useContext} from "react"
 
@@ -8,11 +9,14 @@ COME BACK TO THIS valid fields and activate button
 ==================================================*/
 
 export default function RegFormContainer(){
-  const {email, password,
-        emailIsValid, passwordIsValid,
-        emailIsActivated,
-        passwordIsActivated,
-        handleChange, handleBlur, handleClick} = useContext(inputContext)
+  const {state, dispatch} = useContext(inputContext)
+  const {email, emailIsActive, emailErrorMessage} = state
+  const {password, passwordIsActive, passwordErrorMessage} = state
+  const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
+  const emailIsEmpty = email.length < 1
+  const passwordIsValid = password.length > 6
+  const passwordIsEmpty = password.length < 1
+
 
   return(
     <Registration>
@@ -27,11 +31,14 @@ export default function RegFormContainer(){
         name="email"
         value={email}
         isValid ={emailIsValid}
-        isEmpty = {email.length < 1}
-        isActivated={emailIsActivated}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        errorMessage="Please enter a valid email address"
+        isEmpty = {emailIsEmpty}
+        isActivated={emailIsActive}
+        errorMessage={"Enter a valid email address"}
+        onChange={(event) =>{dispatch(
+          {type: "input", payload: {email: event.target.value} }
+        )}}
+        onBlur={(event)=> email.length >= 1 &&
+          dispatch({type:"blurred", payload: {emailIsActive: true}})}
       />
 
       <Registration.Input
@@ -39,11 +46,14 @@ export default function RegFormContainer(){
         name="password"
         value={password}
         isValid ={passwordIsValid}
-        isEmpty={password.length < 1}
-        isActivated={passwordIsActivated}
-        onChange={handleClick}
-        onBlur={handleBlur}
-        errorMessage= "Password should be between 6 and 60 characters"
+        isEmpty={passwordIsEmpty}
+        isActivated={passwordIsActive}
+        errorMessage = "Password must be between 6 and 20 characters"
+        onChange={(event) =>{dispatch(
+          {type: "input", payload: {password: event.target.value} }
+        )}}
+        onBlur={()=>email.length >= 1 &&
+          dispatch({type:"blurred", payload: {passwordIsActive: true}})}
       />
       <Registration.Checkbox />
 
