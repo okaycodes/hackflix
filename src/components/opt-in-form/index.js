@@ -26,7 +26,7 @@ import {
 
   OptInForm.Input = function OptInFormInput({children, animated=true, placeholder, ...restProps}){
     const {state, dispatch} = useContext(inputContext)
-    const {email, emailIsActive} = state
+    const {email, emailIsActive, emailErrorMessage} = state
     const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
     const isEmpty = email.length < 1
 
@@ -42,7 +42,8 @@ import {
               onChange={(event) =>{dispatch(
                 {type: "input", payload: {[event.target.name]:event.target.value} }
               )}}
-              onBlur={()=>!isEmpty && dispatch({type:"focusOut"})}
+              onBlur={()=>!isEmpty &&
+                dispatch({type:"blurred", payload: {emailIsActive: true}})}
             />
             <Placeholder isEmpty = {isEmpty}>{animated && placeholder}</Placeholder>
           </Label>
