@@ -11,15 +11,15 @@ function InputContextProvider({children}){
     email: "",
     emailIsActive: false,
     password: "",
-    passwordIsActive: ""
+    passwordIsActive: "",
   }
   let [state, dispatch] = useReducer((state, action)=>{
     switch(action.type){
       case "input":{
         return {...state, ...action.payload}
       }
-      case "focusOut":{
-        return {...state, emailIsActive: true, emailErrorMessage: "Enter a valid email address"}
+      case "blurred":{
+        return {...state, ...action.payload}
       }
       default:{
         return state
