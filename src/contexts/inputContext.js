@@ -8,10 +8,13 @@ COME BACK TO THIS handleclick
 
 function InputContextProvider({children}){
   let initialState = {
-    email: "",
-    emailIsActive: false,
-    password: "",
-    passwordIsActive: "",
+    email: "", emailIsActive: false,
+    password: "", passwordIsActive: false,
+    firstName: "", firstNameIsActive: false,
+    lastName: "", lastNameIsActive: false,
+    cardNumber: "", cardNumberIsActive: false,
+    expirationDate: "", expirationDateIsActive: false,
+    securityCode: "", securityCodeIsActive: false
   }
   let [state, dispatch] = useReducer((state, action)=>{
     switch(action.type){
