@@ -10,8 +10,8 @@ COME BACK TO THIS valid fields and activate button
 
 export default function RegFormContainer(){
   const {state, dispatch} = useContext(inputContext)
-  const {email, emailIsActive, emailErrorMessage} = state
-  const {password, passwordIsActive, passwordErrorMessage} = state
+  const {email, emailIsActive} = state
+  const {password, passwordIsActive} = state
   const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
   const emailIsEmpty = email.length < 1
   const passwordIsValid = password.length > 6
@@ -33,10 +33,11 @@ export default function RegFormContainer(){
         isValid ={emailIsValid}
         isEmpty = {emailIsEmpty}
         isActivated={emailIsActive}
-        errorMessage={"Enter a valid email address"}
-        onChange={(event) =>{dispatch(
-          {type: "input", payload: {email: event.target.value} }
-        )}}
+        minLength={5}
+        errorMessage1 = "Email is required!"
+        errorMessage2 = "Please enter a valid email address"
+        onChange={(event) =>
+          dispatch({type: "input", payload: {email: event.target.value}})}
         onBlur={(event)=> email.length >= 1 &&
           dispatch({type:"blurred", payload: {emailIsActive: true}})}
       />
@@ -48,12 +49,13 @@ export default function RegFormContainer(){
         isValid ={passwordIsValid}
         isEmpty={passwordIsEmpty}
         isActivated={passwordIsActive}
-        errorMessage = "Password must be between 6 and 20 characters"
+        minLength={1}
+        errorMessage1 = "Password is required!"
+        errorMessage2 = "Password must be between 6 and 60 characters"
         onChange={(event) =>{dispatch(
           {type: "input", payload: {password: event.target.value} }
         )}}
-        onBlur={()=>email.length >= 1 &&
-          dispatch({type:"blurred", payload: {passwordIsActive: true}})}
+        onBlur={()=>dispatch({type:"blurred", payload: {passwordIsActive: true}})}
       />
       <Registration.Checkbox />
 
