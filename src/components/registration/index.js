@@ -64,9 +64,9 @@ Registration.LinkSecondary = function RegistrationLinkSecondary({children, ...re
   return <LinkSecondary {...restProps}>{children}</LinkSecondary>
 }
 
-Registration.Input = function OptInFormInput({children,  errorColor="#a82b28", animated=true, ...restProps}){
-  const {value, name, isEmpty, isValid, isActivated, placeholder, errorMessage} = {...restProps}
-  const nameCap = name[0].toUpperCase() + name.slice(1)
+Registration.Input = function RegistrationInput({children,  errorColor="#a82b28", animated=true, ...restProps}){
+  const {value, isEmpty, isValid, isActivated, placeholder,
+        errorMessage1, errorMessage2, minLength} = {...restProps}
   return(
     <InputWrapper {...restProps}>
       <Label>
@@ -74,8 +74,8 @@ Registration.Input = function OptInFormInput({children,  errorColor="#a82b28", a
         <Placeholder isEmpty={isEmpty}>{animated && placeholder}</Placeholder>
       </Label>
       <ErrorMessage errorColor={errorColor}>
-      {((isActivated && !isValid) &&  value.length < 4) ? `${nameCap} is required`:
-      (isActivated && !isValid) && errorMessage}
+      {((isActivated && !isValid) &&  value.length < minLength) ? errorMessage1:
+      (isActivated && !isValid) && errorMessage2}
       </ErrorMessage>
     </InputWrapper>
   )}
