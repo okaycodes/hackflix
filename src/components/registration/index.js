@@ -10,6 +10,7 @@ import {Container,
         InputWrapper,
         Input,
         Placeholder,
+        InputIcon,
         ErrorMessage,
         CheckboxWrapper,
         Checkbox,
@@ -17,7 +18,8 @@ import {Container,
         ListItem,
         IconSecondary,
         LinkSecondary,
-        IconWrapper} from "./styles/registration"
+        IconWrapper,
+        Modal} from "./styles/registration"
 
 
 export default function Registration({children, ...restProps}){
@@ -72,6 +74,7 @@ Registration.Input = function RegistrationInput({children,  errorColor="#a82b28"
       <Label>
         <Input {...restProps} placeholder={!animated && placeholder} errorColor={errorColor}/>
         <Placeholder isEmpty={isEmpty}>{animated && placeholder}</Placeholder>
+        <InputIcon>{children}</InputIcon>
       </Label>
       <ErrorMessage errorColor={errorColor}>
       {((isActivated && !isValid) &&  value.length < minLength) ? errorMessage1:
@@ -94,4 +97,8 @@ Registration.List = function RegistrationList({children, ...restProps}){
 
 Registration.ListItem = function RegistrationListItem({children, ...restProps}){
   return <ListItem {...restProps}>{children}</ListItem>
+}
+
+Registration.Modal = function RegistrationModal({children, ...restProps}){
+  return <Modal {...restProps}>{children}</Modal>
 }
