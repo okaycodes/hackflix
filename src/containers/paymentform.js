@@ -1,7 +1,7 @@
 import {Registration} from "./../components"
 import * as REGEX from './../constants/regex';
 import {inputContext} from  "./../contexts/inputContext"
-import {useContext} from "react"
+import {useContext, useState} from "react"
 
 // import * as ROUTES from "./../constants/routes"
 
@@ -17,7 +17,13 @@ export default function PaymentFormContainer(){
   const cardNumberIsValid = REGEX.CARD_NUMBER_VALIDATION.test(cardNumber)
   const expirationDateIsValid = REGEX.DATE_VALIDATION.test(expirationDate)
   const securityCodeIsValid = REGEX.CVV_VALIDATION.test(securityCode)
+  const filterGrey = "invert(85%) sepia(21%) saturate(17%) hue-rotate(119deg) brightness(93%) contrast(95%)"
 
+  const [cvvDisplay, setCVVDisplay] = useState("none")
+
+  function handleClick(){
+    setCVVDisplay(prev=>prev==="block" ? "none":"block")
+  }
   return(
     <Registration style={{alignItems: "start"}}>
       <Registration.Title>Set up your credit or debit card</Registration.Title>
@@ -94,6 +100,17 @@ export default function PaymentFormContainer(){
         minLength={1}
         onChange={(event)=>dispatch({type: "input", payload: {securityCode: event.target.value}})}
         onBlur={(event)=>dispatch({type: "blurred", payload: {securityCodeIsActive: true}})}
-      />
+      >
+        <Registration.Icon
+          style={{width:"36px", filter: filterGrey, opacity: .6}}
+          src="./../../images/icons/cvv.svg"
+          onClick={handleClick}/>
+      </Registration.Input>
+      <Registration.Modal onClick={handleClick} display={cvvDisplay}>
+      <Registration.Icon
+        style={{width:"16px", filter:"none"}}
+        src="./../../images/icons/close-slim.png"
+        onClick={handleClick}/>
+      </Registration.Modal>
     </Registration>
   )}
