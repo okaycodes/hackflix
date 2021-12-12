@@ -39,6 +39,7 @@ export const Icon = styled.img`
 export const IconSecondary = styled.img`
   display: inline-block;
   margin: 0;
+  margin-right: .4em;
   width: 40px;
   height: 25px;
   border: solid .2px lightgrey;
@@ -46,9 +47,7 @@ export const IconSecondary = styled.img`
 `;
 
 export const IconWrapper = styled.div`
-  width: 132px;
   display: flex;
-  justifyContent: space-between;
 `;
 
 export const Title = styled.h1`
@@ -86,22 +85,17 @@ export const Placeholder = styled.span`
   font-size: ${props => props.isEmpty ? "16px" : "12px"};
   font-weight: ${props => !props.isEmpty && "600"};
   position: absolute;
-  top: var(--size);
-  left: var(--size);
-  ${props => !props.isEmpty && "top: 4px"};
+  left: 10px;
   color: grey;
   transition: all .15s ease-in-out;
-  /* props is used to move the placeholder top when the field is not empty
-  top is also declared twice to allow for use of the --size variable for
-  easier edits in the future
-  */
+  /* props is used to move the placeholder top when the field is not empty */
 `;
 
 export const Input = styled.input`
   display: block;
   font-size: 16px;
   padding: 1em;
-  padding-left: 20px;
+  padding-left: 10px;
   margin: 0;
   width: 100%;
   height: 60px;
@@ -123,6 +117,25 @@ export const Input = styled.input`
     color: grey;
     user-select: none;
   }
+`;
+
+export const InputIcon = styled.span`
+  position: absolute;
+  top: 13px;
+  right: 0;
+`;
+// inputIcon is used only in the CVV field of the paymentform
+
+export const Modal = styled.div`
+  display: ${props=>props.display};
+  background: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  opacity: .97;
+  z-index: 10;
 `;
 
 export const ErrorMessage = styled.div`
