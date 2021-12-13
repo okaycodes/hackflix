@@ -14,6 +14,7 @@ export default function PaymentFormContainer(){
   const {cardNumber, cardNumberIsActive} = state
   const {expirationDate, expirationDateIsActive} = state
   const {securityCode, securityCodeIsActive} = state
+  const {checkboxIsChecked, checkboxIsActive} = state
   const cardNumberIsValid = REGEX.CARD_NUMBER_VALIDATION.test(cardNumber)
   const expirationDateIsValid = REGEX.DATE_VALIDATION.test(expirationDate)
   const securityCodeIsValid = REGEX.CVV_VALIDATION.test(securityCode)
@@ -121,6 +122,16 @@ export default function PaymentFormContainer(){
          your membership and charge the membership fee (currently ₦3,600/month)
          to your payment method until you cancel. You may cancel at any time
          to avoid future charges.</Registration.Text>
+        <Registration.Checkbox
+          isActive={checkboxIsActive}
+          isChecked={checkboxIsChecked}
+          errorMessage="You must agree to the terms and conditions to continue."
+          fontSize="16px"
+          onClick={()=>{
+            dispatch({type: 'check'})}
+          }>
+          I agree
+        </Registration.Checkbox>
         <Registration.Link to="#" fontSize="23px">Start Membership</Registration.Link>
       </Registration>
       <Modal display={cvvDisplay}>
