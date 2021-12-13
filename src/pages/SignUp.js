@@ -36,7 +36,6 @@ export default function SignUp({children}){
       <Route exact path="/planform" element={<PlanFormContainer />} />
       <Route exact path="/payment" element={<PaymentStepContainer />} />
       <Route exact path="/payment-form" element={<PaymentFormContainer />} />
-
     </Routes>
 
     <Footer backgroundColor="#ededed" padding="2em 3em">

@@ -85,6 +85,7 @@ export const Placeholder = styled.span`
   font-size: ${props => props.isEmpty ? "16px" : "12px"};
   font-weight: ${props => !props.isEmpty && "600"};
   position: absolute;
+  top: ${props=> props.isEmpty ? "20px":"4px"};
   left: 10px;
   color: grey;
   transition: all .15s ease-in-out;
