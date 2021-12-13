@@ -147,6 +147,7 @@ export const ErrorMessage = styled.div`
 `;
 
 export const CheckboxWrapper = styled.label`
+  width: 100%;
   display: block;
   position: relative;
   padding-left: 35px;
@@ -202,7 +203,7 @@ export const Link = styled(ReactRouterLink)`
   color: white;
   background-color: #e50914;
   padding: 1em;
-  font-size: 16px;
+  font-size: ${props=>props.fontSize || "16px"};
   text-decoration: none;
   text-align: center;
   border-radius: 3px;

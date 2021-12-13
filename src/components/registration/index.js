@@ -66,7 +66,7 @@ Registration.LinkSecondary = function RegistrationLinkSecondary({children, ...re
   return <LinkSecondary {...restProps}>{children}</LinkSecondary>
 }
 
-Registration.Input = function RegistrationInput({children, animated=true, ...restProps}){
+Registration.Input = function RegistrationInput({children,  animated=true, ...restProps}){
   const {value, isEmpty, isValid, isActivated, placeholder,
         errorMessage1, errorMessage2, minLength} = {...restProps}
   return(
@@ -84,11 +84,17 @@ Registration.Input = function RegistrationInput({children, animated=true, ...res
   )}
 
 Registration.Checkbox = function RegistrationCheckbox({children, ...restProps}){
+  const {isActive, isChecked, errorMessage, fontSize} = {...restProps}
   return(
-    <CheckboxWrapper> Please do not email me Netflix special offers.
-      <Checkbox type="checkbox" {...restProps}>{children}</Checkbox>
-      <span></span>
-    </CheckboxWrapper>
+    <>
+      <CheckboxWrapper> {children}
+        <Checkbox type="checkbox" {...restProps} />
+        <span></span>
+      </CheckboxWrapper>
+      <ErrorMessage fontSize={fontSize}>
+        {isActive && !isChecked && errorMessage}
+      </ErrorMessage>
+    </>
 )}
 
 Registration.List = function RegistrationList({children, ...restProps}){
