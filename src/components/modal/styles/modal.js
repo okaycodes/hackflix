@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Container = styled.div`
   display: ${props=>props.display};
   background: white;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
@@ -20,16 +20,21 @@ export const Header = styled.div`
 
 
 export const Wrapper = styled.div`
-  max-width: 270px;
+  max-width: 440px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Text = styled.p`
   font-weight: 400;
-  text-align: center;
   margin: 0;
   padding: 0 .5em;
   line-height: 1.4;
+  width: ${props=>props.width};
+  text-align: ${props=>props.align};
+  font-size: ${props=>props.fontSize}
 `;
 
 export const Icon = styled.img`
@@ -39,6 +44,9 @@ export const Icon = styled.img`
 `;
 
 export const Image = styled.img`
-  margin: 0 auto;
+  height: 130px;
+  width: 200px;
+  margin: 35px auto 0;
   max-width: 200px;
+  border-radius: 8px;
 `;
