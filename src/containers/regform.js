@@ -57,7 +57,7 @@ export default function RegFormContainer(){
         )}}
         onBlur={()=>dispatch({type:"blurred", payload: {passwordIsActive: true}})}
       />
-      <Registration.Checkbox />
+      <Registration.Checkbox>Please do not email me Netflix special offers</Registration.Checkbox>
 
       <Registration.Link to={ROUTES.SIGN_UP_HOME}>Next</Registration.Link>
     </Registration>
