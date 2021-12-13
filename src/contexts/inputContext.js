@@ -14,7 +14,7 @@ function InputContextProvider({children}){
     lastName: "", lastNameIsActive: false,
     cardNumber: "", cardNumberIsActive: false,
     expirationDate: "", expirationDateIsActive: false,
-    securityCode: "", securityCodeIsActive: false
+    securityCode: "", securityCodeIsActive: false,
   }
   let [state, dispatch] = useReducer((state, action)=>{
     switch(action.type){
