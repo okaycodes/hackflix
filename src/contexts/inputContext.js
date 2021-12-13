@@ -15,6 +15,7 @@ function InputContextProvider({children}){
     cardNumber: "", cardNumberIsActive: false,
     expirationDate: "", expirationDateIsActive: false,
     securityCode: "", securityCodeIsActive: false,
+    checkboxIsChecked: false, checkboxIsActive: false,
   }
   let [state, dispatch] = useReducer((state, action)=>{
     switch(action.type){
@@ -23,6 +24,9 @@ function InputContextProvider({children}){
       }
       case "blurred":{
         return {...state, ...action.payload}
+      }
+      case 'check':{
+        return {...state, checkboxIsActive:true, checkboxIsChecked: !state.checkboxIsChecked}
       }
       default:{
         return state
