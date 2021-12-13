@@ -1,4 +1,4 @@
-import {Registration} from "./../components"
+import {Registration, Modal} from "./../components"
 import * as REGEX from './../constants/regex';
 import {inputContext} from  "./../contexts/inputContext"
 import {useContext, useState} from "react"
@@ -106,11 +106,15 @@ export default function PaymentFormContainer(){
           src="./../../images/icons/cvv.svg"
           onClick={handleClick}/>
       </Registration.Input>
-      <Registration.Modal onClick={handleClick} display={cvvDisplay}>
-      <Registration.Icon
-        style={{width:"16px", filter:"none"}}
-        src="./../../images/icons/close-slim.png"
-        onClick={handleClick}/>
-      </Registration.Modal>
+      <Modal onClick={handleClick} display={cvvDisplay}>
+      <Modal.Header>
+        <Modal.Icon src="./../../images/icons/close-slim.png" onClick={handleClick}/>
+      </Modal.Header>
+      <Modal.Wrapper>
+        <Modal.Text>Your card's security code (CVV) is the 3 or 4 digit number
+        located on the back of most cards.</Modal.Text>
+        <Modal.Image src="./../../images/misc/cvv2.png"/>
+      </Modal.Wrapper>
+      </Modal>
     </Registration>
   )}
