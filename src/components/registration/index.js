@@ -66,17 +66,17 @@ Registration.LinkSecondary = function RegistrationLinkSecondary({children, ...re
   return <LinkSecondary {...restProps}>{children}</LinkSecondary>
 }
 
-Registration.Input = function RegistrationInput({children,  errorColor="#a82b28", animated=true, ...restProps}){
+Registration.Input = function RegistrationInput({children, animated=true, ...restProps}){
   const {value, isEmpty, isValid, isActivated, placeholder,
         errorMessage1, errorMessage2, minLength} = {...restProps}
   return(
     <InputWrapper {...restProps}>
       <Label>
-        <Input {...restProps} placeholder={!animated && placeholder} errorColor={errorColor}/>
+        <Input {...restProps} placeholder={!animated && placeholder} />
         <Placeholder isEmpty={isEmpty}>{animated && placeholder}</Placeholder>
         <InputIcon>{children}</InputIcon>
       </Label>
-      <ErrorMessage errorColor={errorColor}>
+      <ErrorMessage>
       {((isActivated && !isValid) &&  value.length < minLength) ? errorMessage1:
       (isActivated && !isValid) && errorMessage2}
       </ErrorMessage>

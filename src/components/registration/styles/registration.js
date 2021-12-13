@@ -64,10 +64,11 @@ export const SubTitle = styled.p`
 `;
 
 export const Text = styled.p`
-  font-size: 17px;
   font-weight: 400;
   margin: 0;
-  margin-top: 1em;
+  color: ${props=>props.color};
+  font-size: ${props=>props.fontSize || "17px"};
+  margin-top: ${props=>props.marginTop || "1em"};
 `;
 
 export const InputWrapper = styled.div`
@@ -103,7 +104,7 @@ export const Input = styled.input`
   border: ${props=>{
     return !props.isActivated ?
     "solid grey 1px" : props.isActivated && !props.isValid ?
-    `solid 1px ${props.errorColor}`: "solid 1px green"}};
+    "solid 1px #a82b28" : "solid 1px green"}};
   border-radius: 2px;
 
    &:focus{
@@ -140,9 +141,9 @@ export const Modal = styled.div`
 `;
 
 export const ErrorMessage = styled.div`
-  font-size: 14px;
   text-align: left;
-  color: ${props=>props.errorColor};
+  color: #a82b28;
+  font-size: ${props=>props.fontSize || "14px"};
 `;
 
 export const CheckboxWrapper = styled.label`
