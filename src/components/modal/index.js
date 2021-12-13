@@ -17,9 +17,9 @@ Modal.Text = function ModalText({children, ...restProps}){
 }
 
 Modal.Icon = function ModalIcon({children, ...restProps}){
-  return <Icon {...restProps}>{children}</Icon>
+  return <Icon {...restProps} />
 }
 
 Modal.Image = function ModalImage({children, ...restProps}){
-  return <Image {...restProps}>{children}</Image>
+  return <Image {...restProps} />
 }
