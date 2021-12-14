@@ -1,4 +1,4 @@
-import {Registration} from "./../components"
+import {Registration, RegForm} from "./../components"
 import * as ROUTES from "./../constants/routes"
 import * as REGEX from './../constants/regex';
 import {inputContext} from  "./../contexts/inputContext"
@@ -19,14 +19,14 @@ export default function RegFormContainer(){
 
 
   return(
-    <Registration>
+    <RegForm>
       <Registration.Title>Create a password to start your membership</Registration.Title>
-      <Registration.SubTitle style={{order:-1}}>
-        step <span style={{fontWeight: "bold"}}>1</span> of <span style={{fontWeight: "bold"}}>3</span>
+      <Registration.SubTitle>
+        step <span>1</span> of <span>3</span>
       </Registration.SubTitle>
-      <Registration.Text>Just a few more steps and you're done!
+      <Registration.Text lineHeight="1.7">Just a few more steps and you're done!
       We hate paperwork, too.</Registration.Text>
-      <Registration.Input
+      <RegForm.Input
         placeholder="Email address"
         name="email"
         value={email}
@@ -42,7 +42,7 @@ export default function RegFormContainer(){
           dispatch({type:"blurred", payload: {emailIsActive: true}})}
       />
 
-      <Registration.Input
+      <RegForm.Input
         placeholder="Add a password"
         name="password"
         value={password}
@@ -57,8 +57,8 @@ export default function RegFormContainer(){
         )}}
         onBlur={()=>dispatch({type:"blurred", payload: {passwordIsActive: true}})}
       />
-      <Registration.Checkbox>Please do not email me Netflix special offers</Registration.Checkbox>
+      <RegForm.Checkbox>Please do not email me Netflix special offers</RegForm.Checkbox>
 
-      <Registration.Link to={ROUTES.SIGN_UP_HOME}>Next</Registration.Link>
-    </Registration>
+      <Registration.ButtonLink to={ROUTES.SIGN_UP_HOME}>Next</Registration.ButtonLink>
+    </RegForm>
 )}
