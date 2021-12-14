@@ -6,22 +6,22 @@ export default function RegStepContainer(){
   const checkList = ["No commitments, cancel anytime.", "Everything on Netflix for one low price.",
     "No ads and no extra fees. Ever."]
   return(
-    <Registration small={true}>
+    <Registration marginTop="120px" textAlign="center">
       <Registration.Title>Choose your plan.</Registration.Title>
-      <Registration.SubTitle style={{textAlign: "center"}}>
-        step <span style={{fontWeight: "bold"}}>2</span> of <span style={{fontWeight: "bold"}}>3</span>
+      <Registration.SubTitle textAlign="center">
+        step <span>2</span> of <span>3</span>
       </Registration.SubTitle>
-      <Registration.Icon  style={{width:"45px"}}  src="./../../images/icons/check-mark-circle-line.svg"/>
-      <Registration.List>
+      <Registration.Icon  style width="50px"  src="./../../images/icons/check-mark-circle-line.svg"/>
+      <Registration.List padding="0 1.5em">
       {checkList.map(item => {
         return(
           <Registration.ListItem>
-            <Registration.Icon src="./../../images/icons/check-mark-line.svg"/>
-            <Registration.Text style={{marginTop: 0}}>{item}</Registration.Text>
+            <Registration.ListIcon src="./../../images/icons/check-mark-line.svg"/>
+            <Registration.ListText>{item}</Registration.ListText>
           </Registration.ListItem>
         )
       })}
       </Registration.List>
-      <Registration.Link to={`./../${ROUTES.PLAN_FORM}`}>Next</Registration.Link>
+      <Registration.ButtonLink to={`./../${ROUTES.PLAN_FORM}`}>Next</Registration.ButtonLink>
     </Registration>
   )}
