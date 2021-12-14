@@ -7,42 +7,39 @@ COME BACK TO THIS
 // refactor out long inline styles declarations
 
 export default function PaymentStepContainer(){
-  const filterYellow = "invert(77%) sepia(61%) saturate(423%) hue-rotate(352deg) brightness(92%) contrast(95%)"
+
   return(
-    <Registration maxWidth= "500px" style={{textAlign: "center", justifyContent: "center"}}>
+    <Registration maxWidth= "500px" marginTop="40px" textAlign="center">
       <Registration.Title>Set your payment</Registration.Title>
-      <Registration.SubTitle>
-        step <span style={{fontWeight: "bold"}}>3</span> of <span style={{fontWeight: "bold"}}>3</span>
-      </Registration.SubTitle>
-      <Registration.Icon  style={{width:"45px"}}  src="./../../images/icons/lock.png"/>
-      <Registration.Text style={{marginBottom: 0}}>
+      <Registration.SubTitle> step <span>3</span> of <span>3</span></Registration.SubTitle>
+      <Registration.Icon width="50px"  src="./../../images/icons/lock.png"/>
+      <Registration.Text>
         Your membership starts as<br/> soon as you set up<br/> payment.
       </Registration.Text >
-      <Registration.Text style={{fontWeight: "bold", margin:"0", fontSize: "18px"}}>
+      <Registration.Text fontWeight="bold" fontSize="18px">
         No commitments.<br />Cancel online anytime.
       </Registration.Text>
       <Registration.IconWrapper
         style={{width: "100%", justifyContent: "right", alignItems: "end", marginTop: "20px", padding: "0"}}>
-        <Registration.Text style={{fontSize: "13px", marginRight: "5px", marginBottom:"0"}}>
+        <Registration.Text fontSize="13px">
           Secure Server
         </Registration.Text>
-        <Registration.IconSecondary src="./../../images/icons/lock.svg"
-          style={{margin: "2.5px", width: "12px", height: "auto", border: "none", filter: filterYellow}}/>
+        <Registration.SecureIcon src="./../../images/icons/lock.svg" />
       </Registration.IconWrapper>
-      <Registration.LinkSecondary to={`./../../${ROUTES.PAYMENT_FORM}`}>
+      <Registration.CardsPaymentLink to={`./../../${ROUTES.PAYMENT_FORM}`}>
         <div style={{display: "flex"}}>
-          <Registration.Text style={{margin: "0", fontSize: "17px", marginRight: "1em"}}>
+          <Registration.Text marginTop="0" marginRight="1em">
             Credit or Debit Card
           </Registration.Text>
           <Registration.IconWrapper>
-            <Registration.IconSecondary src="./../../images/icons/visa-card.png" style={{padding: "6px 2.5px"}}/>
-            <Registration.IconSecondary src="./../../images/icons/mastercard_icon.png"/>
-            <Registration.IconSecondary src="./../../images/icons/icon_verve.png"/>
+            <Registration.CardsIcon src="./../../images/icons/visa-card.png" padding="6px 2.5px"/>
+            <Registration.CardsIcon src="./../../images/icons/mastercard_icon.png"/>
+            <Registration.CardsIcon src="./../../images/icons/icon_verve.png"/>
           </Registration.IconWrapper>
         </div>
-        <Registration.IconSecondary
+        <Registration.CardsIcon
           src="./../../images/icons/netflix-chevron-right.png"
           style={{height: "19px", width: "19px", border: "none", margin:0}}/>
-      </Registration.LinkSecondary>
+      </Registration.CardsPaymentLink>
     </Registration>
   )}
