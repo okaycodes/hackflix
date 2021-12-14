@@ -1,4 +1,4 @@
-import {Registration, Modal, PlanForm} from "./../components"
+import {Registration, Modal, PlanForm, RegForm} from "./../components"
 import * as REGEX from './../constants/regex';
 import {inputContext} from  "./../contexts/inputContext"
 import {useContext, useState} from "react"
@@ -18,7 +18,6 @@ export default function PaymentFormContainer(){
   const cardNumberIsValid = REGEX.CARD_NUMBER_VALIDATION.test(cardNumber)
   const expirationDateIsValid = REGEX.DATE_VALIDATION.test(expirationDate)
   const securityCodeIsValid = REGEX.CVV_VALIDATION.test(securityCode)
-  const filterGrey = "invert(85%) sepia(21%) saturate(17%) hue-rotate(119deg) brightness(93%) contrast(95%)"
 
   const [cvvDisplay, setCVVDisplay] = useState("none")
 
@@ -28,18 +27,18 @@ export default function PaymentFormContainer(){
 
   return(
     <>
-      <Registration style={{alignItems: "start"}}>
+      <RegForm>
         <Registration.Title>Set up your credit or debit card</Registration.Title>
         <Registration.SubTitle>
-          step <span style={{fontWeight: "bold"}}>3</span> of <span style={{fontWeight: "bold"}}>3</span>
+          step <span>3</span> of <span>3</span>
         </Registration.SubTitle>
         <Registration.IconWrapper>
-          <Registration.IconSecondary src="./../../images/icons/visa-card.png" style={{padding: "6px 2.5px"}}/>
-          <Registration.IconSecondary src="./../../images/icons/mastercard_icon.png"/>
-          <Registration.IconSecondary src="./../../images/icons/icon_verve.png"/>
+          <Registration.CardsIcon src="./../../images/icons/visa-card.png" padding="6px 2.5px"/>
+          <Registration.CardsIcon src="./../../images/icons/mastercard_icon.png"/>
+          <Registration.CardsIcon src="./../../images/icons/icon_verve.png"/>
         </Registration.IconWrapper>
 
-        <Registration.Input
+        <RegForm.Input
           placeholder="First name"
           name="firstName"
           value={firstName}
@@ -52,7 +51,7 @@ export default function PaymentFormContainer(){
           onBlur={(event)=>dispatch({type:"blurred", payload: {firstNameIsActive: true}})}
         />
 
-        <Registration.Input
+        <RegForm.Input
           placeholder="Last name"
           name="lastName"
           value={lastName}
@@ -63,7 +62,7 @@ export default function PaymentFormContainer(){
           onBlur={(event)=> dispatch({type:"blurred", payload: {lastNameIsActive: true}})}
         />
 
-        <Registration.Input
+        <RegForm.Input
           placeholder="Card number"
           name="cardNumber"
           value={cardNumber}
@@ -77,7 +76,7 @@ export default function PaymentFormContainer(){
           onBlur={(event)=>dispatch({type:"blurred", payload: {cardNumberIsActive: true}})}
         />
 
-        <Registration.Input
+        <RegForm.Input
           placeholder="Expiration date (MM/YY)"
           name="expirationDate"
           value={expirationDate}
@@ -91,7 +90,7 @@ export default function PaymentFormContainer(){
           onBlur={(event)=>dispatch({type:"blurred", payload: {expirationDateIsActive: true}})}
         />
 
-        <Registration.Input
+        <RegForm.Input
           placeholder="Security code (CVV)"
           name="securityCode"
           value={securityCode}
@@ -104,25 +103,21 @@ export default function PaymentFormContainer(){
           onChange={(event)=>dispatch({type: "input", payload: {securityCode: event.target.value}})}
           onBlur={(event)=>dispatch({type: "blurred", payload: {securityCodeIsActive: true}})}
         >
-          <Registration.Icon
-            style={{width:"36px", filter: filterGrey, opacity: .6}}
+          <RegForm.Icon
             src="./../../images/icons/cvv.svg"
             onClick={handleClick}/>
-        </Registration.Input>
+        </RegForm.Input>
 
-        <Registration.Input
-        placeholder="plan goes here"></Registration.Input>
-
-        <Registration.Text fontSize="13.2px" color='grey'>Your payments will be processed
-          internationally. Additional bank fees may apply.</Registration.Text>
-
-        <Registration.Text align="left" fontSize="13.2px" color='grey' marginTop="4em">
+        <PlanForm.Terms>Your payments will be processed
+          internationally. Additional bank fees may apply.</PlanForm.Terms>
+        <PlanForm.Terms>
          By checking the checkbox below, you agree to our <PlanForm.Link to="#">Terms of Use, Privacy
          Statement</PlanForm.Link>, and that you are over 18. Netflix will automatically continue
          your membership and charge the membership fee (currently ₦3,600/month)
          to your payment method until you cancel. You may cancel at any time
-         to avoid future charges.</Registration.Text>
-        <Registration.Checkbox
+         to avoid future charges.</PlanForm.Terms>
+
+        <RegForm.Checkbox
           isActive={checkboxIsActive}
           isChecked={checkboxIsChecked}
           errorMessage="You must agree to the terms and conditions to continue."
@@ -131,9 +126,9 @@ export default function PaymentFormContainer(){
             dispatch({type: 'check'})}
           }>
           I agree
-        </Registration.Checkbox>
-        <Registration.Link to="#" marginTop="2em" fontSize="23px">Start Membership</Registration.Link>
-      </Registration>
+        </RegForm.Checkbox>
+        <Registration.ButtonLink to="#" marginTop="2em" fontSize="23px">Start Membership</Registration.ButtonLink>
+      </RegForm>
       <Modal display={cvvDisplay}>
         <Modal.Header>
           <Modal.Icon src="./../../images/icons/close-slim.png" onClick={handleClick}/>
