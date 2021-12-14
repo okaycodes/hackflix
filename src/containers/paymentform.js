@@ -108,6 +108,14 @@ export default function PaymentFormContainer(){
             onClick={handleClick}/>
         </RegForm.Input>
 
+        <RegForm.ChangePlan>
+          <div>
+            <RegForm.Text fontWeight="bold"> ₦4,400/month</RegForm.Text>
+            <RegForm.Text color="#707070">Premium Plan</RegForm.Text>
+          </div>
+          <RegForm.Link to="#">Change</RegForm.Link>
+        </RegForm.ChangePlan>
+
         <PlanForm.Terms>Your payments will be processed
           internationally. Additional bank fees may apply.</PlanForm.Terms>
         <PlanForm.Terms>
