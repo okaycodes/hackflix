@@ -170,15 +170,15 @@ export const Link = styled(ReactRouterLink)`
 export const ButtonLink = styled(ReactRouterLink)`
   display: block;
   width: 100%;
-  max-width: 470px;
-  margin: 20px auto 150px;
+  max-width: 440px;
+  margin: 20px auto 170px;
   color: white;
   background-color: #e50914;
-  font-size: 16px;
+  font-size: 24px;
   text-decoration: none;
   text-align: center;
   border-radius: 3px;
-  padding: 1em;
+  padding: .7em;
 
   &:hover, &:focus{
     background: #f40612;
