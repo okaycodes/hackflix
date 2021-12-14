@@ -1,5 +1,5 @@
 import {Container, Inner, Input, InputWrapper, Label, Placeholder, InputIcon, Icon, ErrorMessage,
-        Checkbox, CheckboxWrapper} from "./styles/regform"
+        Checkbox, CheckboxWrapper, ChangePlan, Text, Link} from "./styles/regform"
 
 
 export default function RegForm({children, ...restProps}){
@@ -42,3 +42,15 @@ RegForm.Checkbox = function RegFormCheckbox({children, ...restProps}){
       </ErrorMessage>
     </>
 )}
+
+RegForm.Text = function RegFormText({children, ...restProps}){
+  return <Text {...restProps}>{children}</Text>
+}
+
+RegForm.Link = function RegFormLink({children, ...restProps}){
+  return <Link {...restProps}>{children}</Link>
+}
+
+RegForm.ChangePlan = function RegFormChangePlan({children, ...restProps}){
+  return <ChangePlan {...restProps}>{children}</ChangePlan>
+}

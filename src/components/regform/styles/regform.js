@@ -20,48 +20,23 @@ export const Inner = styled.div`
   max-width: 440px;
 `;
 
-export const Image = styled.img`
-  margin-bottom: 1em;
-  display: block;
-  width: 100%;
-  order: -2;
-`;
-
-export const IconSecondary = styled.img`
-  display: inline-block;
-  margin: 0;
-  margin-right: .4em;
-  width: 40px;
-  height: 25px;
-  border: solid .2px lightgrey;
-  border-radius: 3px;
-`;
-
-export const IconWrapper = styled.div`
-  display: flex;
-`;
-
-export const Title = styled.h1`
-  font-size: 32px;
-  font-weight: 600;
-  margin: 0;
-`;
-
-export const SubTitle = styled.p`
-  width: 100%;
-  font-size: 13px;
-  text-transform: uppercase;
-  order: -1;
-`;
-
 export const Text = styled.p`
-  font-weight: 400;
-  line-height: ${props=>props.lineHeight}
   margin: 0;
+  font-size: 17px;
   color: ${props=>props.color};
-  font-size: ${props=>props.fontSize || "17px"};
-  margin-top: ${props=>props.marginTop || "1em"};
+  font-weight: ${props=>props.fontWeight};
 `;
+
+export const Link = styled(ReactRouterLink)`
+  text-decoration: none;
+  color: #0f6bdb;
+  font-weight: 600;
+
+  &:hover, &:focus{
+    text-decoration: underline;
+  }
+`;
+
 
 export const InputWrapper = styled.div`
   width: 100%;
@@ -202,20 +177,13 @@ export const Checkbox = styled.input`
   }
 `;
 
-
-export const Link = styled(ReactRouterLink)`
+export const ChangePlan = styled.div`
   width: 100%;
-  color: white;
-  background-color: #e50914;
-  padding: .8em;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-  border-radius: 3px;
-  font-size: ${props=>props.fontSize || "16px"};
-  margin-top: ${props=>props.marginTop || "20px"};
-
-  &:hover, &:focus{
-    background: #f40612;
-  }
+  display: flex;
+  background: #f7f7f7;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  margin-top: 1em;
+  border-radius: 7px;
 `;
