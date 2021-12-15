@@ -131,7 +131,7 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
   display: flex;
-  margin-top: 1.5em;
+  margin-top: ${props=>props.marginTop || "1.5em"};
 `;
 
 export const ListText = styled.p`

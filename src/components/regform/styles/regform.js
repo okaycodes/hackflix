@@ -99,6 +99,7 @@ export const InputIcon = styled.span`
   position: absolute;
   top: 13px;
   right: 10px;
+  cursor: pointer;
 `;
 // inputIcon and Icon is used only in the CVV field of the paymentform
 // inputIcon act as a wrapper for regformIcon which is rendered as its child elemnent
