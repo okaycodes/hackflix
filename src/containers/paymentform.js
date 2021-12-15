@@ -1,5 +1,6 @@
 import {Registration, Modal, PlanForm, RegForm} from "./../components"
 import * as REGEX from './../constants/regex';
+import * as ROUTES from './../constants/routes';
 import {inputContext} from  "./../contexts/inputContext"
 import {useContext, useState} from "react"
 
@@ -15,6 +16,7 @@ export default function PaymentFormContainer(){
   const {expirationDate, expirationDateIsActive} = state
   const {securityCode, securityCodeIsActive} = state
   const {checkboxIsChecked, checkboxIsActive} = state
+  const {planName, planPrice} = state
   const cardNumberIsValid = REGEX.CARD_NUMBER_VALIDATION.test(cardNumber)
   const expirationDateIsValid = REGEX.DATE_VALIDATION.test(expirationDate)
   const securityCodeIsValid = REGEX.CVV_VALIDATION.test(securityCode)
@@ -110,10 +112,10 @@ export default function PaymentFormContainer(){
 
         <RegForm.ChangePlan>
           <div>
-            <RegForm.Text fontWeight="bold"> ₦4,400/month</RegForm.Text>
-            <RegForm.Text color="#707070">Premium Plan</RegForm.Text>
+            <RegForm.Text fontWeight="bold">{planPrice}</RegForm.Text>
+            <RegForm.Text color="#707070">{planName} Plan</RegForm.Text>
           </div>
-          <RegForm.Link to="#">Change</RegForm.Link>
+          <RegForm.Link to={`./../../${ROUTES.PLAN_FORM}`}>Change</RegForm.Link>
         </RegForm.ChangePlan>
 
         <PlanForm.Terms>Your payments will be processed
@@ -121,7 +123,7 @@ export default function PaymentFormContainer(){
         <PlanForm.Terms>
          By checking the checkbox below, you agree to our <PlanForm.Link to="#">Terms of Use, Privacy
          Statement</PlanForm.Link>, and that you are over 18. Netflix will automatically continue
-         your membership and charge the membership fee (currently ₦3,600/month)
+         your membership and charge the membership fee (currently {planPrice})
          to your payment method until you cancel. You may cancel at any time
          to avoid future charges.</PlanForm.Terms>
 
