@@ -1,4 +1,4 @@
-import {Header, Footer} from "./../components"
+import {SignupHeader, Footer} from "./../components"
 import {Routes, Route} from 'react-router-dom'
 import RegistrationContainer from "./../containers/registration"
 import RegFormContainer from "./../containers/regform"
@@ -21,13 +21,10 @@ COME BACK TO THIS
 export default function SignUp({children}){
   return (
     <>
-      <Header bg={false}>
-        <Header.Frame backgroundColor="white" padding="50px 30px" margin="0 auto" >
-          <Header.Logo height="45px" width="167px"
-            src="./../../images/misc/logo.svg" alt="Netflix"/>
-          <Header.ButtonLink btn_secondary="true"/>
-        </Header.Frame>
-      </Header>
+      <SignupHeader>
+          <SignupHeader.Logo src="./../../images/misc/logo.svg" alt="Netflix"/>
+          <SignupHeader.ButtonLink btn_secondary="true"/>
+      </SignupHeader>
 
     <Routes>
       <Route exact path="/" element={<RegStepContainer />} />
