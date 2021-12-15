@@ -1,15 +1,16 @@
-import {PlanForm} from "./../components"
-import {useState} from "react"
+import {PlanForm, Registration} from "./../components"
+import {useState, useContext} from "react"
 import plansData from '../fixtures/plans.json';
-import {Registration} from "./../components"
 import * as ROUTES from "./../constants/routes"
+import {inputContext} from "./../contexts/inputContext"
 
 
 
 export default function Planform(){
   const checkList = ["Watch all you want. Ad-free.", "Recommendations just for you.",
     "Change or cancel your plan anytime."]
-  const [activeIndex, setActiveIndex] = useState("")
+  const {dispatch} = useContext(inputContext)
+  const [activeIndex, setActiveIndex] = useState(3)
   const handleClick=(index)=>{
     setActiveIndex(index)
   }
@@ -18,15 +19,12 @@ export default function Planform(){
     <PlanForm>
       <PlanForm.StepContainer>
         <Registration.Title>Choose the plan that's right for you.</Registration.Title>
-        <Registration.SubTitle style={{textAlign: "left"}}>
-          step <span style={{fontWeight: "bold"}}>2</span> of <span style={{fontWeight: "bold"}}>3</span>
-        </Registration.SubTitle>
         <Registration.List>
         {checkList.map(item => {
           return(
-            <Registration.ListItem style={{marginTop: ".5em"}}>
-              <Registration.Icon src="./../../images/icons/check-mark-line.svg"/>
-              <Registration.Text style={{marginTop:0}}>{item}</Registration.Text>
+            <Registration.ListItem marginTop=".5em">
+              <Registration.ListIcon src="./../../images/icons/check-mark-line.svg"/>
+              <Registration.ListText>{item}</Registration.ListText>
             </Registration.ListItem>
           )
         })}
@@ -36,40 +34,63 @@ export default function Planform(){
         <PlanForm.Header>
           <PlanForm.Title></PlanForm.Title>
           {plansData.map((item, index)=>
-            <PlanForm.Title onClick={()=>handleClick(index)} isActive={activeIndex===index}>
+            <PlanForm.Title
+              isActive={activeIndex===index}
+              onClick={()=>{
+                handleClick(index)
+                dispatch({type:"savePlan", payload:{name:item.title, price:item.price}})
+            }}>
                 {item.title}
             </PlanForm.Title>)}
         </PlanForm.Header>
 
         <PlanForm.Row>
-          <PlanForm.Item>Monthly Price</PlanForm.Item>
+          <PlanForm.Item color="black">Monthly Price</PlanForm.Item>
           {plansData.map((item, index)=>
-            <PlanForm.Item onClick={()=>handleClick(index)} isActive={activeIndex===index}>
+            <PlanForm.Item
+              isActive={activeIndex===index}
+              onClick={()=>{
+                handleClick(index)
+                dispatch({type:"savePlan", payload:{name:item.title, price:item.price}})
+            }}>
               {item.price}
             </PlanForm.Item>)}
         </PlanForm.Row>
 
         <PlanForm.Row>
-          <PlanForm.Item>Video quality</PlanForm.Item>
+          <PlanForm.Item color="black">Video quality</PlanForm.Item>
           {plansData.map((item, index)=>
-            <PlanForm.Item onClick={()=>handleClick(index)} isActive={activeIndex===index}>
+            <PlanForm.Item
+              isActive={activeIndex===index}
+              onClick={()=>{
+                handleClick(index)
+                dispatch({type:"savePlan", payload:{name:item.title, price:item.price}})
+            }}>
               {item.quality}
             </PlanForm.Item>)}
         </PlanForm.Row>
 
         <PlanForm.Row>
-          <PlanForm.Item>Resolution</PlanForm.Item>
+          <PlanForm.Item color="black">Resolution</PlanForm.Item>
           {plansData.map((item, index)=>
-            <PlanForm.Item onClick={()=>handleClick(index)} isActive={activeIndex===index}>
+            <PlanForm.Item
+              isActive={activeIndex===index}
+              onClick={()=>{
+                handleClick(index)
+                dispatch({type:"savePlan", payload:{name:item.title, price:item.price}})
+            }}>
               {item.resolution}
             </PlanForm.Item>)}
         </PlanForm.Row>
 
         <PlanForm.Row>
-          <PlanForm.Item>Devices you use to watch</PlanForm.Item>
+          <PlanForm.Item color="black">Devices you use to watch</PlanForm.Item>
           {plansData.map((item, index)=>{
             return (
-              <PlanForm.IconsContainer onClick={()=>handleClick(index)} >
+              <PlanForm.IconsContainer
+                onClick={()=>{handleClick(index)
+                dispatch({type:"savePlan", payload:{name:item.title, price:item.price}})
+              }}>
                 {item.devices.map(image=>{
                   return (
                     <PlanForm.IconUnit>

@@ -16,6 +16,7 @@ function InputContextProvider({children}){
     expirationDate: "", expirationDateIsActive: false,
     securityCode: "", securityCodeIsActive: false,
     checkboxIsChecked: false, checkboxIsActive: false,
+    planName: "", planPrice:""
   }
   let [state, dispatch] = useReducer((state, action)=>{
     switch(action.type){
@@ -28,12 +29,15 @@ function InputContextProvider({children}){
       case 'check':{
         return {...state, checkboxIsActive:true, checkboxIsChecked: !state.checkboxIsChecked}
       }
+      case 'savePlan':{
+        return {...state, planName: action.payload.name, planPrice: action.payload.price }
+      }
       default:{
         return state
       }
     }
   }, initialState)
-
+  
   return (
     <inputContext.Provider value={{state, dispatch}}>
       {children}
