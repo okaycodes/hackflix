@@ -3,7 +3,7 @@ export {default as Header} from "./header";
 export {default as SignupHeader} from "./signupheader";
 export {default as Footer} from "./footer";
 export {default as Feature} from "./feature"
-export {default as Form} from "./form"
+export {default as SignInForm} from "./signinform"
 export {default as Registration} from "./registration"
 export {default as PlanForm} from "./planform"
 export {default as RegForm} from "./regform"
