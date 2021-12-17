@@ -7,6 +7,7 @@ COME BACK TO THIS handleclick
 =============================*/
 
 function InputContextProvider({children}){
+  const initialSignInPassword = "HHQEyPJ6krf3Lh6"
   let initialState = {
     email: "", emailIsActive: false,
     password: "", passwordIsActive: false,
@@ -16,7 +17,8 @@ function InputContextProvider({children}){
     expirationDate: "", expirationDateIsActive: false,
     securityCode: "", securityCodeIsActive: false,
     checkboxIsChecked: false, checkboxIsActive: false,
-    planName: "", planPrice:""
+    planName: "", planPrice:"",
+    signInPassword: initialSignInPassword, signInPasswordIsActive:false
   }
   let [state, dispatch] = useReducer((state, action)=>{
     switch(action.type){
@@ -32,12 +34,15 @@ function InputContextProvider({children}){
       case 'savePlan':{
         return {...state, planName: action.payload.name, planPrice: action.payload.price }
       }
+      case 'emptyPassword':{
+        return {...state, password: initialSignInPassword}
+      }
       default:{
         return state
       }
     }
   }, initialState)
-  
+
   return (
     <inputContext.Provider value={{state, dispatch}}>
       {children}
