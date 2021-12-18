@@ -16,7 +16,6 @@ function InputContextProvider({children}){
     cardNumber: "", cardNumberIsActive: false,
     expirationDate: "", expirationDateIsActive: false,
     securityCode: "", securityCodeIsActive: false,
-    checkboxIsChecked: false, checkboxIsActive: false,
     planName: "", planPrice:"",
     signInPassword: initialSignInPassword, signInPasswordIsActive:false
   }
@@ -27,9 +26,6 @@ function InputContextProvider({children}){
       }
       case "blurred":{
         return {...state, ...action.payload}
-      }
-      case 'check':{
-        return {...state, checkboxIsActive:true, checkboxIsChecked: !state.checkboxIsChecked}
       }
       case 'savePlan':{
         return {...state, planName: action.payload.name, planPrice: action.payload.price }
