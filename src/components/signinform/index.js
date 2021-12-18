@@ -7,11 +7,15 @@ import {
   Label,
   Input,
   Placeholder,
+  CheckboxWrapper,
   Checkbox,
   ErrorMessage,
   Link,
+  ButtonLink,
+  Icon,
   Text,
-  Submit} from "./styles/signinform"
+  Submit,
+  FlexBox} from "./styles/signinform"
 
 export default function SignInForm({children, ...restProps}){
   return <Container {...restProps}>{children}</Container>
@@ -46,21 +50,25 @@ SignInForm.Input = function SignInForm({children,  animated=true, ...restProps})
   )}
 
   SignInForm.Checkbox = function SignInFormCheckbox({children, ...restProps}){
-    const {isActive, isChecked, errorMessage, fontSize} = {...restProps}
     return(
       <>
-        <CheckboxWrapper> {children}
-          <Checkbox type="checkbox" {...restProps} />
+        <CheckboxWrapper {...restProps}>{children}
+          <Checkbox{...restProps}/>
           <span></span>
         </CheckboxWrapper>
-        <ErrorMessage fontSize={fontSize}>
-          {isActive && !isChecked && errorMessage}
-        </ErrorMessage>
       </>
   )}
 
 SignInForm.Link = function SignInFormLink({children, ...restProps}){
   return <Link {...restProps}>{children}</Link>
+}
+
+SignInForm.ButtonLink = function SignInFormButtonLink({children, ...restProps}){
+  return <ButtonLink {...restProps}>{children}</ButtonLink>
+}
+
+SignInForm.Icon = function SignInFormIcon({...restProps}){
+  return <Icon {...restProps} />
 }
 
 SignInForm.Text = function SignInFormText({children, ...restProps}){
@@ -69,4 +77,8 @@ SignInForm.Text = function SignInFormText({children, ...restProps}){
 
 SignInForm.Submit = function SignInFormSubmit({children, ...restProps}){
   return <Submit {...restProps}>{children}</Submit>
+}
+
+SignInForm.FlexBox = function SignInFormFlexBox({children, ...restProps}){
+  return <FlexBox {...restProps}>{children}</FlexBox>
 }
