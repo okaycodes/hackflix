@@ -42,13 +42,13 @@ export const Label = styled.label`
 `;
 
 export const Placeholder = styled.span`
-  font-size: ${props => props.isEmpty ? "16px" : "12px"};
-  font-weight: ${props => !props.isEmpty && "600"};
   position: absolute;
   left: 20px;
-  top: ${props=> props.isEmpty ? "20px":"4px"};
   color: grey;
   transition: all .15s ease-in-out;
+  top: ${props=> props.isEmpty ? "20px":"4px"};
+  font-weight: ${props => !props.isEmpty && "600"};
+  font-size: ${props => props.isEmpty ? "16px" : "12px"};
 `;
 /* props is used to move the placeholder top when the field is not empty */
 
