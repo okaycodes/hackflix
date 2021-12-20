@@ -12,14 +12,12 @@ export const Container = styled.section`
   margin: auto;
   padding: 30px 68px 40px;
   margin-bottom: 100px;
-  border: solid magenta;
 
 
   @media (max-width: 740px) {
     max-width: 100%;
     padding: 0px 40px 0px;
     min-height: auto;
-
   }
 `;
 // rgba is used to define background-color because that way the opacity is not
@@ -57,10 +55,10 @@ export const Label = styled.label`
 export const Placeholder = styled.span`
   position: absolute;
   left: 10px;
-  color: grey;
   transition: all .15s ease-in-out;
   top: ${props=> props.isEmpty ? "16px":"4px"};
   font-size: ${props => props.isEmpty ? "16px" : "11px"};
+  color: ${props=>(props.initialValue && !props.isActivated) ? "black": "grey"};
 `;
 
 export const Input = styled.input`
@@ -78,6 +76,7 @@ export const Input = styled.input`
 
    &:focus{
      outline: none;
+     background-color: #4d4d4d;
    }
 
   &:focus +  ${Placeholder}{
@@ -143,6 +142,10 @@ export const Checkbox = styled.input`
 `;
 
 export const ErrorMessage = styled.p`
+  text-align: left;
+  margin-left: .4em;
+  color: orange;
+  font-size: 13px;
 `;
 
 export const Link = styled(ReactRouterLink)`

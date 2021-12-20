@@ -26,14 +26,12 @@ a flash of unneeded behavior. In this case a flash of grey background anytime it
 is clicked before the required white.
 */
 
-
-  // console.log(checkboxIsActive, checkboxIsChecked)
-
-
   const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
   const emailIsEmpty = email.length < 1
   const passwordIsValid = signInPassword.length > 6
   const passwordIsEmpty = signInPassword.length < 1
+  // signInPassword is added to context, destructured from state and used here
+  // because this passwordfield unlike others take an initial value
 
   return(
     <Header dontShowOnSmallViewPort>
@@ -51,30 +49,26 @@ is clicked before the required white.
             isEmpty = {emailIsEmpty}
             isActivated={emailIsActive}
             minLength={5}
-            errorMessage1 = "Email is required!"
-            errorMessage2 = "Please enter a valid email address"
-            onChange={(event) =>
-              dispatch({type: "input", payload: {email: event.target.value}})}
-            onBlur={(event)=> email.length >= 1 &&
-              dispatch({type:"blurred", payload: {emailIsActive: true}})}
+            errorMessage1 = "Please enter a valid email address or phone number"
+            onChange={(event)=>dispatch({type: "input", payload: {email: event.target.value}})}
+            onBlur={()=>dispatch({type:"blurred", payload: {emailIsActive: true}})}
           />
           <SignInForm.Input
             type="password"
-            placeholder="Add a password"
-            name="password"
+            placeholder="Password"
+            name="signInPassword"
             value={signInPassword}
             isValid ={passwordIsValid}
             isEmpty={passwordIsEmpty}
             isActivated={signInPasswordIsActive}
-            minLength={1}
-            errorMessage1 = "Password is required!"
-            errorMessage2 = "Password must be between 6 and 60 characters"
+            minLength={4}
+            initialValue={true}
+            errorMessage1 = "Password must be between 4 and 60 characters"
             onChange={(event) =>{dispatch(
-              {type: "input", payload: {password: event.target.value} }
+              {type: "input", payload:{signInPassword: event.target.value}}
             )}}
-            onBlur={()=> passwordIsEmpty ?
-              dispatch({type: "emptyPassword"}) :
-              dispatch({type:"blurred", payload: {passwordIsActive: true}})}
+            onBlur={()=>
+              dispatch({type:"blurred", payload: {signInPasswordIsActive: true}})}
           />
           <SignInForm.ButtonLink to="#">Sign In</SignInForm.ButtonLink>
 
@@ -84,6 +78,7 @@ is clicked before the required white.
               value={checkboxIsChecked}
               onBlur={handleBlur}
               onChange={handleChange}
+              defaultChecked={checkboxIsChecked}
               onMouseEnter={()=>setCheckboxIsHovered(true)}
               onMouseLeave={()=>setCheckboxIsHovered(false)}
               isActive={checkboxIsActive}
