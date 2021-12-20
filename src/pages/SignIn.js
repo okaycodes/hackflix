@@ -1,5 +1,5 @@
 import {useContext, useState} from "react"
-import {Header, SignInForm} from "./../components"
+import {Header, SignInForm, Footer} from "./../components"
 import {inputContext} from "./../contexts/inputContext"
 import * as REGEX from './../constants/regex';
 import * as ROUTES from './../constants/routes';
@@ -70,7 +70,11 @@ is clicked before the required white.
             onBlur={()=>
               dispatch({type:"blurred", payload: {signInPasswordIsActive: true}})}
           />
-          <SignInForm.ButtonLink to="#">Sign In</SignInForm.ButtonLink>
+          <SignInForm.ButtonLink
+            to="#"
+            disabled={!passwordIsValid && !emailIsValid}>
+            Sign In
+          </SignInForm.ButtonLink>
 
           <SignInForm.FlexBox justifyContent="space-between">
             <SignInForm.Checkbox
@@ -104,6 +108,17 @@ is clicked before the required white.
           </SignInForm.Text>
         </SignInForm.Base>
       </SignInForm>
+      <Footer backgroundColor="rgba(0,0,0, 0.7)" padding="2em 3em">
+        <Footer.Title>Questions? Contact Us</Footer.Title>
+        <Footer.Row>
+          <Footer.Link href="#">FAQs</Footer.Link>
+          <Footer.Link href="#">Help Center</Footer.Link>
+          <Footer.Link href="#">Terms of Use</Footer.Link>
+          <Footer.Link href="#">Privacy</Footer.Link>
+          <Footer.Link href="#">Cookie Preferences</Footer.Link>
+          <Footer.Link href="#">Corporate Information</Footer.Link>
+        </Footer.Row>
+      </Footer>
     </Header>
   )
 }

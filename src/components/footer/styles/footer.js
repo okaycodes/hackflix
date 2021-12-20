@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 
 export const Container = styled.div`
-  background-color: ${props=>props.backgroundColor && props.backgroundColor};
+  background-color: ${props=>props.backgroundColor};
   /* position: absolute;
   width: 100%;
   bottom: 0; */
