@@ -35,12 +35,18 @@ SignInForm.SubTitle = function SignInFormSubTitle({children, ...restProps}){
 
 SignInForm.Input = function SignInForm({children,  animated=true, ...restProps}){
   const {value, isEmpty, isValid, isActivated, placeholder,
-        errorMessage1, errorMessage2, minLength} = {...restProps}
+        errorMessage1, errorMessage2, minLength, initialValue} = {...restProps}
   return(
     <InputWrapper {...restProps}>
       <Label>
-        <Input {...restProps} placeholder={!animated && placeholder} />
-        <Placeholder isEmpty={isEmpty}>{animated && placeholder}</Placeholder>
+        <Input {...restProps} placeholder={!animated ? placeholder: ""} />
+        <Placeholder
+          isEmpty={isEmpty}
+          isActivated={isActivated}
+          initialValue={initialValue}
+        >
+          {animated && placeholder}
+        </Placeholder>
       </Label>
       <ErrorMessage>
       {((isActivated && !isValid) &&  value.length < minLength) ? errorMessage1:

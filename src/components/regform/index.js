@@ -14,7 +14,7 @@ RegForm.Input = function RegFormInput({children,  animated=true, ...restProps}){
   return(
     <InputWrapper {...restProps}>
       <Label>
-        <Input {...restProps} placeholder={!animated && placeholder} />
+        <Input {...restProps} placeholder={!animated ? placeholder : ""} />
         <Placeholder isEmpty={isEmpty}>{animated && placeholder}</Placeholder>
         <InputIcon>{children}</InputIcon>
       </Label>
@@ -24,7 +24,12 @@ RegForm.Input = function RegFormInput({children,  animated=true, ...restProps}){
       </ErrorMessage>
     </InputWrapper>
   )}
-
+/* writing the conditionality for placeholder
+<code>placeholder={!animated ? placeHolder : ""}</code> is extremely important.
+without writing it that way, if animated is made true, a bug is thrown where the
+placeholder using my usual pattern {!animated && placeholder} will get a boolean
+<false> returned to it. the warning is shown in the console.
+*/
 RegForm.Icon = function RegFormIcon({...restProps}){
   return <Icon {...restProps} />
 }
