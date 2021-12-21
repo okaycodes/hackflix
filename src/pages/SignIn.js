@@ -30,8 +30,9 @@ is clicked before the required white.
   const emailIsEmpty = email.length < 1
   const passwordIsValid = signInPassword.length > 6
   const passwordIsEmpty = signInPassword.length < 1
-  // signInPassword is added to context, destructured from state and used here
-  // because this passwordfield unlike others take an initial value
+  const formIsInvalid = emailIsEmpty || passwordIsEmpty
+  /*signInPassword is added to context, destructured from state and used here
+  because this passwordfield unlike others take an initial value*/
 
   return(
     <Header dontShowOnSmallViewPort>
@@ -72,7 +73,7 @@ is clicked before the required white.
           />
           <SignInForm.ButtonLink
             to="#"
-            disabled={!passwordIsValid && !emailIsValid}>
+            disabled={formIsInvalid}>
             Sign In
           </SignInForm.ButtonLink>
 
