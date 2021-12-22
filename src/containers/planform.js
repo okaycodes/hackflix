@@ -2,14 +2,14 @@ import {PlanForm, Registration} from "./../components"
 import {useState, useContext} from "react"
 import plansData from '../fixtures/plans.json';
 import * as ROUTES from "./../constants/routes"
-import {inputContext} from "./../contexts/inputContext"
+import {firebaseContext} from "./../contexts/firebaseContext"
 
 
 
 export default function Planform(){
   const checkList = ["Watch all you want. Ad-free.", "Recommendations just for you.",
     "Change or cancel your plan anytime."]
-  const {dispatch} = useContext(inputContext)
+  const {dispatch} = useContext(firebaseContext)
   const [activeIndex, setActiveIndex] = useState(3)
   const handleClick=(index)=>{
     setActiveIndex(index)

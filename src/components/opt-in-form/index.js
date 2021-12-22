@@ -2,7 +2,7 @@ import {useContext} from "react"
 import * as ROUTES from './../../constants/routes';
 import * as REGEX from './../../constants/regex';
 
-import {inputContext} from "./../../contexts/inputContext"
+import {firebaseContext} from "./../../contexts/firebaseContext"
 
 import {
         Container,
@@ -25,7 +25,7 @@ import {
   }
 
   OptInForm.Input = function OptInFormInput({children, animated=true, placeholder, ...restProps}){
-    const {state, dispatch} = useContext(inputContext)
+    const {state, dispatch} = useContext(firebaseContext)
     const {email, emailIsActive, emailErrorMessage} = state
     const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
     const isEmpty = email.length < 1
@@ -58,7 +58,7 @@ import {
 
 
   OptInForm.Button = function OptInFormButton({children, ...restProps}){
-    const {state, dispatch} = useContext(inputContext)
+    const {state, dispatch} = useContext(firebaseContext)
     const {email} = state
     const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
     const isEmpty = email.length<1;

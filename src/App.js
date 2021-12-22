@@ -3,12 +3,10 @@ import * as ROUTES from './constants/routes';
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
-import {InputContextProvider} from  "./contexts/inputContext"
 
 
 function App() {
   return (
-    <InputContextProvider>
     <div>
       <Routes>
         <Route exact path={ROUTES.HOME} element={<Home />}/>
@@ -20,7 +18,6 @@ function App() {
         <Route exact path={ROUTES.SIGN_UP} element={<SignUp />}/>
       </Routes>
     </div>
-    </InputContextProvider>
   );
 }
 

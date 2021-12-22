@@ -1,22 +1,20 @@
 import {Registration, RegForm} from "./../components"
 import * as ROUTES from "./../constants/routes"
 import * as REGEX from './../constants/regex';
-import {inputContext} from  "./../contexts/inputContext"
+import {firebaseContext} from  "./../contexts/firebaseContext"
 import {useContext} from "react"
-
 /*================================================
 COME BACK TO THIS valid fields and activate button
 ==================================================*/
 
 export default function RegFormContainer(){
-  const {state, dispatch} = useContext(inputContext)
+  const {state, dispatch} = useContext(firebaseContext)
   const {email, emailIsActive} = state
   const {password, passwordIsActive} = state
   const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
   const emailIsEmpty = email.length < 1
   const passwordIsValid = password.length > 6
   const passwordIsEmpty = password.length < 1
-
 
   return(
     <RegForm>

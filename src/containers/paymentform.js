@@ -1,7 +1,7 @@
 import {Registration, Modal, PlanForm, RegForm} from "./../components"
 import * as REGEX from './../constants/regex';
 import * as ROUTES from './../constants/routes';
-import {inputContext} from  "./../contexts/inputContext"
+import {firebaseContext} from  "./../contexts/firebaseContext"
 import {useContext, useState} from "react"
 
 // import * as ROUTES from "./../constants/routes"
@@ -9,7 +9,7 @@ import {useContext, useState} from "react"
 
 
 export default function PaymentFormContainer(){
-  const {state, dispatch} = useContext(inputContext)
+  const {state, dispatch} = useContext(firebaseContext)
   const {firstName, firstNameIsActive} = state
   const {lastName, lastNameIsActive} = state
   const {cardNumber, cardNumberIsActive} = state
