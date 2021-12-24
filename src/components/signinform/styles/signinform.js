@@ -177,9 +177,10 @@ export const ButtonLink = styled(ReactRouterLink)`
   font-size: 16px;
   font-weight: bold;
   margin-top: ${props=>props.marginTop || "20px"};
+  opacity: ${props=>props.disabled && ".5"};
 
   &:hover, &:focus{
-    background: #f40612;
+    background: ${props=>props.disabled ? "":"#f40612"};
 `;
 
 export const Icon = styled.img`
