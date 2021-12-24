@@ -1,11 +1,16 @@
-import {Container, Inner, Input, InputWrapper, Label, Placeholder, InputIcon, Icon, ErrorMessage,
-        Checkbox, CheckboxWrapper, ChangePlan, Text, Link} from "./styles/regform"
+import {Container, Inner, Base, Input, InputWrapper, Label, Placeholder,
+        InputIcon, Icon, ErrorMessage, Checkbox, CheckboxWrapper,Button,
+        ButtonLink, Spinner, ChangePlan, Text, Link} from "./styles/regform"
 
 
 export default function RegForm({children, ...restProps}){
   return <Container{...restProps}>
-            <Inner {...restProps}>{children}</Inner>
+            <Inner>{children}</Inner>
         </Container>
+}
+
+RegForm.Base = function RegFormBase({children, ...restProps}){
+  return<Base {...restProps}>{children}</Base>
 }
 
 RegForm.Input = function RegFormInput({children,  animated=true, ...restProps}){
@@ -34,6 +39,10 @@ RegForm.Icon = function RegFormIcon({...restProps}){
   return <Icon {...restProps} />
 }
 
+RegForm.Spinner = function RegFormSpinner({...restProps}){
+  return<Spinner src="./../../../images/misc/spinner.png" {...restProps} />
+}
+
 RegForm.Checkbox = function RegFormCheckbox({children, ...restProps}){
   const {isActive, isChecked, errorMessage, fontSize} = {...restProps}
   return(
@@ -47,6 +56,14 @@ RegForm.Checkbox = function RegFormCheckbox({children, ...restProps}){
       </ErrorMessage>
     </>
 )}
+
+RegForm.Button = function RegFormButton({children, ...restProps}){
+  return <Button {...restProps}>{children}</Button>
+}
+
+RegForm.ButtonLink = function RegFormButtonLink({children, ...restProps}){
+  return <ButtonLink {...restProps}>{children}</ButtonLink>
+}
 
 RegForm.Text = function RegFormText({children, ...restProps}){
   return <Text {...restProps}>{children}</Text>
