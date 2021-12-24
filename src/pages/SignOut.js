@@ -1,6 +1,7 @@
 import {Header, SignOut, Footer} from "./../components"
 import * as ROUTES from "./../constants/routes"
 import {getAuth} from "firebase/auth"
+import {useEffect} from "react"
 import {useNavigate} from "react-router-dom"
 
 
@@ -11,6 +12,8 @@ export default function SignOutPage(){
   navigate is called inside the setTimeout and handleSignOut instead of because
   the link is a buttona and not a react-router Link
   */
+
+
 
   const timeout = setTimeout(function () {
     navigate(ROUTES.HOME)
