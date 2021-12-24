@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, {keyframes} from "styled-components"
 import {Link as ReactRouterLink} from "react-router-dom"
 
 
@@ -12,12 +12,15 @@ export const Container = styled.div`
 `;
 
 export const Inner = styled.div`
+  margin: 30px auto 160px;
+  max-width: 440px;
+`;
+
+export const Base = styled.form`
   display: flex;
   flex-direction: column;
   width: 90%;
   align-items: start;
-  margin: 30px auto 160px;
-  max-width: 440px;
 `;
 
 export const Text = styled.p`
@@ -176,6 +179,46 @@ export const Checkbox = styled.input`
   ${CheckboxWrapper} &:checked~span:after{
     display: block;
   }
+`;
+
+export const Button = styled.button`
+  width: 100%;
+  color: white;
+  height: 68px;
+  background-color: #e50914;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 24px;
+  border: none;
+  margin-top: ${props=>props.marginTop || "20px"};
+
+  &:hover, &:focus{
+    background: #f40612;
+  }
+`;
+/*
+the height of the button is hard-coded because using padding will cause height
+change when Spinner is rendered
+*/
+
+export const ButtonLink = styled.a`
+`;
+
+const spin = keyframes`
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+`;
+
+export const Spinner = styled.img`
+  width: 40px;
+  animation-name: ${spin};
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  filter: invert(95%) sepia(0%) saturate(2%) hue-rotate(276deg) brightness(115%) contrast(100%);
+
 `;
 
 export const ChangePlan = styled.div`
