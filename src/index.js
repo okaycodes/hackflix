@@ -1,29 +1,31 @@
+import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import {BrowserRouter as Router} from 'react-router-dom'
 import { GlobalStyles } from './global-styles';
-import {firebaseContext} from "./contexts/firebaseContext"
+import {BrowserRouter as Router} from 'react-router-dom'
+import {initializeApp} from 'firebase/app'
+import {FirebaseContextProvider} from "./contexts/firebaseContext"
 
-const config = {
-    apiKey: 'AIzaSyDAU60M2FDHNsYt9uGMpRezw3FGVIX6Jrs',
-    authDomain: 'netflix-c8ae9.firebaseapp.com',
-    databaseURL: 'https://netflix-c8ae9.firebaseio.com',
-    projectId: 'netflix-c8ae9',
-    storageBucket: 'netflix-c8ae9.appspot.com',
-    messagingSenderId: '590575805931',
-    appId: '1:590575805931:web:f809092b6cd55306fa25ae',
-};
+const firebaseConfig = {
+  apiKey: "AIzaSyDeiQnYuhNkpCFDuDQ_OZioZLAPhTpYqTQ",
+  authDomain: "myhackflix.firebaseapp.com",
+  databaseURL: "https://myhackflix-default-rtdb.firebaseio.com",
+  projectId: "myhackflix",
+  storageBucket: "myhackflix.appspot.com",
+  messagingSenderId: "223100768739",
+  appId: "1:223100768739:web:8594dc8ace4650689ed0d6"
+}
 
-// const firebase = window.firebase.initializeApp(config);
+initializeApp(firebaseConfig)
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <firebaseContext.Provider value={config}>
+      <FirebaseContextProvider>
         <GlobalStyles />
         <App />
-      </firebaseContext.Provider>
+      </FirebaseContextProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
