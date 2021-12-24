@@ -39,8 +39,9 @@ import {
               isEmpty = {isEmpty}
               isActivated={emailIsActive}
               errorMessage={emailErrorMessage}
-              onChange={(event) =>{dispatch(
-                {type: "input", payload: {[event.target.name]:event.target.value} }
+              onChange={(event) =>{
+                const {name, value} = event.target
+                dispatch({type: "input", payload: {[name]:value} }
               )}}
               onBlur={()=>!isEmpty &&
                 dispatch({type:"blurred", payload: {emailIsActive: true}})}
