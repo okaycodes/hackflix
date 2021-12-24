@@ -1,4 +1,4 @@
-import {Container, Logo, ButtonLink} from "./styles/signupheader"
+import {Container, Logo, SignInLink, SignOutLink} from "./styles/signupheader"
 import * as ROUTES from './../../constants/routes';
 import {Link as ReactRouterLink} from "react-router-dom"
 
@@ -10,6 +10,10 @@ SignupHeader.Logo = function SignupHeaderLogo({...restProps}){
   return <ReactRouterLink to={ROUTES.HOME} {...restProps}><Logo {...restProps} /></ReactRouterLink>
 }
 
-SignupHeader.ButtonLink = function SignupHeaderButtonLink({children, ...restProps}){
-  return <ButtonLink to={ROUTES.SIGN_IN} {...restProps}>Sign In</ButtonLink>
+SignupHeader.SignInLink = function SignupHeaderSignInLink({children, ...restProps}){
+  return <SignInLink to={ROUTES.SIGN_IN} {...restProps}>Sign In</SignInLink>
+}
+
+SignupHeader.SignOutLink = function SignupHeaderSignOutLink({children, ...restProps}){
+  return <SignOutLink to={ROUTES.SIGN_OUT} {...restProps}>Sign Out</SignOutLink>
 }

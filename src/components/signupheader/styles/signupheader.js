@@ -36,7 +36,7 @@ export const Logo = styled.img`
 export const Link = styled.p`
 `;
 
-export const ButtonLink = styled(ReachRouterLink)`
+export const SignInLink = styled(ReachRouterLink)`
   display: block;
   height: fit-content;
   border: 0;
@@ -54,4 +54,7 @@ export const ButtonLink = styled(ReachRouterLink)`
   @media (max-width: 500px) {
     font-size: 14px;
   }
+`;
+
+export const SignOutLink = styled(SignInLink)`
 `;

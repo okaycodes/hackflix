@@ -6,9 +6,8 @@ import RegStepContainer from "./../containers/regstep"
 import PlanFormContainer from "./../containers/planform"
 import PaymentStepContainer from "./../containers/payment"
 import PaymentFormContainer from "./../containers/paymentform"
-
-
-
+import {getAuth, onAuthStateChanged} from 'firebase/auth'
+import {useState} from "react"
 
 
 /*====================
@@ -16,14 +15,20 @@ COME BACK TO THIS
 =====================*/
 // import * as ROUTES from "./../constants/routes"
 
-
-
 export default function SignUp({children}){
+  const [isLoggedin, setIsLoggedin] = useState(false)
+  const auth = getAuth();
+
+  onAuthStateChanged(auth, user=>{
+    user ? setIsLoggedin(true) : setIsLoggedin(false)
+  })
+
+  
   return (
     <>
       <SignupHeader>
           <SignupHeader.Logo src="./../../images/misc/logo.svg" alt="Netflix"/>
-          <SignupHeader.ButtonLink btn_secondary="true"/>
+          { isLoggedin ? <SignupHeader.SignOutLink /> : <SignupHeader.SignInLink />}
       </SignupHeader>
 
     <Routes>
