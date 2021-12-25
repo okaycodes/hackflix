@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 import { GlobalStyles } from './global-styles';
 import {BrowserRouter as Router} from 'react-router-dom'
 import {initializeApp} from 'firebase/app'
-import {FirebaseContextProvider} from "./contexts/firebaseContext"
+import {FormContextProvider} from "./contexts/formContext"
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDeiQnYuhNkpCFDuDQ_OZioZLAPhTpYqTQ",
@@ -22,10 +23,10 @@ initializeApp(firebaseConfig)
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <FirebaseContextProvider>
+      <FormContextProvider>
         <GlobalStyles />
         <App />
-      </FirebaseContextProvider>
+      </FormContextProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

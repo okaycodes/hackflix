@@ -1,12 +1,12 @@
 import React, {useReducer} from "react"
 
-const firebaseContext = React.createContext(null)
+const formContext = React.createContext()
 
 /*===========================
 COME BACK TO THIS handleclick
 =============================*/
 
-function FirebaseContextProvider({children}){
+function FormContextProvider({children}){
   const initialSignInPassword = "HHQEyPJ6krf3Lh6"
   let initialState = {
     email: "", emailIsActive: false,
@@ -30,8 +30,11 @@ function FirebaseContextProvider({children}){
       case 'savePlan':{
         return {...state, planName: action.payload.name, planPrice: action.payload.price }
       }
-      case 'emptyPassword':{
+      case 'passwordFieldIsEmpty':{
         return {...state, password: initialSignInPassword}
+      }
+      case 'emptySignupForm': {
+        return {...state, email: "", password: ""}
       }
       default:{
         return state
@@ -40,10 +43,10 @@ function FirebaseContextProvider({children}){
   }, initialState)
 
   return (
-    <firebaseContext.Provider value={{state, dispatch}}>
+    <formContext.Provider value={{state, dispatch}}>
       {children}
-    </firebaseContext.Provider>
+    </formContext.Provider>
   )
 }
 
-export {FirebaseContextProvider, firebaseContext}
+export {FormContextProvider, formContext}

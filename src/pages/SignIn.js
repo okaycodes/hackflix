@@ -1,12 +1,12 @@
 import {useContext, useState} from "react"
 import {Header, SignInForm, Footer} from "./../components"
-import {inputContext} from "./../contexts/inputContext"
+import {formContext} from "./../contexts/formContext"
 import * as REGEX from './../constants/regex';
 import * as ROUTES from './../constants/routes';
 
 
 export default function SignIn({children, ...restProps}){
-  const {state, dispatch} = useContext(inputContext)
+  const {state, dispatch} = useContext(formContext)
   const {email, emailIsActive} = state
   const {signInPassword, signInPasswordIsActive} = state
   const [checkboxIsChecked, setCheckboxIsChecked] = useState(true)
