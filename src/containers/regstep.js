@@ -13,9 +13,9 @@ export default function RegStepContainer(){
       </Registration.SubTitle>
       <Registration.Icon  style width="50px"  src="./../../images/icons/check-mark-circle-line.svg"/>
       <Registration.List padding="0 1.5em">
-      {checkList.map(item => {
+      {checkList.map((item, index) => {
         return(
-          <Registration.ListItem>
+          <Registration.ListItem key={index}>
             <Registration.ListIcon src="./../../images/icons/check-mark-line.svg"/>
             <Registration.ListText>{item}</Registration.ListText>
           </Registration.ListItem>

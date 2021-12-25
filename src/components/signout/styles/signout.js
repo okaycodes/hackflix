@@ -27,4 +27,6 @@ export const ButtonLink = styled.button`
   padding: 1em;
   border-radius: 2px;
   color: white;
+  cursor: pointer;
+  border: none;
 `;
