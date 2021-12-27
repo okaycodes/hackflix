@@ -1,29 +1,32 @@
 import {Header, SignOut, Footer} from "./../components"
 import * as ROUTES from "./../constants/routes"
 import {getAuth} from "firebase/auth"
-import {useEffect} from "react"
 import {useNavigate} from "react-router-dom"
+import {useContext} from "react"
+import {formContext} from "./../contexts/formContext"
 
 
 export default function SignOutPage(){
   const auth = getAuth();
   const navigate = useNavigate()
+  const {dispatch} = useContext(formContext)
+
   /*
-  navigate is called inside the setTimeout and handleSignOut instead of because
-  the link is a buttona and not a react-router Link
+  navigate is called inside the setTimeout and handleSignOut instead of the link because
+  the link is a button and not a react-router Link
   */
-
-
-
-  const timeout = setTimeout(function () {
+  const logout=()=>{
+    auth.signOut()
+    localStorage.clear()
+    dispatch({type:"emptySignupForm"})
     navigate(ROUTES.HOME)
-  }, 30000);
+  }
+
+  const timeout = setTimeout(()=>logout(), 30000);
 
   const handleSignOut =()=>{
-    auth.signOut().then(data=>{
-      console.log(data)
-      clearTimeout(timeout)
-    })
+    clearTimeout(timeout)
+    logout()
   }
 
   return (
@@ -31,7 +34,7 @@ export default function SignOutPage(){
     <Header dontShowOnSmallViewPort src={"signout-bg"}>
       <Header.Frame>
         <Header.Logo src="./../../images/misc/logo.svg" alt="Netflix" />
-        <Header.ButtonLink />
+        <Header.SignInLink />
       </Header.Frame>
       <SignOut>
         <SignOut.Title>Leaving So Soon?</SignOut.Title>
