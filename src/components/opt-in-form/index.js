@@ -1,6 +1,5 @@
 import {useContext} from "react"
 import {useNavigate} from "react-router-dom"
-import * as ROUTES from './../../constants/routes';
 import * as REGEX from './../../constants/regex';
 
 import {formContext} from "./../../contexts/formContext"
@@ -60,20 +59,17 @@ import {
 
 
   OptInForm.Button = function OptInFormButton({children, to, ...restProps}){
-    const {state, dispatch} = useContext(formContext)
+    const {state} = useContext(formContext)
     const {email} = state
     const navigate = useNavigate()
     const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
     const isEmpty = email.length<1;
 
-    const handleClick = ()=>{
-      navigate(`./${ROUTES.REGISTRATION}`)
-    }
   return (
         <ButtonLink
           {...restProps}
-          onClick={handleClick}
           disabled={isEmpty || !emailIsValid}
+          onClick={()=>navigate(to)}
         >
           {children} <img src="./../../images/icons/chevron-right.png" alt="chevron right" />
         </ButtonLink>
