@@ -17,7 +17,7 @@ function FormContextProvider({children}){
     expirationDate: "", expirationDateIsActive: false,
     securityCode: "", securityCodeIsActive: false,
     planName: "", planPrice:"",
-    signInPassword: initialSignInPassword, signInPasswordIsActive:false
+    signInPassword: initialSignInPassword, signInPasswordIsActive:false,
   }
   let [state, dispatch] = useReducer((state, action)=>{
     switch(action.type){
@@ -34,7 +34,9 @@ function FormContextProvider({children}){
         return {...state, password: initialSignInPassword}
       }
       case 'emptySignupForm': {
-        return {...state, email: "", password: ""}
+        return {...state,
+                email: "", password: "",
+                emailIsActive: false, passwordIsActive: false}
       }
       default:{
         return state
