@@ -106,7 +106,7 @@ export const ErrorMessage = styled.div`
 `;
 
 
-export const ButtonLink = styled(ReactRouterLink)`
+export const ButtonLink = styled.button`
   color: white;
   font-size: 23px;
   width: 30%;
@@ -120,6 +120,7 @@ export const ButtonLink = styled(ReactRouterLink)`
   cursor: pointer;
   text-decoration: none;
   border-radius: 0 3px 3px 0;
+  border: none;
 
   &:hover{
     background-color: #f40612;

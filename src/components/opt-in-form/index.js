@@ -1,8 +1,9 @@
 import {useContext} from "react"
+import {useNavigate} from "react-router-dom"
 import * as ROUTES from './../../constants/routes';
 import * as REGEX from './../../constants/regex';
 
-import {firebaseContext} from "./../../contexts/firebaseContext"
+import {formContext} from "./../../contexts/formContext"
 
 import {
         Container,
@@ -25,7 +26,7 @@ import {
   }
 
   OptInForm.Input = function OptInFormInput({children, animated=true, placeholder, ...restProps}){
-    const {state, dispatch} = useContext(firebaseContext)
+    const {state, dispatch} = useContext(formContext)
     const {email, emailIsActive, emailErrorMessage} = state
     const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
     const isEmpty = email.length < 1
@@ -58,17 +59,22 @@ import {
     )}
 
 
-  OptInForm.Button = function OptInFormButton({children, ...restProps}){
-    const {state, dispatch} = useContext(firebaseContext)
+  OptInForm.Button = function OptInFormButton({children, to, ...restProps}){
+    const {state, dispatch} = useContext(formContext)
     const {email} = state
+    const navigate = useNavigate()
     const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
     const isEmpty = email.length<1;
 
+    const handleClick = ()=>{
+      navigate(`./${ROUTES.REGISTRATION}`)
+    }
   return (
         <ButtonLink
           {...restProps}
-          to={!isEmpty && emailIsValid && `./${ROUTES.REGISTRATION}`}
-          onClick={()=> !emailIsValid && dispatch("focusOut")}>
+          onClick={handleClick}
+          disabled={isEmpty || !emailIsValid}
+        >
           {children} <img src="./../../images/icons/chevron-right.png" alt="chevron right" />
         </ButtonLink>
         )
