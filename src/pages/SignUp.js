@@ -6,8 +6,9 @@ import RegStepContainer from "./../containers/regstep"
 import PlanFormContainer from "./../containers/planform"
 import PaymentStepContainer from "./../containers/payment"
 import PaymentFormContainer from "./../containers/paymentform"
-import {getAuth, onAuthStateChanged} from 'firebase/auth'
+import {getAuth, onAuthStateChanged} from "firebase/auth"
 import {useState} from "react"
+
 
 
 /*====================
@@ -17,13 +18,16 @@ COME BACK TO THIS
 
 export default function SignUp({children}){
   const [isLoggedin, setIsLoggedin] = useState(false)
-  const auth = getAuth();
+  const auth = getAuth()
 
-  onAuthStateChanged(auth, user=>{
-    user ? setIsLoggedin(true) : setIsLoggedin(false)
+  onAuthStateChanged(auth, (user)=>{
+    user && setIsLoggedin(true)
   })
+  // auth is used here for determining logged if user is logged in
+  // because it causes the whole page to refresh allowing for UI changes
+  // to be rendered in the header that will otherwise not render. the use
+  // of nomal href link in linking to this page will have similar effects.
 
-  
   return (
     <>
       <SignupHeader>
