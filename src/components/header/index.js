@@ -14,6 +14,10 @@ Header.Logo = function HeaderLogo({...restProps}){
   return <ReactRouterLink to={ROUTES.HOME} {...restProps}><Logo {...restProps} /></ReactRouterLink>
 }
 
-Header.ButtonLink = function HeaderButtonLink({children, ...restProps}){
+Header.SignInLink = function HeaderButtonLink({children, ...restProps}){
   return <ButtonLink to={ROUTES.SIGN_IN} {...restProps}>Sign In</ButtonLink>
+}
+
+Header.SignOutLink = function HeaderSignOutLink({children, ...restProps}){
+  return <ButtonLink to={ROUTES.SIGN_OUT} {...restProps}>Sign Out</ButtonLink>
 }
