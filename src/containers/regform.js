@@ -3,15 +3,13 @@ import {useNavigate} from "react-router-dom"
 import * as REGEX from './../constants/regex'
 import * as ROUTES from "./../constants/routes"
 import {Registration, RegForm} from "./../components"
-import {firebaseContext} from  "./../contexts/firebaseContext"
-import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
+import {formContext} from  "./../contexts/formContext"
 import {getFirestore, doc, setDoc} from 'firebase/firestore'
-/*================================================
-COME BACK TO THIS valid fields and activate button
-==================================================*/
+import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
+
 
 export default function RegFormContainer(){
-  const {state, dispatch} = useContext(firebaseContext)
+  const {state, dispatch} = useContext(formContext)
   const {email, emailIsActive} = state
   const {password, passwordIsActive} = state
   const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
@@ -22,40 +20,26 @@ export default function RegFormContainer(){
   const [isLoading, setIsLoading] = useState(false)
 
   const navigate = useNavigate()
-  // the navigate variable is used inside the handlesignup so it is called only
-   // if the signup works
-
-  const db = getFirestore()
   const auth = getAuth()
+  const db = getFirestore()
 
-  // async function getUsers(db) {
-  //   const querySnapshot = await getDocs(collection(db, "names"));
-  //   querySnapshot.forEach((doc) => {
-  //     console.log(doc.data());
-  //   });
-  // }
-  //
-  // console.log(getUsers(db))
 
   const handleSignup = (e) =>{
     e.preventDefault()
     setIsLoading(true)
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(cred=>{
-        setDoc(doc(db, "users", cred.user.uid), {
-          email: email,
-          password: password
-      }).then(() =>{
-        setIsLoading(false)
-        dispatch("emptySignupForm")
-      })})
-      .then(()=>navigate(ROUTES.SIGN_UP_HOME))
-      .catch(error=>{
-        setIsLoading(false)
-        console.log(error.message)
-      })
-  }
 
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((response)=>{
+        localStorage.setItem("isLoggedin", true)
+        localStorage.setItem("currentStepUrl", ROUTES.SIGN_UP_HOME)
+        navigate(ROUTES.SIGN_UP_HOME)
+        // store user in firestore
+        setDoc(doc(db, "users", response.user.uid), {email, currentStepUrl: ROUTES.SIGN_UP_HOME})
+      }).catch(error=>{
+          console.error(error)
+          alert(error.message)
+        })
+  }
 
   return(
     <RegForm>
