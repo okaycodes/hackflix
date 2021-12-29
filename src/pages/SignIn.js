@@ -3,6 +3,9 @@ import {Header, SignInForm, Footer} from "./../components"
 import {formContext} from "./../contexts/formContext"
 import * as REGEX from './../constants/regex';
 import * as ROUTES from './../constants/routes';
+import {useNavigate} from "react-router-dom"
+import {getFirestore, doc, getDoc} from 'firebase/firestore'
+import {getAuth, signInWithEmailAndPassword}  from "firebase/auth"
 
 
 export default function SignIn({children, ...restProps}){
@@ -12,6 +15,10 @@ export default function SignIn({children, ...restProps}){
   const [checkboxIsChecked, setCheckboxIsChecked] = useState(true)
   const [checkboxIsActive, setCheckboxIsActive] = useState(false)
   const [checkboxIsHovered, setCheckboxIsHovered] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("")
+  const auth = getAuth();
+  const db = getFirestore();
+  const navigate = useNavigate();
 
   const handleChange=()=>{
       setCheckboxIsChecked(prev=>!prev)
@@ -25,6 +32,33 @@ whenever the box is clicked (onMouseDown) and then it is focused later causing
 a flash of unneeded behavior. In this case a flash of grey background anytime it
 is clicked before the required white.
 */
+
+  const handleLogin =(e)=>{
+    e.preventDefault()
+    signInWithEmailAndPassword(auth, email, signInPassword)
+    .then(response=>{
+      getDoc(doc(db, "users", response.user.uid))
+      .then(snapShot=>{
+        if (snapShot.exists()){
+          const currentStepUrl = snapShot.data().currentStepUrl
+          if(currentStepUrl){
+            localStorage.setItem('isLoggedin', true)
+            localStorage.setItem("currentStepUrl", currentStepUrl)
+            navigate(ROUTES.HOME)
+          } else {
+            navigate(ROUTES.SELECT_PROFILE)
+          }
+        }
+      })
+        // if(error.message===)
+      }).catch(err=>{
+      if(err.message.includes('user-not-found')){
+        setErrorMessage("unregistered user")
+      }else if (err.message.includes('wrong-password')){
+        setErrorMessage("incorrect password")
+      }
+  })
+ }
 
   const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
   const emailIsEmpty = email.length < 1
@@ -41,7 +75,22 @@ is clicked before the required white.
       </Header.Frame>
       <SignInForm>
         <SignInForm.Title>Sign In</SignInForm.Title>
-        <SignInForm.Base>
+        <SignInForm.LoginErrorMessage>
+          {errorMessage === "unregistered user" ?
+           <SignInForm.Text fontSize="14px">
+           Sorry, we can't find an account with this email address. Please try again or
+           <SignInForm.Link onClick={()=>dispatch({type: "emptySignupForm"})} to={ROUTES.HOME}>
+           create a new account.</SignInForm.Link>
+           </SignInForm.Text>
+           :
+           errorMessage === "incorrect password" &&
+           <SignInForm.Text fontSize="14px">Incorrect password. Please try again or you can
+           <SignInForm.Link onClick={()=>dispatch({type: "emptySignupForm"})} to={ROUTES.SIGN_IN_HELP}>
+           reset your password.</SignInForm.Link>
+           </SignInForm.Text>
+          }
+        </SignInForm.LoginErrorMessage>
+        <SignInForm.Base onSubmit={handleLogin}>
           <SignInForm.Input
             placeholder="Email or phone number"
             name="email"
@@ -72,8 +121,9 @@ is clicked before the required white.
               dispatch({type:"blurred", payload: {signInPasswordIsActive: true}})}
           />
           <SignInForm.ButtonLink
-            to="#"
-            disabled={formIsInvalid}>
+            type='submit'
+            disabled={formIsInvalid}
+          >
             Sign In
           </SignInForm.ButtonLink>
 

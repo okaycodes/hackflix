@@ -10,6 +10,7 @@ import {
   CheckboxWrapper,
   Checkbox,
   ErrorMessage,
+  LoginErrorMessage,
   Link,
   ButtonLink,
   Icon,
@@ -87,4 +88,8 @@ SignInForm.Submit = function SignInFormSubmit({children, ...restProps}){
 
 SignInForm.FlexBox = function SignInFormFlexBox({children, ...restProps}){
   return <FlexBox {...restProps}>{children}</FlexBox>
+}
+
+SignInForm.LoginErrorMessage = function SignInFormLoginErrorMessage({children, ...restProps}){
+  return <LoginErrorMessage {...restProps}>{children}</LoginErrorMessage>
 }

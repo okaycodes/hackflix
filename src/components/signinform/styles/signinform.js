@@ -72,7 +72,7 @@ export const Input = styled.input`
   border-radius: 4px;
   border: none;
   background-color: #303030;
-  border-bottom: ${props=>props.isActivated && !props.isValid && "solid 2px orange"};
+  border-bottom: ${props=>props.isActivated && !props.isValid && "solid 2px #e87c03"};
 
    &:focus{
      outline: none;
@@ -144,9 +144,10 @@ export const Checkbox = styled.input`
 export const ErrorMessage = styled.p`
   text-align: left;
   margin-left: .4em;
-  color: orange;
+  color: #e87c03;
   font-size: 13px;
 `;
+
 
 export const Link = styled(ReactRouterLink)`
   flex: 0 auto;
@@ -165,7 +166,7 @@ export const Link = styled(ReactRouterLink)`
  whereas the checkbox is set such that it can grow to occupy all the space left by the Link
  */
 
-export const ButtonLink = styled(ReactRouterLink)`
+export const ButtonLink = styled.button`
   width: 100%;
   color: white;
   background-color: #e50914;
@@ -178,6 +179,7 @@ export const ButtonLink = styled(ReactRouterLink)`
   font-weight: bold;
   margin-top: ${props=>props.marginTop || "20px"};
   opacity: ${props=>props.disabled && ".5"};
+  border: none;
 
   &:hover, &:focus{
     background: ${props=>props.disabled ? "":"#f40612"};
@@ -207,4 +209,25 @@ export const FlexBox = styled.div`
  display: flex;
  align-items: center;
  justify-content: ${props=>props.justifyContent || "center"}
+`;
+
+export const LoginErrorMessage = styled.div`
+  background: #e87c03;
+  border-radius: 4px;
+  margin-bottom: .5em;
+
+  & > ${Text}{
+    color: white;
+    font-size: 14;
+    margin: 0;
+    padding: 10px 20px;
+  }
+  & > ${Text} > span{
+    font-weight: bold
+  }
+  & > ${Text} > ${Link}{
+    color: white;
+    font-size: 14px;
+    text-decoration: underline;
+  }
 `;
