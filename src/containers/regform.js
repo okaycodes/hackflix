@@ -34,7 +34,7 @@ export default function RegFormContainer(){
         localStorage.setItem("currentStepUrl", ROUTES.SIGN_UP_HOME)
         navigate(ROUTES.SIGN_UP_HOME)
         // store user in firestore
-        setDoc(doc(db, "users", response.user.uid), {email, currentStepUrl: ROUTES.SIGN_UP_HOME})
+        setDoc(doc(db, "users", response.user.uid), {email, password, currentStepUrl: ROUTES.SIGN_UP_HOME})
       }).catch(error=>{
           console.error(error)
           alert(error.message)
