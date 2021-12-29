@@ -2,6 +2,7 @@ export const HOME = '/';
 export const BROWSE = '/browse';
 export const SIGN_IN = '/signin';
 export const SIGN_OUT = '/signout';
+export const SIGN_IN_HELP = '/signinHelp';
 export const SIGN_UP = '/signup/*';
 export const SIGN_UP_HOME = '/signup'
 export const REGISTRATION = 'signup/registration';
@@ -9,6 +10,7 @@ export const REG_FORM = 'signup/regform';
 export const PLAN_FORM = 'signup/planform';
 export const PAYMENT_STEP = 'signup/payment';
 export const PAYMENT_FORM = 'signup/payment-form';
+export const SELECT_PROFILE = '/profile'
 
 
 /* defining routes in constant allows us to avoid hardcoding urls all over our
