@@ -48,7 +48,7 @@ import {
             />
             <Placeholder isEmpty = {isEmpty}>{animated && placeholder}</Placeholder>
           </Label>
-          <ErrorMessage errorColor="orange">
+          <ErrorMessage errorColor="#e87c03">
             {emailIsActive &&  email.length < 4 ?
               "Email is required":
               emailIsActive && !emailIsValid ?
