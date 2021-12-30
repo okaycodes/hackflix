@@ -38,6 +38,8 @@ export default function RegFormContainer(){
       }).catch(error=>{
           console.error(error)
           alert(error.message)
+          setIsLoading(false)
+
         })
   }
 
