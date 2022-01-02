@@ -1,7 +1,5 @@
 import {Container, Title, Text, ButtonLink, RadioButtonWrapper, RadioButton,
-        Input, Select, Option} from "./styles/loginHelp"
-import {useState, useRef} from "react"
-
+        FormBase,InputContainer, Link} from "./styles/loginHelp"
 
 
 export default function LoginHelp ({children, ...restProps}){
@@ -26,30 +24,20 @@ LoginHelp.RadioButton = function LoginHelpRadioButton({children, ...restProps}){
       <RadioButtonWrapper> {children}
         <RadioButton {...restProps}
           type="radio"
-          name="password reset"
         />
         <span></span>
       </RadioButtonWrapper>
     </>
 )}
 
-LoginHelp.Input = function LoginHelpInput({children, ...restProps}){
-  return <Input {...restProps}>{children}</Input>
+LoginHelp.FormBase = function LoginHelpFormbase({children, ...restProps}){
+  return <FormBase {...restProps}>{children}</FormBase>
 }
 
-LoginHelp.Select = function LoginHelpSelect({children, ...restProps}){
-  const selectRef = useRef(null)
-  return(
-    <Select {...restProps} ref={selectRef}
-      onClick={()=>console.log(selectRef.current.options[selectRef.current.selectedIndex].innerHTML)}>
-       <option value="volvo">Volvo</option>
-       <option value="saab">Saab</option>
-       <option value="mercedes">Mercedes</option>
-       <option value="audi">Audi</option>
-       <option value="volvo">Delta</option>
-    </Select>)
+LoginHelp.Link = function LoginHelpLink({children, ...restProps}){
+  return <Link {...restProps}>{children}</Link>
 }
 
-LoginHelp.Option = function LoginHelpOption({children, ...restProps}){
-  return <Option {...restProps}>{children}</Option>
+LoginHelp.InputContainer = function LoginHelpInputContainer({children, ...restProps}){
+  return <InputContainer {...restProps}>{children}</InputContainer>
 }

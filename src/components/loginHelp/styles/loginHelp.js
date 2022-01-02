@@ -1,11 +1,13 @@
 import styled from 'styled-components'
+import {Link as ReactRouterLink}  from "react-router-dom"
 
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 450px;
-  margin: 60px auto;
+  width: 95%;
+  max-width: 460px;
+  margin: 0 auto;
   background: #f3f3f3;
   padding: 2.5em;
 `;
@@ -30,7 +32,8 @@ export const ButtonLink = styled.button`
   color: white;
   cursor: pointer;
   border: none;
-
+  border-bottom: solid 1px grey;
+  margin: 2em 0;
   &:hover, &:focus{
     background: #148aff;
   }
@@ -89,11 +92,19 @@ export const RadioButton = styled.input`
   }
 `;
 
-export const Input = styled.input`
+export const FormBase = styled.form`
 `;
 
-export const Select = styled.select`
+export const Link = styled(ReactRouterLink)`
+  color:#0080ff;
+  text-decoration: none;
+  &:hover, &:focus{
+    text-decoration: underline;
+  }
 `;
 
-export const Option = styled.option`
+
+export const InputContainer = styled.div`
+  display: flex;
+  flexWrap: wrap;
 `;
