@@ -3,9 +3,8 @@ import styled from "styled-components"
 export const SelectContainer = styled.div`
   position: relative;
   cursor: pointer;
-  margin-bottom: 1em;
   width: 95px;
-  height: 42px;
+  height: 45px;
 `;
 
 

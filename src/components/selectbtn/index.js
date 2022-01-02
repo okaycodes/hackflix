@@ -1,23 +1,21 @@
 import {SelectContainer, Select, Option, Selected, SelectItems, SelectItem,
         Flag, SelectText, DialCode} from "./styles/selectbtn"
-import {useRef, useEffect, useState, useCallback} from "react"
+import {useRef, useEffect, useState, useCallback, useContext} from "react"
 import countriesData from "./../../fixtures/countries_data.json"
+import {selectContext} from "./../../contexts/selectContext"
+
 
 
 export default function Selectbtn(props){
   const defaultCountry = countriesData.find(i=>i.dialCode === "+234")
   const defaultIndex = countriesData.indexOf(defaultCountry)
+  const {dispatch} = useContext(selectContext)
 
-
-  const [selectItems, setSelectItems] = useState("")
   const [displaySelect, setDisplaySelect] = useState(false)
   const [selected, setSelected] = useState(defaultCountry)
   const [activeIndex, setActiveIndex] = useState(defaultIndex)
-  const [selectEl, setSelectEl] = useState("")
   const optionsRef = useRef(null)
 
-  const [dialCode, setDialCode] = useState(defaultCountry.dialCode)
-  const [phoneNumber, setPhoneNumber] = useState("")
 
   const handleClick =()=>{
     setDisplaySelect(prev=>!prev)
@@ -28,26 +26,37 @@ export default function Selectbtn(props){
   }
 
   useEffect(()=>{
-    activeIndex < 1 ? optionsRef.current.children[activeIndex].scrollIntoView() :
-    activeIndex === 1 ? optionsRef.current.children[activeIndex-1].scrollIntoView() :
+    dispatch({type: "setDialCode", payload: defaultCountry.dialCode})
+    // eslint-disable-next-line
+  }, [])
+
+  useEffect(()=>{
+    activeIndex <= 2 ? optionsRef.current.children[0].scrollIntoView():
     optionsRef.current.children[activeIndex-2].scrollIntoView()
+    window.scrollTo(0, 0)
   })
 
   const handleSelect =(country, index)=>{
     setActiveIndex(index)
     setSelected(country)
-    setDialCode(country.dialCode)
+    dispatch({type: "setDialCode", payload: country.dialCode})
   }
+
+  // dipatch is used to store dialcode in state which may not be ideal but
+  // needed in this case to allow consumption in LoginHelp or wherever the component
+  // is used
 
   const selectRef = useCallback(node=>{
     if (node != null){
       node.selectedIndex = activeIndex
   }}, [activeIndex])
+// turns out I didn't need to grab the select at all. I actually didn't need
+// select element at all as I am not really using it in the select button.
 
   return (
     <SelectContainer tabIndex="0" onBlur={handleBlur} onClick={handleClick}>
       <Select  ref={selectRef}>
-        {countriesData.map(i=>{return(<Option>{i.dialCode}</Option>)})}
+        {countriesData.map((i, index)=>{return(<Option key={index}>{i.dialCode}</Option>)})}
       </Select>
 
       <Selected displaySelect={displaySelect}>
