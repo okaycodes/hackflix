@@ -17,7 +17,7 @@ function FormContextProvider({children}){
     expirationDate: "", expirationDateIsActive: false,
     securityCode: "", securityCodeIsActive: false,
     planName: "", planPrice:"",
-    signInPassword: initialSignInPassword, signInPasswordIsActive:false,
+    signInPassword: initialSignInPassword, signInPasswordIsActive:false
   }
   let [state, dispatch] = useReducer((state, action)=>{
     switch(action.type){

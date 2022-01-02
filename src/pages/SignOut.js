@@ -10,7 +10,6 @@ export default function SignOutPage(){
   const auth = getAuth();
   const navigate = useNavigate()
   const {dispatch} = useContext(formContext)
-
   /*
   navigate is called inside the setTimeout and handleSignOut instead of the link because
   the link is a button and not a react-router Link
