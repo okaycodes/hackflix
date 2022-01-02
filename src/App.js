@@ -5,7 +5,7 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import SignOut from './pages/SignOut'
 import LoginHelp from './pages/LoginHelp'
-
+import {SelectContextProvider} from "./contexts/selectContext"
 
 
 function App() {
@@ -16,7 +16,8 @@ function App() {
         <Route exact path={ROUTES.SIGN_IN} element={<SignIn />}/>
         <Route exact path={ROUTES.SIGN_UP} element={<SignUp />}/>
         <Route exact path={ROUTES.SIGN_OUT} element={<SignOut/>}/>
-        <Route exact path={ROUTES.SIGN_IN_HELP} element={<LoginHelp/>}/>
+        <Route exact path={ROUTES.SIGN_IN_HELP}
+        element={<SelectContextProvider><LoginHelp/></SelectContextProvider>}/>
         <Route exact path={ROUTES.SELECT_PROFILE} element={<LoginHelp/>}/>
       </Routes>
     </div>
