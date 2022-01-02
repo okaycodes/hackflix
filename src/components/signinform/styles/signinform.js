@@ -212,22 +212,30 @@ export const FlexBox = styled.div`
 `;
 
 export const LoginErrorMessage = styled.div`
-  background: #e87c03;
+  background: ${props=>props.backgroundColor || "#e87c03"};
   border-radius: 4px;
   margin-bottom: .5em;
 
-  & > ${Text}{
+  &  ${Text}{
     color: white;
     font-size: 14;
     margin: 0;
     padding: 10px 20px;
   }
-  & > ${Text} > span{
+  &  ${Text}  span{
     font-weight: bold
   }
-  & > ${Text} > ${Link}{
+  &  ${Text}  ${Link}{
     color: white;
     font-size: 14px;
     text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+  }
+
+  & ${Icon}{
+    width: 25px;
+    margin: 2em 1em;
+    margin-right: 0;
+    filter: invert(100%) sepia(2%) saturate(1%) hue-rotate(223deg) brightness(104%) contrast(100%);
   }
 `;

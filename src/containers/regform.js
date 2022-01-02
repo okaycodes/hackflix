@@ -2,7 +2,7 @@ import {useContext, useState} from "react"
 import {useNavigate} from "react-router-dom"
 import * as REGEX from './../constants/regex'
 import * as ROUTES from "./../constants/routes"
-import {Registration, RegForm} from "./../components"
+import {Registration, RegForm, SignInForm} from "./../components"
 import {formContext} from  "./../contexts/formContext"
 import {getFirestore, doc, setDoc} from 'firebase/firestore'
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
@@ -18,6 +18,7 @@ export default function RegFormContainer(){
   const passwordIsEmpty = password.length < 1
   const formIsInvalid = !passwordIsValid || !emailIsValid
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(false)
 
   const navigate = useNavigate()
   const auth = getAuth()
@@ -37,7 +38,7 @@ export default function RegFormContainer(){
         setDoc(doc(db, "users", response.user.uid), {email, password, currentStepUrl: ROUTES.SIGN_UP_HOME})
       }).catch(error=>{
           console.error(error)
-          alert(error.message)
+          setError(true)
           setIsLoading(false)
 
         })
@@ -45,6 +46,19 @@ export default function RegFormContainer(){
 
   return(
     <RegForm>
+    <SignInForm.LoginErrorMessage backgroundColor="#ffa00a">
+      {error  &&
+        <SignInForm.FlexBox>
+        <SignInForm.Icon src="../../../images/icons/warning-icon.svg"fontSize="16px" />
+
+          <SignInForm.Text fontSize="16px">
+            <span>Looks like that account already exists.</span>
+            <SignInForm.Link onClick={()=>dispatch({type: "emptySignupForm"})} to={ROUTES.SIGN_IN}>
+            Sign into that account</SignInForm.Link> or try using a different email.
+          </SignInForm.Text>
+        </SignInForm.FlexBox>
+      }
+    </SignInForm.LoginErrorMessage>
       <Registration.Title>Create a password to start your membership</Registration.Title>
       <Registration.SubTitle>
         step <span>1</span> of <span>3</span>

@@ -19,7 +19,6 @@ export const Inner = styled.div`
 export const Base = styled.form`
   display: flex;
   flex-direction: column;
-  width: 90%;
   align-items: start;
 `;
 
