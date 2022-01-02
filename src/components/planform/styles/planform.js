@@ -222,7 +222,7 @@ export const Link = styled(ReactRouterLink)`
   }
 `;
 
-export const ButtonLink = styled(ReactRouterLink)`
+export const ButtonLink = styled.button`
   display: block;
   width: 100%;
   max-width: 440px;
@@ -234,6 +234,7 @@ export const ButtonLink = styled(ReactRouterLink)`
   text-align: center;
   border-radius: 3px;
   padding: .7em;
+  border: none;
 
   &:hover, &:focus{
     background: #f40612;

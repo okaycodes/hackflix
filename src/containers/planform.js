@@ -1,19 +1,53 @@
 import {PlanForm, Registration} from "./../components"
-import {useState, useContext} from "react"
+import {useState, useContext, useEffect} from "react"
 import plansData from '../fixtures/plans.json';
 import * as ROUTES from "./../constants/routes"
 import {formContext} from "./../contexts/formContext"
+import {getFirestore, doc, setDoc} from 'firebase/firestore'
+import {getAuth} from 'firebase/auth'
+import {useNavigate} from "react-router-dom"
+// import {getAuth} from 'firebase/auth'
 
 
 
 export default function Planform(){
   const checkList = ["Watch all you want. Ad-free.", "Recommendations just for you.",
     "Change or cancel your plan anytime."]
-  const {dispatch} = useContext(formContext)
+  const {state, dispatch} = useContext(formContext)
+  const {planName, planPrice} = state
   const [activeIndex, setActiveIndex] = useState(3)
+  const [uid, setUid] = useState("")
+  console.log(planName, planPrice)
+
   const handleClick=(index)=>{
     setActiveIndex(index)
   }
+
+  const auth = getAuth()
+
+  useEffect(()=>{
+    dispatch({type:"savePlan", payload:{name:"Premium", price:"₦4,400"}})
+  },[dispatch])
+
+  useEffect(()=>{
+    auth.currentUser != null && setUid(auth.currentUser.uid)
+  }, [auth.currentUser])
+
+  const navigate = useNavigate()
+  const db = getFirestore()
+
+
+  const handleSubmit =()=>{
+    if(!uid){
+      navigate(`./../../${ROUTES.REGISTRATION}`)
+    }else{
+      const userRef = doc(db, 'users', uid);
+      setDoc(userRef, {planName, planPrice, currentStepUrl: ROUTES.PAYMENT_STEP}, {merge:true})
+      localStorage.setItem("currentStepUrl", ROUTES.PAYMENT_STEP)
+      navigate(`./../../${ROUTES.PAYMENT_STEP}`)
+    }
+  }
+
 
   return(
     <PlanForm>
@@ -109,6 +143,6 @@ export default function Planform(){
       <PlanForm.Terms>Only people who live with you may use your account. Watch on
        4 different devices at the same time with Premium, 2 with Standard, and 1
        with Basic and Mobile.</PlanForm.Terms>
-      <PlanForm.ButtonLink to={`./../../${ROUTES.PAYMENT_STEP}`}>Next</PlanForm.ButtonLink>
+      <PlanForm.ButtonLink onClick={handleSubmit}>Next</PlanForm.ButtonLink>
     </PlanForm>
   )}
