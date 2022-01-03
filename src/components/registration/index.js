@@ -1,4 +1,4 @@
-import {Container, Inner, Icon, Image, Title, SubTitle, Text, ButtonLink,
+import {Container, Inner, Icon, Image, Title, SubTitle, Text, ButtonLink, NavigateLink,
         List, ListItem, ListText, ListIcon, SecureIcon, CardsIcon, CardsPaymentLink,
         IconWrapper} from "./styles/registration"
 
@@ -37,6 +37,10 @@ Registration.Text = function RegistrationText({children, ...restProps}){
 
 Registration.ButtonLink = function RegistrationButtonLink({children, ...restProps}){
   return <ButtonLink {...restProps}>{children}</ButtonLink>
+}
+
+Registration.NavigateLink = function RegistrationNavigateLink({children, ...restProps}){
+  return <NavigateLink {...restProps}>{children}</NavigateLink>
 }
 
 Registration.SecureIcon = function RegistratinSecureIcon({children, ...restProps}){

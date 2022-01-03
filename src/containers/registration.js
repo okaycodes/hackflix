@@ -14,6 +14,6 @@ export default function RegistrationContainer(){
       Netflix is personalized for you. <br/> Create a
       password to watch on any device at any time.
     </Registration.Text>
-    <Registration.ButtonLink to={`../../${ROUTES.REG_FORM}`}>Next</Registration.ButtonLink>
+    <Registration.NavigateLink to="/signup/regform">Next</Registration.NavigateLink>
   </Registration>
 )}

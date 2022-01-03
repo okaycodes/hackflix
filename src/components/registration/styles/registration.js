@@ -69,7 +69,7 @@ export const Text = styled.p`
   font-weight: ${props=>props.fontWeight || "400"};
 `;
 
-export const ButtonLink = styled(ReactRouterLink)`
+export const ButtonLink = styled.button`
   width: 100%;
   color: white;
   background-color: #e50914;
@@ -79,7 +79,27 @@ export const ButtonLink = styled(ReactRouterLink)`
   text-align: center;
   border-radius: 3px;
   font-size: 24px;
-  margin-top: ${props=>props.marginTop || "20px"};
+  margin-top: ${props=>props.margintop || "20px"};
+  border: none;
+
+  &:hover, &:focus{
+    background: #f40612;
+  }
+`;
+
+// very cringe duplication here. need attention
+export const NavigateLink = styled(ReactRouterLink)`
+  width: 100%;
+  color: white;
+  background-color: #e50914;
+  padding: .8em;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 24px;
+  margin-top: ${props=>props.margintop || "20px"};
+  border: none;
 
   &:hover, &:focus{
     background: #f40612;

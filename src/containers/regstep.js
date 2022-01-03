@@ -22,6 +22,7 @@ export default function RegStepContainer(){
         )
       })}
       </Registration.List>
-      <Registration.ButtonLink to={`./../${ROUTES.PLAN_FORM}`}>Next</Registration.ButtonLink>
+      <Registration.NavigateLink to={`./../${ROUTES.PLAN_FORM}`}>Next</Registration.NavigateLink>
+
     </Registration>
   )}
