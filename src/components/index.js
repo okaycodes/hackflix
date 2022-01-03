@@ -11,3 +11,6 @@ export {default as Modal} from "./modal"
 export {default as SignOut} from "./signout"
 export {default as LoginHelp} from "./loginHelp"
 export {default as Selectbtn} from "./selectbtn"
+export {default as NotFound} from "./not-found"
+export {default as BlankPage} from "./blank"
+
