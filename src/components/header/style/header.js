@@ -5,6 +5,7 @@ export const Background = styled.div`
   display: flex;
   flex-direction: column;
   background: url(${({src}) => src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg'});
+  background-color: ${props=>props.backgroundColor};
   @media (max-width: 740px) {
     ${({dontShowOnSmallViewPort})=> dontShowOnSmallViewPort && "background: none"}
   }
