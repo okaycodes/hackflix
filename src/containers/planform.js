@@ -17,7 +17,6 @@ export default function Planform(){
   const {planName, planPrice} = state
   const [activeIndex, setActiveIndex] = useState(3)
   const [uid, setUid] = useState("")
-  console.log(planName, planPrice)
 
   const handleClick=(index)=>{
     setActiveIndex(index)
