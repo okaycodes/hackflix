@@ -1,8 +1,7 @@
 import {SignupHeader, Footer} from "./../components"
-import {Routes, Route, Navigate, Outlet} from 'react-router-dom'
-import RegistrationContainer from "./../containers/registration"
-import {getAuth, onAuthStateChanged} from "firebase/auth"
-import {useState} from "react"
+import {Outlet} from 'react-router-dom'
+import {useContext} from "react"
+import { authContext } from "../contexts/authContext"
 
 
 
@@ -12,12 +11,8 @@ COME BACK TO THIS
 // import * as ROUTES from "./../constants/routes"
 
 export default function SignUp({children}){
-  const [isLoggedin, setIsLoggedin] = useState(false)
-  const auth = getAuth()
+  const {user} = useContext(authContext)
 
-  onAuthStateChanged(auth, (user)=>{
-    user && setIsLoggedin(true)
-  })
   // auth is used here for determining logged if user is logged in
   // because it causes the whole page to refresh allowing for UI changes
   // to be rendered in the header that will otherwise not render. the use
@@ -27,7 +22,7 @@ export default function SignUp({children}){
     <>
       <SignupHeader>
           <SignupHeader.Logo src="./../../images/misc/logo.svg" alt="Netflix"/>
-          {isLoggedin ? <SignupHeader.SignOutLink /> : <SignupHeader.SignInLink />}
+          {user ? <SignupHeader.SignOutLink /> : <SignupHeader.SignInLink />}
       </SignupHeader>
       <Outlet />
       <Footer backgroundColor="#ededed" padding="2em 3em">
