@@ -1,9 +1,10 @@
 import {Registration, Modal, PlanForm, RegForm} from "./../components"
 import * as REGEX from './../constants/regex';
 import * as ROUTES from './../constants/routes';
+import {authContext} from  "./../contexts/authContext"
 import {formContext} from  "./../contexts/formContext"
 import {useContext, useState} from "react"
-
+import { Navigate } from "react-router-dom";
 // import * as ROUTES from "./../constants/routes"
 
 
@@ -20,15 +21,25 @@ export default function PaymentFormContainer(){
   const cardNumberIsValid = REGEX.CARD_NUMBER_VALIDATION.test(cardNumber)
   const expirationDateIsValid = REGEX.DATE_VALIDATION.test(expirationDate)
   const securityCodeIsValid = REGEX.CVV_VALIDATION.test(securityCode)
-
   const [cvvDisplay, setCVVDisplay] = useState("none")
+
+  const {user} = useContext(authContext)
 
   function handleClick(){
     setCVVDisplay(prev=>prev==="block" ? "none":"block")
   }
 
+      if(!user){
+        return <Navigate to={ROUTES.HOME} />
+      }
+
+  // eslint-disable-next-line
+  function handleSubmit(){
+  }
+
   return(
     <>
+      <>
       <RegForm>
         <Registration.Title>Set up your credit or debit card</Registration.Title>
         <Registration.SubTitle>
@@ -137,7 +148,7 @@ export default function PaymentFormContainer(){
           }>
           I agree
         </RegForm.Checkbox>
-        <Registration.ButtonLink to="#" marginTop="2em" fontSize="23px">Start Membership</Registration.ButtonLink>
+        <Registration.ButtonLink margintop="2em" fontSize="23px">Start Membership</Registration.ButtonLink>
       </RegForm>
       <Modal display={cvvDisplay}>
         <Modal.Header>
@@ -151,4 +162,5 @@ export default function PaymentFormContainer(){
         </Modal.Wrapper>
       </Modal>
     </>
+  </>
   )}

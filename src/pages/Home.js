@@ -4,23 +4,23 @@ import AccordionContainer from "./../containers/accordion"
 import HeaderContainer from "./../containers/header"
 import {OptInForm, Feature} from "./../components"
 import * as ROUTES from './../constants/routes';
+import { useContext } from "react"
+import {authContext} from  "./../contexts/authContext"
 
 
 export default function Home (){
-
-  const isLoggedin = localStorage.getItem("isLoggedin")
-  const currentStepUrl = localStorage.getItem("currentStepUrl")
+  const {user, currentStepUrl} = useContext(authContext)
 
   return (
     <>
       <HeaderContainer>
         <Feature>
-          {isLoggedin && <Feature.SubTitle>Welcome back!</Feature.SubTitle>}
+          {user && <Feature.SubTitle>Welcome back!</Feature.SubTitle>}
           <Feature.Title>Unlimited movies, TV shows and more.</Feature.Title>
           <Feature.SubTitle>Watch anywhere. Cancel at any time.</Feature.SubTitle>
-          { isLoggedin ?
+          { user ?
             <OptInForm>
-              <OptInForm.Button to={currentStepUrl}>Finish Sign Up</OptInForm.Button>
+              <OptInForm.WelcomeBackBtn to={currentStepUrl}>Finish Sign Up</OptInForm.WelcomeBackBtn>
             </OptInForm>
             :
             <OptInForm>
