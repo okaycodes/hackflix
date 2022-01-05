@@ -1,15 +1,15 @@
-import {useContext, useState} from "react"
-import {useNavigate} from "react-router-dom"
+import {useContext, useState, useEffect} from "react"
 import * as REGEX from './../constants/regex'
 import * as ROUTES from "./../constants/routes"
 import {Registration, RegForm, SignInForm} from "./../components"
 import {formContext} from  "./../contexts/formContext"
-import {getFirestore, doc, setDoc} from 'firebase/firestore'
-import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
+import {authContext} from  "./../contexts/authContext"
+
 
 
 export default function RegFormContainer(){
   const {state, dispatch} = useContext(formContext)
+  const {signup, error} = useContext(authContext)
   const {email, emailIsActive} = state
   const {password, passwordIsActive} = state
   const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
@@ -18,31 +18,18 @@ export default function RegFormContainer(){
   const passwordIsEmpty = password.length < 1
   const formIsInvalid = !passwordIsValid || !emailIsValid
   const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState(false)
-
-  const navigate = useNavigate()
-  const auth = getAuth()
-  const db = getFirestore()
-
 
   const handleSignup = (e) =>{
     e.preventDefault()
     setIsLoading(true)
-
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((response)=>{
-        localStorage.setItem("isLoggedin", true)
-        localStorage.setItem("currentStepUrl", ROUTES.SIGN_UP_HOME)
-        navigate(ROUTES.SIGN_UP_HOME)
-        // store user in firestore
-        setDoc(doc(db, "users", response.user.uid), {email, password, currentStepUrl: ROUTES.SIGN_UP_HOME})
-      }).catch(error=>{
-          console.error(error)
-          setError(true)
-          setIsLoading(false)
-
-        })
+    signup(email, password)
   }
+
+  useEffect(()=>{
+    if(error){
+      setIsLoading(false)
+    }
+  },[error])
 
   return(
     <RegForm>

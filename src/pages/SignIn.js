@@ -3,22 +3,18 @@ import {Header, SignInForm, Footer} from "./../components"
 import {formContext} from "./../contexts/formContext"
 import * as REGEX from './../constants/regex';
 import * as ROUTES from './../constants/routes';
-import {useNavigate} from "react-router-dom"
-import {getFirestore, doc, getDoc} from 'firebase/firestore'
-import {getAuth, signInWithEmailAndPassword}  from "firebase/auth"
+import { authContext } from "../contexts/authContext";
 
 
 export default function SignIn({children, ...restProps}){
   const {state, dispatch} = useContext(formContext)
+  const {signin, error} = useContext(authContext)
+
   const {email, emailIsActive} = state
   const {signInPassword, signInPasswordIsActive} = state
   const [checkboxIsChecked, setCheckboxIsChecked] = useState(true)
   const [checkboxIsActive, setCheckboxIsActive] = useState(false)
   const [checkboxIsHovered, setCheckboxIsHovered] = useState(false)
-  const [errorMessage, setErrorMessage] = useState("")
-  const auth = getAuth();
-  const db = getFirestore();
-  const navigate = useNavigate();
 
   const handleChange=()=>{
       setCheckboxIsChecked(prev=>!prev)
@@ -35,29 +31,7 @@ is clicked before the required white.
 
   const handleLogin =(e)=>{
     e.preventDefault()
-    signInWithEmailAndPassword(auth, email, signInPassword)
-    .then(response=>{
-      getDoc(doc(db, "users", response.user.uid))
-      .then(snapShot=>{
-        if (snapShot.exists()){
-          const currentStepUrl = snapShot.data().currentStepUrl
-          if(currentStepUrl){
-            localStorage.setItem('isLoggedin', true)
-            localStorage.setItem("currentStepUrl", currentStepUrl)
-            navigate(ROUTES.HOME)
-          } else {
-            navigate(ROUTES.SELECT_PROFILE)
-          }
-        }
-      })
-        // if(error.message===)
-      }).catch(err=>{
-      if(err.message.includes('user-not-found')){
-        setErrorMessage("unregistered user")
-      }else if (err.message.includes('wrong-password')){
-        setErrorMessage("incorrect password")
-      }
-  })
+    signin(email, signInPassword)
  }
 
   const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
@@ -76,14 +50,14 @@ is clicked before the required white.
       <SignInForm>
         <SignInForm.Title>Sign In</SignInForm.Title>
         <SignInForm.LoginErrorMessage>
-          {errorMessage === "unregistered user" ?
+          {error === "unregistered user" ?
            <SignInForm.Text fontSize="14px">
            Sorry, we can't find an account with this email address. Please try again or
            <SignInForm.Link onClick={()=>dispatch({type: "emptySignupForm"})} to={ROUTES.HOME}>
            create a new account.</SignInForm.Link>
            </SignInForm.Text>
            :
-           errorMessage === "incorrect password" &&
+           error === "incorrect password" &&
            <SignInForm.Text fontSize="14px">Incorrect password. Please try again or you can
            <SignInForm.Link onClick={()=>dispatch({type: "emptySignupForm"})} to={ROUTES.SIGN_IN_HELP}>
            reset your password.</SignInForm.Link>

@@ -1,10 +1,9 @@
 import {PlanForm, Registration} from "./../components"
-import {useState, useContext, useEffect} from "react"
+import {useState, useContext} from "react"
 import plansData from '../fixtures/plans.json';
 import * as ROUTES from "./../constants/routes"
 import {formContext} from "./../contexts/formContext"
-import {getFirestore, doc, setDoc} from 'firebase/firestore'
-import {getAuth} from 'firebase/auth'
+import {authContext} from "./../contexts/authContext"
 import {useNavigate} from "react-router-dom"
 // import {getAuth} from 'firebase/auth'
 
@@ -13,37 +12,25 @@ import {useNavigate} from "react-router-dom"
 export default function Planform(){
   const checkList = ["Watch all you want. Ad-free.", "Recommendations just for you.",
     "Change or cancel your plan anytime."]
+  
+  const navigate = useNavigate()
+  const {user, update} = useContext(authContext)
   const {state, dispatch} = useContext(formContext)
   const {planName, planPrice} = state
   const [activeIndex, setActiveIndex] = useState(3)
-  const [uid, setUid] = useState("")
+
 
   const handleClick=(index)=>{
     setActiveIndex(index)
   }
 
-  const auth = getAuth()
-
-  useEffect(()=>{
-    dispatch({type:"savePlan", payload:{name:"Premium", price:"₦4,400"}})
-  },[dispatch])
-
-  useEffect(()=>{
-    auth.currentUser != null && setUid(auth.currentUser.uid)
-  }, [auth.currentUser])
-
-  const navigate = useNavigate()
-  const db = getFirestore()
-
-
   const handleSubmit =()=>{
-    if(!uid){
+    const successRoute = `./../../${ROUTES.PAYMENT_STEP}`
+    if(!user.uid){
       navigate(`./../../${ROUTES.REGISTRATION}`)
     }else{
-      const userRef = doc(db, 'users', uid);
-      setDoc(userRef, {planName, planPrice, currentStepUrl: ROUTES.PAYMENT_STEP}, {merge:true})
-      localStorage.setItem("currentStepUrl", ROUTES.PAYMENT_STEP)
-      navigate(`./../../${ROUTES.PAYMENT_STEP}`)
+      const mergeObject = {planName, planPrice, currentStepUrl: ROUTES.PAYMENT_STEP};
+      update(mergeObject, successRoute)
     }
   }
 
