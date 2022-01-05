@@ -5,6 +5,8 @@ import { GlobalStyles } from './global-styles';
 import {BrowserRouter as Router} from 'react-router-dom'
 import {initializeApp} from 'firebase/app'
 import {FormContextProvider} from "./contexts/formContext"
+import {AuthContextProvider} from "./contexts/authContext"
+
 
 
 const firebaseConfig = {
@@ -17,15 +19,19 @@ const firebaseConfig = {
   appId: "1:223100768739:web:8594dc8ace4650689ed0d6"
 }
 
+
 initializeApp(firebaseConfig)
+
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <FormContextProvider>
-        <GlobalStyles />
-        <App />
+        <AuthContextProvider>
+          <GlobalStyles />
+          <App />
+        </AuthContextProvider>
       </FormContextProvider>
     </Router>
   </React.StrictMode>,
