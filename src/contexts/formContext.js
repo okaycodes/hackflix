@@ -16,7 +16,7 @@ function FormContextProvider({children}){
     cardNumber: "", cardNumberIsActive: false,
     expirationDate: "", expirationDateIsActive: false,
     securityCode: "", securityCodeIsActive: false,
-    planName: "", planPrice:"",
+    planName: "Premium", planPrice:"₦4,400",
     signInPassword: initialSignInPassword, signInPasswordIsActive:false
   }
   let [state, dispatch] = useReducer((state, action)=>{
