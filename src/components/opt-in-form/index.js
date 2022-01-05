@@ -12,7 +12,8 @@ import {
         Input,
         Placeholder,
         ErrorMessage,
-        ButtonLink} from "./styles/opt-in-form"
+        ButtonLink,
+        Navigate} from "./styles/opt-in-form"
 
   export default function OptInForm({children, ...restProps}){
     return (
@@ -74,4 +75,8 @@ import {
           {children} <img src="./../../images/icons/chevron-right.png" alt="chevron right" />
         </ButtonLink>
         )
+}
+
+OptInForm.WelcomeBackBtn = function OptInFormWelcomeBackBtn({children, ...restProps}){
+  return <Navigate  {...restProps}>{children}</Navigate>
 }

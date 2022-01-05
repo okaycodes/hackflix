@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import styled, {css} from "styled-components"
+import {Link} from "react-router-dom"
 
 export const Container = styled.div`
   width: 90%;
@@ -104,8 +105,7 @@ export const ErrorMessage = styled.div`
   color: orange;
 `;
 
-
-export const ButtonLink = styled.button`
+const sharedButtonStyle = css`
   color: white;
   font-size: 23px;
   width: 30%;
@@ -143,4 +143,12 @@ export const ButtonLink = styled.button`
     }
   }
 
+`;
+
+export const ButtonLink = styled.button`
+  ${sharedButtonStyle}
+`;
+
+export const Navigate = styled(Link)`
+  ${sharedButtonStyle}  
 `;
