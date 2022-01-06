@@ -16,6 +16,7 @@ import RegStepContainer from "./containers/regstep"
 import PlanFormContainer from "./containers/planform"
 import PaymentStepContainer from "./containers/payment"
 import PaymentFormContainer from "./containers/paymentform"
+import PhoneNumberContainer from './containers/phoneNumber';
 
 function App() {
 const {isAuthenticating} = useContext(authContext)
@@ -33,9 +34,17 @@ const {isAuthenticating} = useContext(authContext)
           <Route path="planform" element={<PlanFormContainer />} />
           <Route path="payment" element={<PaymentStepContainer />} />
           <Route path="regform" element={<RegFormContainer />} />
+          <Route path="phoneNumber" element={
+            <SelectContextProvider>
+              <PhoneNumberContainer />
+            </SelectContextProvider>   
+          }/>
         </Route>
         <Route path={ROUTES.SIGN_OUT} element={<SignOut/>}/>
-        <Route path={ROUTES.SIGN_IN_HELP} element={<SelectContextProvider><LoginHelp/></SelectContextProvider>}/>
+        <Route path={ROUTES.SIGN_IN_HELP} element={
+          <SelectContextProvider>
+              <LoginHelp/>
+          </SelectContextProvider>}/>
         <Route path={ROUTES.SELECT_PROFILE} element={<LoginHelp/>}/>
         <Route path="*" element={<NotFound />} />
       </Routes>}
