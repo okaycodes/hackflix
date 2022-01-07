@@ -10,6 +10,7 @@ import {authContext} from  "./../contexts/authContext"
 
 export default function Home (){
   const {user, currentStepUrl} = useContext(authContext)
+  // console.log("thel")
 
   return (
     <>
