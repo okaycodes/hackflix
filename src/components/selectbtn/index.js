@@ -17,6 +17,7 @@ export default function Selectbtn(props){
   const optionsRef = useRef(null)
 
 
+
   const handleClick =()=>{
     setDisplaySelect(prev=>!prev)
   }
@@ -39,24 +40,33 @@ export default function Selectbtn(props){
   const handleSelect =(country, index)=>{
     setActiveIndex(index)
     setSelected(country)
-    dispatch({type: "setDialCode", payload: country.dialCode})
+    // dispatch({type: "setDialCode", payload: country.dialCode})
   }
 
-  // dipatch is used to store dialcode in state which may not be ideal but
-  // needed in this case to allow consumption in LoginHelp or wherever the component
-  // is used
+  /* !comment
+  dipatch is used to store dialcode in state which is in my opinion not ideal hence 
+  it has been commented out once I found a method that allows me to extract value from 
+  the button without resorting to context.
+   */ 
+ 
 
   const selectRef = useCallback(node=>{
     if (node != null){
       node.selectedIndex = activeIndex
+      node.dispatchEvent( new Event("change", {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+        clientX: 20,
+    }))
   }}, [activeIndex])
-// turns out I didn't need to grab the select at all. I actually didn't need
-// select element at all as I am not really using it in the select button.
+// turns out actually grabbing the select button allows me to update state without having to 
+// recourse to context.
 
   return (
     <SelectContainer tabIndex="0" onBlur={handleBlur} onClick={handleClick}>
-      <Select  ref={selectRef}>
-        {countriesData.map((i, index)=>{return(<Option key={index}>{i.dialCode}</Option>)})}
+      <Select ref={selectRef} onChange={(e)=>props.handlechange(e.target.value)}>
+        {countriesData.map((i, index)=>{return(<Option onClick={()=>console.log("clicked", index)}key={index}>{i.dialCode}</Option>)})}
       </Select>
 
       <Selected displaySelect={displaySelect}>
