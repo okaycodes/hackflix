@@ -17,9 +17,41 @@ function AuthContextProvider({children}){
     const db = getFirestore()
     const auth = getAuth()
     const navigate = useNavigate()
-    
+    // 1. check for auth state
+    onAuthStateChanged(auth, (user)=>{
+        if(user){
+            setUser(user)
+        }else{
+            setUser("")
+        } 
+    })
+
+    /*!comment
+    set Authenticating is false when the async auth is completed. It is important to not here that
+    the user is initialized as null and not an empty string. That is so that this function can work.
+    as initializing it to an empty string will mean if no user is returned and setUser("") in 
+    onAuthStateChanged is run, the  code below will not run. Of course null isn't the only way to achieve
+    this effect.
+    */ 
     useEffect(()=>{
         user != null && setIsAuthenticating(false)
+    },[user])
+
+
+    // gets user from firestore if user is logged in and the relevant data if the signup is incomplete
+    useEffect(()=>{
+        if(user){
+            getDoc(doc(db, 'users', user.uid)) 
+            .then(snapshot =>{
+                if(snapshot.exists()){
+                    const data = snapshot.data()
+                    setCurrentStepUrl(data.currentStepUrl)
+                    dispatch({type:'savePlan', payload:{name:data.planName, price:data.planPrice}})
+                    
+                }
+            })
+        }
+    // eslint-disable-next-line
     },[user])
     
     const signup=(email, password)=>{
@@ -33,23 +65,6 @@ function AuthContextProvider({children}){
             setError(error.message)
         })
     } 
-
-    onAuthStateChanged(auth, (user)=>{
-        if(user){
-            setUser(user)
-            getDoc(doc(db, 'users', user.uid)) 
-            .then(snapshot =>{
-                if(snapshot.exists()){
-                    const data = snapshot.data()
-                    setCurrentStepUrl(data.currentStepUrl)
-                    dispatch({type:'savePlan', payload:{name:data.planName, price:data.planPrice}})
-                }
-            })
-        }else{
-            setUser("")
-        } 
-    })
-
 
     const signin=(email, password)=>{
         signInWithEmailAndPassword(auth, email, password)
