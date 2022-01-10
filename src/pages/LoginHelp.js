@@ -1,7 +1,6 @@
 import {SignupHeader as LoginHelpHeader, Header, LoginHelp, Selectbtn,
   SignInForm as LoginHelpForm, Footer, RegForm as LoginHelpInput} from "./../components"
-import {useState, useContext} from "react"
-import {selectContext} from "./../contexts/selectContext"
+import {useState} from "react"
 import * as REGEX from './../constants/regex'
 
 
@@ -9,31 +8,34 @@ import * as REGEX from './../constants/regex'
 
 export default function LoginHelpPage(){
   const [recoveryMethod, setRecoveryMethod] = useState("email")
-  const {state} = useContext(selectContext)
-  const {dialCode} = state
+  const [dialCode, setDialCode] = useState("")
   const [email, setEmail] = useState("")
   const [emailIsActive, setEmailIsActive] = useState(false)
-  const [phoneNumber, setPhoneNumber] = useState(dialCode)
+  const [phoneNumber, setPhoneNumber] = useState("")
   const [phoneNumberIsActive, setPhoneNumberIsActive] = useState(false)
   const emailIsEmpty = email.length < 1
   const phoneNumberIsEmpty = phoneNumber.length < 1
   const emailIsValid = REGEX.EMAIL_VALIDATION.test(email)
   const phoneNumberIsValid = REGEX.PHONE_NUMBER_VALIDATION.test(phoneNumber)
 
-
-
-  /*
-  navigate is called inside the setTimeout and handleSignOut instead of the link because
-  the link is a button and not a react-router Link
-  */
-
   const handleSubmit =(e)=>{
     e.preventDefault()
-    if(recoveryMethod==="text message" && phoneNumberIsValid){
+    if(recoveryMethod==="text message"){
       console.log(dialCode, phoneNumber)
-    }else if (recoveryMethod==="email" && emailIsValid){
+    }else if (recoveryMethod==="email"){
       console.log(email)
     }
+  }
+
+  /* comment! 
+  honestly a lot of stuff happened here that I am not sure how it even managed to work
+  basically in order to grab the value of the select in the select button, the handlechange
+  function is passed as props to the underlying select element of the select button. 
+  the function takes a value which is provided by the select child event when its 
+  (the select element) onChange is called. see selectButton component for more details.
+  */ 
+  const handlechange=(value)=>{
+    setDialCode(value)
   }
 
   return (
@@ -57,7 +59,7 @@ export default function LoginHelpPage(){
         <LoginHelp.RadioButton
           value="text message"
           name="password reset"
-          onChange={(e)=>setRecoveryMethod(e.target.value)}
+          onChange={(e)=>{setRecoveryMethod(e.target.value)}}
           checked={recoveryMethod === "text message"}
         >
           Text Message(SMS)
@@ -69,19 +71,19 @@ export default function LoginHelpPage(){
         <LoginHelp.FormBase onSubmit={handleSubmit}>
             {recoveryMethod === "text message" ?
             <LoginHelp.InputContainer>
-              <Selectbtn />
+              <Selectbtn handlechange={handlechange}/>
               <LoginHelpInput.Input
                 animated={false}
                 name="phone number"
                 value={phoneNumber}
-                isValid ={phoneNumberIsValid}
+                isValid = {phoneNumberIsValid}
                 isEmpty = {phoneNumberIsEmpty}
-                isActivated={phoneNumberIsActive}
+                isActivated = {phoneNumberIsActive}
                 minLength={6}
                 errorMessage1 = "phone number is required!"
                 errorMessage2 = "Please enter a phone number"
                 onChange={(e)=>setPhoneNumber(e.target.value)}
-                onBlur={(event)=> phoneNumber.length >= 1 && setPhoneNumberIsActive(true)}
+                onBlur={()=> phoneNumber.length >= 1 && setPhoneNumberIsActive(true)}
                 style={{height:"45px", width: "200px", marginTop:"0"}}
               />
             </LoginHelp.InputContainer>
@@ -98,12 +100,12 @@ export default function LoginHelpPage(){
                 errorMessage1 = "Email is required!"
                 errorMessage2 = "Please enter a valid email address"
                 onChange={(e)=>setEmail(e.target.value)}
-                onBlur={(event)=> email.length >= 1 && setEmailIsActive(true)}
+                onBlur={()=> email.length >= 1 && setEmailIsActive(true)}
                 style={{height:"45px", marginTop:"0"}}
               />
 
             }
-          <LoginHelp.ButtonLink>{recoveryMethod==="email" ? "Email me" : "Text me"}</LoginHelp.ButtonLink>
+          <LoginHelp.ButtonLink >{recoveryMethod==="email" ? "Email me" : "Text me"}</LoginHelp.ButtonLink>
         </LoginHelp.FormBase>
         <LoginHelp.Link to="#">I don't remember my email or phone</LoginHelp.Link>
       </LoginHelp>
