@@ -148,7 +148,7 @@ export default function PaymentFormContainer(){
           }>
           I agree
         </RegForm.Checkbox>
-        <Registration.ButtonLink margintop="2em" fontSize="23px">Start Membership</Registration.ButtonLink>
+        <Registration.NavigateLink margintop="2em" fontSize="23px" to="../../signup/phoneNumber">Start Membership</Registration.NavigateLink>
       </RegForm>
       <Modal display={cvvDisplay}>
         <Modal.Header>
