@@ -8,7 +8,7 @@ export default function HeaderContainer({children}){
   return(
     <Header>
       <Header.Frame>
-        <Header.Logo src="./../../images/misc/logo.svg" alt="Netflix" />
+        <Header.Logo src="./images/misc/logo.svg" alt="Netflix" />
         {user ? <Header.SignOutLink/>: <Header.SignInLink/>}
       </Header.Frame>
       {children}
