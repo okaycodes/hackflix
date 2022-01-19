@@ -2,7 +2,7 @@ import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { GlobalStyles } from './global-styles';
-import {BrowserRouter as Router} from 'react-router-dom'
+import {HashRouter} from 'react-router-dom'
 import {initializeApp} from 'firebase/app'
 import {FormContextProvider} from "./contexts/formContext"
 import {AuthContextProvider} from "./contexts/authContext"
