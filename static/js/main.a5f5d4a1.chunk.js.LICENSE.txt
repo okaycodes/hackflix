@@ -1,0 +1,7 @@
+/*!comment
+    set Authenticating is false when the async auth is completed. It is important to not here that
+    the user is initialized as null and not an empty string. That is so that this function can work.
+    as initializing it to an empty string will mean if no user is returned and setUser("") in 
+    onAuthStateChanged is run, the  code below will not run. Of course null isn't the only way to achieve
+    this effect.
+    */
