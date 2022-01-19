@@ -72,7 +72,7 @@ import {
           disabled={isEmpty || !emailIsValid}
           onClick={()=>navigate(to)}
         >
-          {children} <img src="./../../images/icons/chevron-right.png" alt="chevron right" />
+          {children} <img src="./images/icons/chevron-right.png" alt="chevron right" />
         </ButtonLink>
         )
 }
