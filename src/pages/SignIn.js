@@ -45,7 +45,7 @@ is clicked before the required white.
   return(
     <Header dontShowOnSmallViewPort>
       <Header.Frame>
-        <Header.Logo src="./../../images/misc/logo.svg" alt="Netflix" />
+        <Header.Logo src="./images/misc/logo.svg" alt="Netflix" />
       </Header.Frame>
       <SignInForm>
         <SignInForm.Title>Sign In</SignInForm.Title>
@@ -117,7 +117,7 @@ is clicked before the required white.
           </SignInForm.FlexBox>
 
           <SignInForm.FlexBox justifyContent="start">
-            <SignInForm.Icon src="./../../images/icons/FB-icon.png"/>
+            <SignInForm.Icon src="./images/icons/FB-icon.png"/>
             <SignInForm.Link to="#" color="grey">Login with Facebook</SignInForm.Link>
           </SignInForm.FlexBox>
 

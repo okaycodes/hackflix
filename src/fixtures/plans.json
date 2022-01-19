@@ -5,8 +5,8 @@
     "price": "₦1,200",
     "quality": "Good",
     "resolution": "480p",
-    "devices": [{"name":"Phone", "src":"/images/icons/mobile.svg"},
-                {"name":"Tablet", "src":"/images/icons/tablet.svg"}]
+    "devices": [{"name":"Phone", "src":"./images/icons/mobile.svg"},
+                {"name":"Tablet", "src":"./images/icons/tablet.svg"}]
   },
   {
     "id": 2,
@@ -14,10 +14,10 @@
     "price": "₦2,900",
     "quality": "Good",
     "resolution": "480p",
-    "devices": [{"name":"Phone", "src":"/images/icons/mobile.svg"},
-                {"name":"Tablet", "src":"/images/icons/tablet.svg"},
-                {"name":"Computer", "src":"/images/icons/computer.svg"},
-                {"name":"TV", "src":"/images/icons/tv.svg"}]
+    "devices": [{"name":"Phone", "src":"./images/icons/mobile.svg"},
+                {"name":"Tablet", "src":"./images/icons/tablet.svg"},
+                {"name":"Computer", "src":"./images/icons/computer.svg"},
+                {"name":"TV", "src":"./images/icons/tv.svg"}]
   },
   {
     "id": 3,
@@ -25,10 +25,10 @@
     "price": "₦3,600",
     "quality": "Better",
     "resolution": "1080p",
-    "devices": [{"name":"Phone", "src":"/images/icons/mobile.svg"},
-                {"name":"Tablet", "src":"/images/icons/tablet.svg"},
-                {"name":"Computer", "src":"/images/icons/computer.svg"},
-                {"name":"TV", "src":"/images/icons/tv.svg"}]
+    "devices": [{"name":"Phone", "src":"./images/icons/mobile.svg"},
+                {"name":"Tablet", "src":"./images/icons/tablet.svg"},
+                {"name":"Computer", "src":"./images/icons/computer.svg"},
+                {"name":"TV", "src":"./images/icons/tv.svg"}]
   },
   {
     "id": 4,
@@ -36,9 +36,9 @@
     "price": "₦4,400",
     "quality": "Best",
     "resolution": "4K+HDR",
-    "devices": [{"name":"Phone", "src":"/images/icons/mobile.svg"},
-                {"name":"Tablet", "src":"/images/icons/tablet.svg"},
-                {"name":"Computer", "src":"/images/icons/computer.svg"},
-                {"name":"TV", "src":"/images/icons/tv.svg"}]
+    "devices": [{"name":"Phone", "src":"./images/icons/mobile.svg"},
+                {"name":"Tablet", "src":"./images/icons/tablet.svg"},
+                {"name":"Computer", "src":"./images/icons/computer.svg"},
+                {"name":"TV", "src":"./images/icons/tv.svg"}]
   }
 ]

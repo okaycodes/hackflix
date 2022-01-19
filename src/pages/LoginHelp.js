@@ -27,13 +27,13 @@ export default function LoginHelpPage(){
     }
   }
 
-  /* comment! 
+  /* comment!
   honestly a lot of stuff happened here that I am not sure how it even managed to work
   basically in order to grab the value of the select in the select button, the handlechange
-  function is passed as props to the underlying select element of the select button. 
-  the function takes a value which is provided by the select child event when its 
+  function is passed as props to the underlying select element of the select button.
+  the function takes a value which is provided by the select child event when its
   (the select element) onChange is called. see selectButton component for more details.
-  */ 
+  */
   const handlechange=(value)=>{
     setDialCode(value)
   }
@@ -42,7 +42,7 @@ export default function LoginHelpPage(){
     <>
     <Header dontShowOnSmallViewPort src={"signout-bg"}>
       <Header.Frame>
-        <Header.Logo src="./../../images/misc/logo.svg" alt="Netflix" />
+        <Header.Logo src="./images/misc/logo.svg" alt="Netflix" />
         <LoginHelpHeader.SignInLink style={{color: "#e50914"}}/>
       </Header.Frame>
       <LoginHelp>

@@ -36,7 +36,7 @@ export default function RegFormContainer(){
     <SignInForm.LoginErrorMessage backgroundColor="#ffa00a">
       {error  &&
         <SignInForm.FlexBox>
-        <SignInForm.Icon src="../../../images/icons/warning-icon.svg"fontSize="16px" />
+        <SignInForm.Icon src="./images/icons/warning-icon.svg"fontSize="16px" />
 
           <SignInForm.Text fontSize="16px">
             <span>Looks like that account already exists.</span>

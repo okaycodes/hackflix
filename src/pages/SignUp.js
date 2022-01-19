@@ -4,12 +4,6 @@ import {useContext} from "react"
 import { authContext } from "../contexts/authContext"
 
 
-
-/*====================
-COME BACK TO THIS
-=====================*/
-// import * as ROUTES from "./../constants/routes"
-
 export default function SignUp({children}){
   const {user} = useContext(authContext)
 
@@ -21,7 +15,7 @@ export default function SignUp({children}){
   return (
     <>
       <SignupHeader>
-          <SignupHeader.Logo src="./../../images/misc/logo.svg" alt="Netflix"/>
+          <SignupHeader.Logo src="./images/misc/logo.svg" alt="Netflix"/>
           {user ? <SignupHeader.SignOutLink /> : <SignupHeader.SignInLink />}
       </SignupHeader>
       <Outlet />

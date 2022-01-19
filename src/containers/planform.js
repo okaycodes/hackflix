@@ -12,7 +12,7 @@ import {useNavigate} from "react-router-dom"
 export default function Planform(){
   const checkList = ["Watch all you want. Ad-free.", "Recommendations just for you.",
     "Change or cancel your plan anytime."]
-  
+
   const navigate = useNavigate()
   const {user, update} = useContext(authContext)
   const {state, dispatch} = useContext(formContext)
@@ -43,7 +43,7 @@ export default function Planform(){
         {checkList.map(item => {
           return(
             <Registration.ListItem marginTop=".5em">
-              <Registration.ListIcon src="./../../images/icons/check-mark-line.svg"/>
+              <Registration.ListIcon src="./images/icons/check-mark-line.svg"/>
               <Registration.ListText>{item}</Registration.ListText>
             </Registration.ListItem>
           )

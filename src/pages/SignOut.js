@@ -32,7 +32,7 @@ export default function SignOutPage(){
     <>
     <Header dontShowOnSmallViewPort src={"signout-bg"}>
       <Header.Frame>
-        <Header.Logo src="./../../images/misc/logo.svg" alt="Netflix" />
+        <Header.Logo src="./images/misc/logo.svg" alt="Netflix" />
         <Header.SignInLink />
       </Header.Frame>
       <SignOut>

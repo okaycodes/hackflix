@@ -46,9 +46,9 @@ export default function PaymentFormContainer(){
           step <span>3</span> of <span>3</span>
         </Registration.SubTitle>
         <Registration.IconWrapper>
-          <Registration.CardsIcon src="./../../images/icons/visa-card.png" padding="6px 2.5px"/>
-          <Registration.CardsIcon src="./../../images/icons/mastercard_icon.png"/>
-          <Registration.CardsIcon src="./../../images/icons/icon_verve.png"/>
+          <Registration.CardsIcon src="./images/icons/visa-card.png" padding="6px 2.5px"/>
+          <Registration.CardsIcon src="./images/icons/mastercard_icon.png"/>
+          <Registration.CardsIcon src="./images/icons/icon_verve.png"/>
         </Registration.IconWrapper>
 
         <RegForm.Input
@@ -117,7 +117,7 @@ export default function PaymentFormContainer(){
           onBlur={(event)=>dispatch({type: "blurred", payload: {securityCodeIsActive: true}})}
         >
           <RegForm.Icon
-            src="./../../images/icons/cvv.svg"
+            src="./images/icons/cvv.svg"
             onClick={handleClick}/>
         </RegForm.Input>
 
@@ -152,13 +152,13 @@ export default function PaymentFormContainer(){
       </RegForm>
       <Modal display={cvvDisplay}>
         <Modal.Header>
-          <Modal.Icon src="./../../images/icons/close-slim.png" onClick={handleClick}/>
+          <Modal.Icon src="./images/icons/close-slim.png" onClick={handleClick}/>
         </Modal.Header>
         <Modal.Wrapper>
           <Modal.Text align="center" width="271px">Your card's security code (CVV)
           is the 3 or 4 digit number located on the back of most cards.</Modal.Text>
-          <Modal.Image src="./../../images/misc/cvv1.png"/>
-          <Modal.Image src="./../../images/misc/cvv21.png"/>
+          <Modal.Image src="./images/misc/cvv1.png"/>
+          <Modal.Image src="./images/misc/cvv21.png"/>
         </Modal.Wrapper>
       </Modal>
     </>

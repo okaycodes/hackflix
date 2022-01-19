@@ -9,7 +9,7 @@ export default function RegistrationContainer(){
     <Registration.SubTitle>
       step <span>1</span> of <span>3</span>
     </Registration.SubTitle>
-    <Registration.Image src="./../../images/icons/devices.png" alt="Devices"/>
+    <Registration.Image src="./images/icons/devices.png" alt="Devices"/>
     <Registration.Text fontSize="18px">
       Netflix is personalized for you. <br/> Create a
       password to watch on any device at any time.
