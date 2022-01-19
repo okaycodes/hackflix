@@ -21,11 +21,11 @@ import PhoneNumberContainer from './containers/phoneNumber';
 function App() {
 const {isAuthenticating} = useContext(authContext)
 
-  return ( 
+  return (
     <div>
       { !isAuthenticating &&
       <Routes>
-        <Route path={ROUTES.HOME} element={<Home />}/>
+        <Route path="/hackflix" element={<Home />}/>
         <Route path={ROUTES.SIGN_IN} element={<SignIn />}/>
         <Route path="signup" element={<SignUp />}>
           <Route index element={<RegStepContainer />} />
@@ -37,7 +37,7 @@ const {isAuthenticating} = useContext(authContext)
           <Route path="phoneNumber" element={
             <SelectContextProvider>
               <PhoneNumberContainer />
-            </SelectContextProvider>   
+            </SelectContextProvider>
           }/>
         </Route>
         <Route path={ROUTES.SIGN_OUT} element={<SignOut/>}/>
