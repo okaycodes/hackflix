@@ -26,14 +26,14 @@ initializeApp(firebaseConfig)
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <HashRouter>
       <FormContextProvider>
         <AuthContextProvider>
           <GlobalStyles />
           <App />
         </AuthContextProvider>
       </FormContextProvider>
-    </Router>
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -25,7 +25,7 @@ const {isAuthenticating} = useContext(authContext)
     <div>
       { !isAuthenticating &&
       <Routes>
-        <Route path="/hackflix" element={<Home />}/>
+        <Route path="/" element={<Home />}/>
         <Route path={ROUTES.SIGN_IN} element={<SignIn />}/>
         <Route path="signup" element={<SignUp />}>
           <Route index element={<RegStepContainer />} />
