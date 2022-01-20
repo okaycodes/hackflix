@@ -18,7 +18,6 @@ export default function Home (){
         <Feature>
           {user && <Feature.SubTitle>Welcome back!</Feature.SubTitle>}
           <Feature.Title>Unlimited movies, TV shows and more.</Feature.Title>
-          <Feature.Title>This is a test.</Feature.Title>
           <Feature.SubTitle>Watch anywhere. Cancel at any time.</Feature.SubTitle>
           { user ?
             <OptInForm>
