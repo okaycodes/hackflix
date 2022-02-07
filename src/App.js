@@ -21,6 +21,7 @@ import PhoneNumberContainer from './containers/phoneNumber';
 function App() {
 const {isAuthenticating} = useContext(authContext)
 
+
   return (
     <div>
       { !isAuthenticating &&
